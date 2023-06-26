@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for cycling Global Forecast System
+
+	AUTHOR:
+		Rahul Mahajan
+		rahul.mahajan@noaa.gov
+
+	NOTES:
+		This workflow was automatically generated at 2019-12-02 18:05:39.230602
+	-->
+
+	<!-- Experiment parameters such as name, starting, ending dates -->
+	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
+	<!ENTITY SDATE "202306250000">
+	<!ENTITY EDATE "202306251800">
+	<!ENTITY INTERVAL "06:00:00">
+	<!ENTITY CYCINTHR "6">
+	<!ENTITY CASE_OBS     "C192">
+
+	<!-- Run Envrionment -->
+	<!ENTITY RUN_ENVIR "emc">
+	<!ENTITY machine "HERA">
+
+	<!-- Experiment top run directory-->
+	<!ENTITY AODTYPE     "NOAA_VIIRS">
+	<!ENTITY AODSAT     "j01">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs">
+	<!ENTITY OBSDIR_NESDIS "/scratch2/BMC/public/data/sat/nesdis/viirs/aod/conus/">
+
+	<!-- Experiment and Rotation directory -->
+	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/"> 
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/"> 
+	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
+	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
+	<!-- Record directories -->
+	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/record.miss_NOAAVIIRSnpp">
+	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/record.miss_NOAAVIIRSj01">
+
+	<!-- Machine related entities -->
+	<!ENTITY ACCOUNT    "wrf-chem">
+	<!ENTITY SCHEDULER  "slurm">
+	<!ENTITY QUEUE_PREPAODOBS     "debug">
+	<!ENTITY WALLTIME_PREPAODOBS  "00:20:00">
+	<!ENTITY RESOURCES_PREPAODOBS "<nodes>10:ppn=4:tpp=10</nodes>">
+
+	<!-- Toggle HPSS archiving -->
+	<!ENTITY ARCHIVE_TO_HPSS "YES">
+
+	<!-- ROCOTO parameters that control workflow -->
+	<!ENTITY CYCLETHROTTLE "1">
+	<!ENTITY TASKTHROTTLE  "1">
+	<!ENTITY MAXTRIES      "2">
+
+
+]>
+
+<workflow realtime="F" scheduler="&SCHEDULER;" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
+
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/log.prepAODOBS.@Y@m@d@H</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gdas" >&SDATE;     &EDATE;     &INTERVAL;</cycledef>
+
+<task name="gdasnoaaviirsaod" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
+
+	<command>&JOBS_DIR;/prepobs_aod_noaa_viirs.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_gdasnoaaviirsaod_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_PREPAODOBS;</queue>
+	&RESOURCES_PREPAODOBS;
+	<walltime>&WALLTIME_PREPAODOBS;</walltime>
+	
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasnoaaviirsaod.log</cyclestr></join>
+
+	<envar><name>SLURM_SET</name><value>YES</value></envar>
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CDUMP</name><value>gdas</value></envar>
+	<envar><name>CASE_OBS</name><value>&CASE_OBS;</value></envar>
+	<envar><name>CYCINTHR</name><value>&CYCINTHR;</value></envar>
+	<envar><name>OBSDIR_NESDIS</name><value>&OBSDIR_NESDIS;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>MISS_NOAA_NPP</name><value>&MISS_NOAA_NPP;</value></envar>
+	<envar><name>MISS_NOAA_J01</name><value>&MISS_NOAA_J01;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>AODSAT</name><value>&AODSAT;</value></envar>
+	<envar><name>machine</name><value>&machine;</value></envar>
+
+	<dependency>
+		<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_prepobs_aod_noaa_viirs.sh </cyclestr></sh>
+		<!--
+		<and>
+			<or>
+				<not>
+					<datadep><cyclestr>&OBSDIR_NRT;/&AODTYPE;-&CASE;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+				</not>
+				<not>
+					<datadep><cyclestr>&OBSDIR_NRT;/&AODTYPE;-&CASE;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+				</not>
+			</or>
+			<or>
+				<and>
+					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status_j01.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
+					<streq><left>&AODSAT;</left><right>j01</right></streq>
+				</and>
+				<and>
+					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status_npp.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
+					<streq><left>&AODSAT;</left><right>npp</right></streq>
+				</and>
+				<and>
+					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
+					<streq><left>&AODSAT;</left><right>npp j01</right></streq>
+				</and>
+			</or>
+		</and>
+		-->
+	</dependency>
+
+</task>
+
+</workflow>
