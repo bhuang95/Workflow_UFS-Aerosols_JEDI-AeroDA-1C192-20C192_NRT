@@ -18,7 +18,7 @@
 	<!ENTITY SDATE "202306250000">
 	<!ENTITY EDATE "202306251800">
 	<!ENTITY INTERVAL "06:00:00">
-	<!ENTITY CYCINTHR "6">
+	<!ENTITY CYCINTHR "06">
 	<!ENTITY CASE_OBS     "C192">
 
 	<!-- Run Envrionment -->
@@ -32,13 +32,13 @@
 	<!ENTITY OBSDIR_NESDIS "/scratch2/BMC/public/data/sat/nesdis/viirs/aod/conus/">
 
 	<!-- Experiment and Rotation directory -->
-	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/"> 
-	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/"> 
+	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/"> 
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_cycling/"> 
 	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
 
 	<!-- Directories for driving the workflow -->
-	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
+	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
 	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
 	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
@@ -104,7 +104,7 @@
 	<envar><name>machine</name><value>&machine;</value></envar>
 
 	<dependency>
-		<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_prepobs_aod_noaa_viirs.sh </cyclestr></sh>
+		<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_prepobs_aod_noaa_viirs.sh</cyclestr></sh>
 		<!--
 		<and>
 			<or>
