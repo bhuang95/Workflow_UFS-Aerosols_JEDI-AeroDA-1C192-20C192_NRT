@@ -26,8 +26,8 @@ ENSFILE_m3SFCANL=${ENSFILE_m3SFCANL:-"NO"}
 EMSFILE_MISSRING_RECORD=${EMSFILE_MISSRING_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/record.miss_GDASEnsAnl"}
 METDIR_HERA=${METDIR_HERA:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/global-workflow-CCPP2-Chem-NRT-clean/dr-data/downloadHpss/"}
 METDIR_NRT=${METDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/"}
-NMEM_PERENSGRP=${NMEM_PERENSGRP:-"2"}
-ENSGRPIND=${ENSGRPIND:-"01"}
+NMEM_EFCSGRP=${NMEM_EFCSGRP:-"2"}
+ENSGRP=${ENSGRP:-"01"}
 
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 CHGRES_GAU=${CHGRES_GAU:-"${HOMEgfs}/exec/enkf_chgres_recenter_nc.x"}
@@ -35,8 +35,8 @@ CHGRES_CUBE=${CHGRES_CUBE:-"${HOMEgfs}/exec/chgres_cube"}
 CALC_ANL=${CALC_ANL:-"${HOMEgfs}/exec/calc_analysis.x"}
 #CALC_ANL=/home/Bo.Huang/JEDI-2020/GSDChem_cycling/global-workflow-CCPP2-Chem-NRT-clean/exec/calc_analysis.x
 
-MEMEND=$((NMEM_PERENSGRP * ENSGRPIND))
-MEMBEG=$((MEMEND - NMEM_PERENSGRP + 1))
+ENSED=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
+MEMBEG=$((MEMEND - NMEM_EFCSGRP + 1))
 #MEMBEG=1
 #MEMAEND=1
 
@@ -61,7 +61,7 @@ status=$?
 
 STMP="/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/$USER/"
 export RUNDIR="$STMP/RUNDIRS/$PSLOT"
-export DATA="$RUNDIR/$CDATE/$CDUMP/prepensana.grp${ENSGRPIND}.$$"
+export DATA="$RUNDIR/$CDATE/$CDUMP/prepensana.grp${ENSGRP}.$$"
 
 [[ ! -d $DATA ]] && mkdir -p $DATA
 cd $DATA || exit 10
