@@ -24,7 +24,7 @@
 	<!ENTITY machine "HERA">
 
 	<!-- Experiment top run directory-->
-	<!ENTITY GBBDIR_NRT     "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GBBEPx/">
+	<!ENTITY GBBDIR_NRT     "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GBBEPx_FillValue_Wrong/">
 	<!ENTITY GBBDIR_HERA     "/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/">
 
 	<!-- Experiment and Rotation directory -->

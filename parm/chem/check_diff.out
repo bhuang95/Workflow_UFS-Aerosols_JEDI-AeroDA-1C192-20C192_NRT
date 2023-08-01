@@ -1,0 +1,73 @@
+23,26c23,24
+< #SU_ANTHROL1 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #SU_ANTHROL2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_elev ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< SU_ANTHROL1 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+< SU_ANTHROL2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_elev ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> SU_ANTHROL1 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> SU_ANTHROL2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_elev ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+29,32c27,28
+< #SU_SHIPSO2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #SU_SHIPSO4 NA  N Y %y4-%m2-%d2t12:00:00 none none SO4_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< SU_SHIPSO2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_ship ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc 
+< SU_SHIPSO4 NA  N Y %y4-%m2-%d2t12:00:00 none none SO4_ship ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> SU_SHIPSO2 NA  N Y %y4-%m2-%d2t12:00:00 none none SO2_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> SU_SHIPSO4 NA  N Y %y4-%m2-%d2t12:00:00 none none SO4_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+64,71c60,63
+< #OC_ISOPRENE NA  N Y %y4-%m2-%d2t12:00:00 none none isoprene ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+< #OC_LIMO     NA  N Y %y4-%m2-%d2t12:00:00 none none limo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+< #OC_MTPA     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpa     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+< #OC_MTPO     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+< OC_ISOPRENE NA  N Y %y4-%m2-%d2t12:00:00 none none isoprene ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/2019/MEGAN.OFFLINE.BIOVOC.2019.emis.20190621.nc
+< OC_LIMO     NA  N Y %y4-%m2-%d2t12:00:00 none none limo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/2019/MEGAN.OFFLINE.BIOVOC.2019.emis.20190621.nc
+< OC_MTPA     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpa     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/2019/MEGAN.OFFLINE.BIOVOC.2019.emis.20190621.nc
+< OC_MTPO     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/2019/MEGAN.OFFLINE.BIOVOC.2019.emis.20190621.nc
+---
+> OC_ISOPRENE NA  N Y %y4-%m2-%d2t12:00:00 none none isoprene ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+> OC_LIMO     NA  N Y %y4-%m2-%d2t12:00:00 none none limo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+> OC_MTPA     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpa     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+> OC_MTPO     NA  N Y %y4-%m2-%d2t12:00:00 none none mtpo     ExtData/nexus/MEGAN_OFFLINE_BVOC/v2019-10/%y4/MEGAN.OFFLINE.BIOVOC.%y4.emis.%y4%m2%d2.nc
+77,81c69,70
+< #OC_ANTEOC1 NA  N Y %y4-%m2-%d2t12:00:00 none none OC       ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #OC_ANTEOC2 NA  N Y %y4-%m2-%d2t12:00:00 none none OC_elev  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< OC_ANTEOC1 NA  N Y %y4-%m2-%d2t12:00:00 none none OC      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc 
+< OC_ANTEOC2 NA  N Y %y4-%m2-%d2t12:00:00 none none OC_elev  ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+< 
+---
+> OC_ANTEOC1 NA  N Y %y4-%m2-%d2t12:00:00 none none OC       ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> OC_ANTEOC2 NA  N Y %y4-%m2-%d2t12:00:00 none none OC_elev  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+84,85c73
+< #OC_SHIP    NA  N Y %y4-%m2-%d2t12:00:00 none none OC_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< OC_SHIP    NA  N Y %y4-%m2-%d2t12:00:00 none none OC_ship  ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc 
+---
+> OC_SHIP    NA  N Y %y4-%m2-%d2t12:00:00 none none OC_ship  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+106,109c94,95
+< #BC_ANTEBC1 NA  N Y %y4-%m2-%d2t12:00:00 none none BC       ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #BC_ANTEBC2 NA  N Y %y4-%m2-%d2t12:00:00 none none BC_elev  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< BC_ANTEBC1 NA  N Y %y4-%m2-%d2t12:00:00 none none BC       ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+< BC_ANTEBC2 NA  N Y %y4-%m2-%d2t12:00:00 none none BC_elev  ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> BC_ANTEBC1 NA  N Y %y4-%m2-%d2t12:00:00 none none BC       ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> BC_ANTEBC2 NA  N Y %y4-%m2-%d2t12:00:00 none none BC_elev  ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+112,113c98
+< #BC_SHIP NA  N Y %y4-%m2-%d2t12:00:00 none none BC_ship     ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< BC_SHIP NA  N Y %y4-%m2-%d2t12:00:00 none none BC_ship     ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> BC_SHIP NA  N Y %y4-%m2-%d2t12:00:00 none none BC_ship     ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+154,155c139
+< #EMI_NH3_AG   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_ag      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< EMI_NH3_AG   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_ag      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> EMI_NH3_AG   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_ag      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+157,162c141,143
+< #EMI_NH3_IN   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_in      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #EMI_NH3_RE   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_re      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< #EMI_NH3_TR   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_tr      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+< EMI_NH3_IN   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_in      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+< EMI_NH3_RE   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_re      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+< EMI_NH3_TR   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_tr      ExtData/nexus/CEDS/v2019/2019/CEDS.2019.emis.20190621.nc
+---
+> EMI_NH3_IN   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_in      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> EMI_NH3_RE   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_re      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc
+> EMI_NH3_TR   'kg m-2 s-1'  N Y      %y4-%m2-%d2T12:00:00    none     none     NH3_tr      ExtData/nexus/CEDS/v2019/%y4/CEDS.2019.emis.%y4%m2%d2.nc

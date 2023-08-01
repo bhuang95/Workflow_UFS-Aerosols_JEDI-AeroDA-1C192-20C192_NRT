@@ -1,31 +1,15 @@
 #!/bin/bash -l
 
 set -x
+# Back up cycled data to HPSS at ${CDATE}-6 cycle
 
-source config
+source config_hera2hpss
+
 module load hpss
 export PATH="/apps/hpss/bin:$PATH"
 set -x
 
-#expName=${PSLOT}
-#dataDir=${ROTDIR}
-#caseCntl=${CASE_CNTL}
-#caseEnkf=${CASE_ENKF}
-#tmpDir=${HERA2HPSSDIR}
-#bakupDir=${ROTDIR}/../dr-data-backup
-#logDir=${ROTDIR}/logs
-#hpssDir=${ARCHHPSSDIR}
-#incdate=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
-#NMEM=${NMEM_ENKF}
-#ENSRUN=${ENSRUN}
-#AERODA=${AERODA}
-#HPSSRECORD=${HPSSRECORD}
-#NMEM_GRP=10
-
-TMPDIR=${ROTDIR}/HERA2HPSS
-HPSSRECORD=${TMPDIR}/record.FailedHERA2HPSS
-
-[[ ! -d ${TMPDIR} ]] && mkdir -p ${HERA2HPSS}
+HPSSRECORD=${TMPDIR}/record.failed_HERA2HPSS
 
 NCP="/bin/cp -r"
 NMV="/bin/mv -f"
@@ -47,8 +31,7 @@ GD=${GDATE:6:2}
 GH=${GDATE:8:2}
 GYMD=${GDATE:0:8}
 
-
-DATAHPSSDIR=${ARCHHPSSDIR}/${PSLOT}/dr-data/${GY}/${GY}${GM}/${GYMD}
+DATAHPSSDIR=${ARCHHPSSDIR}/${PSLOT}/dr-data/${GY}/${GY}${GM}/${GYMD}/
 hsi "mkdir -p ${DATAHPSSDIR}"
 ERR=$?
 if [ ${ERR} -ne 0 ]; then
@@ -57,7 +40,8 @@ if [ ${ERR} -ne 0 ]; then
     exit ${ERR}
 fi
 
-LOGDIR=${ROTDIR}/${PSLOT}/dr-data/${GDATE}/
+# Copy cntl
+LOGDIR=${ROTDIR}/${PSLOT}/dr-data/logs/${GDATE}/
 CNTLDIR=${ROTDIR}/${PSLOT}/dr-data/gdas.${GYMD}/${GH}
 CNTLDIR_ATMOS=${CNTLDIR}/atmos/
 CNTLDIR_CHEM=${CNTLDIR}/chem/

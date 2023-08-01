@@ -629,6 +629,7 @@ data_out_GFS() {
         fi
       done
       $NCP $DATA/input.nml ${memdir}/
+      $NCP $DATA/AERO_ExtData.rc ${memdir}/
       $NCP $DATA/model_configure ${memdir}/
       $NCP $DATA/nems.configure ${memdir}/
 

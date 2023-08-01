@@ -1,6 +1,11 @@
 #! /usr/bin/env bash
 
-cat > config << EOF
+TMPDIR=${ROTDIR}/HERA2HPSS
+[[ ! -d ${TMPDIR} ]] && mkdir -p ${TMPDIR}
+
+cd ${TMPDIR}
+
+cat > config_hera2hpss << EOF
 CDATE=${CDATE}
 CYCINTHR=${CYCINTHR}
 PSLOT=${PSLOT}
@@ -11,7 +16,7 @@ ARCHHPSSDIR=${ARCHHPSSDIR}
 NMEM_AERO=${NMEM_AERO}
 ENSRUN=${ENSRUN}
 AERODA=${AERODA}
-HPSSRECORD=${HPSSRECORD}
+TMPDIR=${ROTDIR}/HERA2HPSS
 NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 EOF
 
