@@ -15,3 +15,7 @@ ${RORUNCMD} -w ${XMLDIR_DA}/NRT-prepEmis.xml -d ${DBDIR_DA}/NRT-prepEmis.db
 ### Prep GDAS anl files
 echo "Prep GDAS anl files"
 ${RORUNCMD} -w ${XMLDIR_DA}/NRT-prepGDAS.xml -d ${DBDIR_DA}/NRT-prepGDAS.db
+
+### Prep NOAA-VIIRS AOD 
+echo "Prep GDAS anl files"
+${RORUNCMD} -w ${XMLDIR_DA}/NRT-prepAOD-NOAA_VIIRS.xml -d ${DBDIR_DA}/NRT-prepAOD-NOAA_VIIRS.db

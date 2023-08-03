@@ -76,7 +76,7 @@
 
 <task name="gdasgbbepx" cycledefs="gdas" maxtries="&MAXTRIES;">
 
-	<command>&JOBS_DIR;/prepgbbepx.sh</command>
+	<command>&JOBS_DIR;/prepemis_gbbepx.sh</command>
 
 	<jobname><cyclestr>&PSLOT;_gdasgbbepx_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>
@@ -102,7 +102,7 @@
 
 <task name="gdasceds" cycledefs="gdas" maxtries="&MAXTRIES;">
 
-	<command>&JOBS_DIR;/prepceds.sh</command>
+	<command>&JOBS_DIR;/prepemis_ceds.sh</command>
 
 	<jobname><cyclestr>&PSLOT;_gdasceds_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>
@@ -134,7 +134,7 @@
 
 <task name="gdasmegan" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
 
-	<command>&JOBS_DIR;/prepmegan.sh</command>
+	<command>&JOBS_DIR;/prepemis_megan.sh</command>
 
 	<jobname><cyclestr>&PSLOT;_gdasmegan_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>

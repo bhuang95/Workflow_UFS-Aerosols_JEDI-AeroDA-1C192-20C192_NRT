@@ -23,8 +23,8 @@ AODTYPE=${AODTYPE:-"NOAA_VIIRS"}
 AODSAT=${AODSAT:-"npp j01"}
 OBSDIR_NESDIS=${OBSDIR_NESDIS:-"/scratch2/BMC/public/data/sat/nesdis/viirs/aod/conus/"}
 OBSDIR_NRT=${OBSDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs"}
-MISS_NOAA_NPP=${MISS_NOAA_NPP:-"${HOMEgfs}/dr-work/record.miss_NOAAVIIRSnpp"}
-MISS_NOAA_J01=${MISS_NOAA_J01:-"${HOMEgfs}/dr-work/record.miss_NOAAVIIRSj01"}
+MISS_NOAA_NPP_RECORD=${MISS_NOAA_NPP_RECORD:-"${HOMEgfs}/dr-work/record.miss_NOAAVIIRSnpp"}
+MISS_NOAA_J01_RECORD=${MISS_NOAA_J01_RECORD:-"${HOMEgfs}/dr-work/record.miss_NOAAVIIRSj01"}
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 mkdir -p ${OBSDIR_NRT}
 
@@ -217,7 +217,7 @@ for sat in ${AODSAT}; do
 	    echo ${CDATE} >> ${MISS_NOAA_NPP}
 	    /bin/cp ${AODOUTDIR}/${AODTYPE}_AOD_j01.${CDATE}.iodav3.nc  ${AODOUTDIR}/${AODTYPE}_AOD_npp.${CDATE}.iodav3.nc
 	fi
-        /bin/rm -rf JRR-AOD_v3r2_${sat}_*.nc
+        /bin/rm -rf JRR-AOD_*_${sat}_*.nc
         err=$?
     else
         echo "IODA_UPGRADER failed for ${FINALFILEv1} and exit."

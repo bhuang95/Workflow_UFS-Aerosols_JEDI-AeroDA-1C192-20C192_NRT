@@ -15,8 +15,8 @@
 
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY SDATE "202306250000">
-	<!ENTITY EDATE "202306251800">
+	<!ENTITY SDATE "202308010000">
+	<!ENTITY EDATE "202308010000">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CASE_OBS     "C192">
@@ -27,7 +27,7 @@
 
 	<!-- Experiment top run directory-->
 	<!ENTITY AODTYPE     "NOAA_VIIRS">
-	<!ENTITY AODSAT     "j01">
+	<!ENTITY AODSAT     "npp j01">
 	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs">
 	<!ENTITY OBSDIR_NESDIS "/scratch2/BMC/public/data/sat/nesdis/viirs/aod/conus/">
 
@@ -44,8 +44,8 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Record directories -->
-	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/record.miss_NOAAVIIRSnpp">
-	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/record.miss_NOAAVIIRSj01">
+	<!ENTITY MISS_NOAA_NPP_RECORD "&EXPDIR;/record.miss_NOAAVIIRSnpp">
+	<!ENTITY MISS_NOAA_J01_RECORD "&EXPDIR;/record.miss_NOAAVIIRSj01">
 
 	<!-- Machine related entities -->
 	<!ENTITY ACCOUNT    "wrf-chem">
@@ -54,14 +54,10 @@
 	<!ENTITY WALLTIME_PREPAODOBS  "00:20:00">
 	<!ENTITY RESOURCES_PREPAODOBS "<nodes>10:ppn=4:tpp=10</nodes>">
 
-	<!-- Toggle HPSS archiving -->
-	<!ENTITY ARCHIVE_TO_HPSS "YES">
-
 	<!-- ROCOTO parameters that control workflow -->
 	<!ENTITY CYCLETHROTTLE "1">
 	<!ENTITY TASKTHROTTLE  "1">
 	<!ENTITY MAXTRIES      "2">
-
 
 ]>
 
@@ -84,9 +80,7 @@
 	
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasnoaaviirsaod.log</cyclestr></join>
 
-	<envar><name>SLURM_SET</name><value>YES</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
@@ -97,8 +91,8 @@
 	<envar><name>CYCINTHR</name><value>&CYCINTHR;</value></envar>
 	<envar><name>OBSDIR_NESDIS</name><value>&OBSDIR_NESDIS;</value></envar>
 	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
-	<envar><name>MISS_NOAA_NPP</name><value>&MISS_NOAA_NPP;</value></envar>
-	<envar><name>MISS_NOAA_J01</name><value>&MISS_NOAA_J01;</value></envar>
+	<envar><name>MISS_NOAA_NPP_RECORD</name><value>&MISS_NOAA_NPP_RECORD;</value></envar>
+	<envar><name>MISS_NOAA_J01_RECORD</name><value>&MISS_NOAA_J01_RECORD;</value></envar>
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 	<envar><name>AODSAT</name><value>&AODSAT;</value></envar>
 	<envar><name>machine</name><value>&machine;</value></envar>
