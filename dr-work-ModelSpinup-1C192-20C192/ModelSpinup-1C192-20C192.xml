@@ -58,7 +58,7 @@
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
 	<!ENTITY ACCOUNT    "wrf-chem">
-	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE      "batch">
 	<!ENTITY SCHEDULER  "slurm">
 
 	<!-- ROCOTO parameters that control workflow -->
@@ -256,11 +256,10 @@
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
 	        <envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
 		<dependency>
-			<and>
+			<or>
 				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
 				<metataskdep metatask="gdasmetincenkf"/>
-				<taskdep task="gdasfcst"/>
-			</and>
+			</or>
 		</dependency>
 	</task>
 

@@ -91,8 +91,8 @@ ${NLN} ${JEDIDIR}/geos-aero/test/Data ${DATA}/
 # Link observations (only for VIIRS or MODIS)
 OBSTIME=${ANLTIME}
 if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
-    OBSIN=${OBSDIR}/${OBSTIME}/VIIRS_AOD_npp.${OBSTIME}.nc
-    OBSIN1=${OBSDIR}/${OBSTIME}/VIIRS_AOD_j01.${OBSTIME}.nc
+    OBSIN=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_npp.${OBSTIME}.nc
+    OBSIN1=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_j01.${OBSTIME}.nc
     SENSORID=v.viirs-m_npp
     SENSORID1=v.viirs-m_npp
     OBSOUT=aod_viirs_npp_obs_${OBSTIME}.nc4
@@ -176,6 +176,27 @@ observations:
         engine:
           type: H5File
           obsfile: ./DIAG/${HOFXOUT}
+      simulated variables: [aerosolOpticalDepth]
+      channels: 4
+    obs operator:
+      name: AodLUTs
+      obs options:
+        Sensor_ID: ${SENSORID}
+        EndianType: little_endian
+        CoefficientPath: ./CRTM/
+        AerosolOption: aerosols_gocart_2
+        RCFile: geosaod.rc
+        model units coeff: 1.e-9
+  - obs space:
+      name: Aod
+      obsdatain:
+        engine:
+          type: H5File
+          obsfile: ./INPUT/${OBSOUT1}
+      obsdataout:
+        engine:
+          type: H5File
+          obsfile: ./DIAG/${HOFXOUT1}
       simulated variables: [aerosolOpticalDepth]
       channels: 4
     obs operator:

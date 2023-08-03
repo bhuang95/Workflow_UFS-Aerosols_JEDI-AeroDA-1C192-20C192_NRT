@@ -1,7 +1,7 @@
 #!/bin/bash 
 set -x
-METDIR_HERA=${METDIR_HERA:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/global-workflow-CCPP2-Chem-NRT-clean/dr-data/downloadHpss/test/"}
-NMEM_AERO=${NMEM_AERO:-"20"}
+METDIR_HERA_ENKF=${METDIR_HERA_ENKF:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/global-workflow-CCPP2-Chem-NRT-clean/dr-data/downloadHpss/test/"}
+NMEM_ENKF=${NMEM_ENKF:-"20"}
 CDATE=${CDATE:-"2023062400"}
 CYCINTHR=${CYCINTHR:-"06"}
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
@@ -20,17 +20,17 @@ GDD=$(echo "${GDATE}" | cut -c7-8)
 GHH=$(echo "${GDATE}" | cut -c9-10)
 
 ecode=0
-nfiles=$(ls ${METDIR_HERA}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/atmos/mem???/gdas.t${CHH}z.ratminc.nc | wc -l)
+nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/atmos/mem???/gdas.t${CHH}z.ratminc.nc | wc -l)
 if [ ${nfiles} != ${NMEM_AERO} ]; then
     ecode=$((ecode+1))
 fi
 
-nfiles=$(ls ${METDIR_HERA}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.atmf006.nc | wc -l)
+nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.atmf006.nc | wc -l)
 if [ ${nfiles} != ${NMEM_AERO} ]; then
     ecode=$((ecode+1))
 fi
 
-nfiles=$(ls ${METDIR_HERA}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.sfcf006.nc | wc -l)
+nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.sfcf006.nc | wc -l)
 if [ ${nfiles} != ${NMEM_AERO} ]; then
     ecode=$((ecode+1))
 fi

@@ -11,7 +11,6 @@
 ###############################################################
 ### Environmental variables defined in .xml file
 set -x
-TESTDIR=$(pwd)
 HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/"}
 PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}

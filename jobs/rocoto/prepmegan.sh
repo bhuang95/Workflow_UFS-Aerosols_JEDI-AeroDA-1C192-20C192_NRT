@@ -17,6 +17,7 @@ MEGANYEAR=${MEGANYEAR:-"2021"}
 MEGANDIR_NRT=${MEGANDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/MEGAN_OFFLINE_BVOC/v2019-10/"}
 MEGANDIR_HERA=${MEGANDIR_HERA:-"/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/EGAN_OFFLINE_BVOC/v2019-10/2021/"}
 CDATE=${CDATE:-"2023062900"}
+CDUMP=${CDUMP:-"gdas"}
 
 module purge
 source "${HOMEgfs}/ush/preamble.sh"

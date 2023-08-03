@@ -15,27 +15,13 @@
 
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY SDATE "202307210000">
-	<!ENTITY EDATE "202307300000">
+	<!ENTITY SDATE "202307240000">
+	<!ENTITY EDATE "202308020000">
 	<!ENTITY INTERVAL "24:00:00">
 
 	<!-- Run Envrionment -->
 	<!ENTITY RUN_ENVIR "emc">
 	<!ENTITY machine "HERA">
-
-	<!-- Experiment top run directory-->
-	<!ENTITY GBBDIR_NRT     "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/GBBEPx/">
-	<!ENTITY GBBDIR_HERA     "/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/">
-
-        <!ENTITY CEDSVER "2019">
-        <!ENTITY CEDSYEAR "2019">
-	<!ENTITY CEDSDIR_NRT     "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/CEDS/v&CEDSVER;/">
-	<!ENTITY CEDSDIR_HERA     "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/CEDS/v&CEDSVER;/&CEDSYEAR;/">
-
-        <!ENTITY MEGANVER "2019-10">
-        <!ENTITY MEGANYEAR "2021">
-	<!ENTITY MEGANDIR_NRT     "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
-	<!ENTITY MEGANDIR_HERA     "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/MEGAN_OFFLINE_BVOC/v&MEGANVER;/&MEGANYEAR;/">
 
 	<!-- Experiment and Rotation directory -->
 	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/"> 
@@ -48,22 +34,36 @@
 	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
+	<!-- Emission directory-->
+	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/">
+	<!ENTITY EMISDIR_HERA "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/">
+
+	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/GBBEPx/">
+	<!ENTITY GBBDIR_HERA     "/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/">
+
+        <!ENTITY CEDSVER "2019">
+        <!ENTITY CEDSYEAR "2019">
+	<!ENTITY CEDSDIR_NRT     "&EMISDIR_NRT;/CEDS/v&CEDSVER;/">
+	<!ENTITY CEDSDIR_HERA     "&EMISDIR_HERA;/CEDS/v&CEDSVER;/&CEDSYEAR;/">
+
+        <!ENTITY MEGANVER "2019-10">
+        <!ENTITY MEGANYEAR "2021">
+	<!ENTITY MEGANDIR_NRT     "&EMISDIR_NRT;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
+	<!ENTITY MEGANDIR_HERA     "&EMISDIR_HERA;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/&MEGANYEAR;/">
+
+
 	<!-- Machine related entities -->
 	<!ENTITY ACCOUNT    "wrf-chem">
 	<!ENTITY SCHEDULER  "slurm">
-	<!ENTITY QUEUE_PREPGBB     "batch">
-	<!ENTITY WALLTIME_PREPGBB  "00:10:00">
-	<!ENTITY RESOURCES_PREPGBB "<cores>1</cores>">
-	<!ENTITY PARTITION_PREPGBB "service">
-
-	<!-- Toggle HPSS archiving -->
-	<!ENTITY ARCHIVE_TO_HPSS "YES">
+	<!ENTITY QUEUE_PREPEMIS     "batch">
+	<!ENTITY WALLTIME_PREPEMIS  "00:10:00">
+	<!ENTITY RESOURCES_PREPEMIS "<cores>1</cores>">
+	<!ENTITY PARTITION_PREPEMIS "service">
 
 	<!-- ROCOTO parameters that control workflow -->
 	<!ENTITY CYCLETHROTTLE "2">
 	<!ENTITY TASKTHROTTLE  "10">
 	<!ENTITY MAXTRIES      "2">
-
 
 ]>
 
@@ -80,19 +80,15 @@
 
 	<jobname><cyclestr>&PSLOT;_gdasgbbepx_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>
-	<queue>&QUEUE_PREPGBB;</queue>
-	<partition>&PARTITION_PREPGBB;</partition>
-	&RESOURCES_PREPGBB;
-	<walltime>&WALLTIME_PREPGBB;</walltime>
+	<queue>&QUEUE_PREPEMIS;</queue>
+	<partition>&PARTITION_PREPEMIS;</partition>
+	&RESOURCES_PREPEMIS;
+	<walltime>&WALLTIME_PREPEMIS;</walltime>
 	
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasgbbepx.log</cyclestr></join>
 
-	<envar><name>SLURM_SET</name><value>YES</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
-	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>
 	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
@@ -110,19 +106,16 @@
 
 	<jobname><cyclestr>&PSLOT;_gdasceds_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>
-	<queue>&QUEUE_PREPGBB;</queue>
-	<partition>&PARTITION_PREPGBB;</partition>
-	&RESOURCES_PREPGBB;
-	<walltime>&WALLTIME_PREPGBB;</walltime>
+	<queue>&QUEUE_PREPEMIS;</queue>
+	<partition>&PARTITION_PREPEMIS;</partition>
+	&RESOURCES_PREPEMIS;
+	<walltime>&WALLTIME_PREPEMIS;</walltime>
 	
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasceds.log</cyclestr></join>
 
-	<envar><name>SLURM_SET</name><value>YES</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>
 	<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
@@ -131,7 +124,10 @@
 	<envar><name>CEDSDIR_HERA</name><value>&CEDSDIR_HERA;</value></envar>
 
 	<dependency>
-		<datadep age="120"><cyclestr>&CEDSDIR_HERA;/CEDS.&CEDSVER;.emis.&CEDSYEAR;@m@d.nc</cyclestr></datadep>
+		<and>
+			<datadep age="120"><cyclestr>&CEDSDIR_HERA;/CEDS.&CEDSVER;.emis.&CEDSYEAR;@m@d.nc</cyclestr></datadep>
+			<taskdep task="gdasgbbepx"/>
+		</and>
 	</dependency>
 
 </task>
@@ -142,19 +138,16 @@
 
 	<jobname><cyclestr>&PSLOT;_gdasmegan_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>
-	<queue>&QUEUE_PREPGBB;</queue>
-	<partition>&PARTITION_PREPGBB;</partition>
-	&RESOURCES_PREPGBB;
-	<walltime>&WALLTIME_PREPGBB;</walltime>
+	<queue>&QUEUE_PREPEMIS;</queue>
+	<partition>&PARTITION_PREPEMIS;</partition>
+	&RESOURCES_PREPEMIS;
+	<walltime>&WALLTIME_PREPEMIS;</walltime>
 	
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasmegan.log</cyclestr></join>
 
-	<envar><name>SLURM_SET</name><value>YES</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>
 	<envar><name>MEGANVER</name><value>&MEGANVER;</value></envar>
@@ -163,7 +156,10 @@
 	<envar><name>MEGANDIR_HERA</name><value>&MEGANDIR_HERA;</value></envar>
 
 	<dependency>
-		<datadep age="120"><cyclestr>&MEGANDIR_HERA;/MEGAN.OFFLINE.BIOVOC.&MEGANYEAR;.emis.&MEGANYEAR;@m@d.nc</cyclestr></datadep>
+		<and>
+			<datadep age="120"><cyclestr>&MEGANDIR_HERA;/MEGAN.OFFLINE.BIOVOC.&MEGANYEAR;.emis.&MEGANYEAR;@m@d.nc</cyclestr></datadep>
+			<taskdep task="gdasgbbepx"/>
+		</and>
 	</dependency>
 
 </task>

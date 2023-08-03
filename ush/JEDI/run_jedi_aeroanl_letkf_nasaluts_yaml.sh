@@ -96,8 +96,8 @@ ${NLN} ${JEDIDIR}/geos-aero/test/Data ${DATA}/
 # Link observations (only for VIIRS or MODIS)
 OBSTIME=${ANLTIME}
 if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
-    OBSIN=${OBSDIR}/${OBSTIME}/VIIRS_AOD_npp.${OBSTIME}.nc
-    OBSIN1=${OBSDIR}/${OBSTIME}/VIIRS_AOD_j01.${OBSTIME}.nc
+    OBSIN=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_npp.${OBSTIME}.nc
+    OBSIN1=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_j01.${OBSTIME}.nc
     SENSORID=v.viirs-m_npp
     SENSORID1=v.viirs-m_npp
     OBSOUT=aod_viirs_npp_obs_${OBSTIME}.nc4

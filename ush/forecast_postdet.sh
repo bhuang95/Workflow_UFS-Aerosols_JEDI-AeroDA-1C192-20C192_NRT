@@ -61,43 +61,28 @@ FV3_GFS_postdet(){
 
       # Link fv3_tracer restart files from $memdir
       #if $(ls $gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_aeroanl.*.nc); then
-      tracer_aeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_aeroanl.res.tile6.nc
-      tracer_raeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_raeroanl.res.tile6.nc
-      if [ -f ${tracer_aeroanl} -o -f ${tracer_raeroanl} ]; then
-          if [ -f ${tracer_raeroanl} ]; then
-              trcr="fv_tracer_raeroanl"
-	      echo "Link recentered aerosol enkf analysis to INPUT directory."
-          else
-              trcr="fv_tracer_aeroanl"
-	      echo "Link aerosol cntl analysis to INPUT directory."
-          fi
-      else
-          trcr="fv_tracer"
-	  echo "Link aerosol background to INPUT directory."
-      fi
-
-      if [ ${AERODA} = "TRUE" -a ${trcr} = "fv_tracer" ]; then
-          echo "AERODA=${AERODA} but trcr=${trcr}, exit!"
-	  exit 99
-      fi
+      #tracer_aeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_aeroanl.res.tile6.nc
+      #tracer_raeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_raeroanl.res.tile6.nc
 
       for file in $(ls $gmemdir/RESTART/${sPDY}.${scyc}0000.${trcr}.*.nc); do
           file2=$(echo $(basename $file))
           file2=$(echo $file2 | cut -d. -f3-) # remove the date from file
           fsuf=$(echo $file2 | cut -d. -f1)
-          if [ $fsuf = ${trcr} ]; then
+          if [ $fsuf = ${trcrfield} ]; then
             file2=$(echo $file2 | sed -e "s/${trcr}/fv_tracer/g")
             $NLN $file $DATA/INPUT/$file2
           fi
       done
 
       # Link sfcanl_data restart files from $memdir
-      for file in $(ls $sfcanldir/RESTART/${sPDY}.${scyc}0000.*.nc); do
+      #for file in $(ls $sfcanldir/RESTART/${sPDY}.${scyc}0000.*.nc); do
+      for file in $(ls $sfcfiles); do
         file2=$(echo $(basename $file))
         file2=$(echo $file2 | cut -d. -f3-) # remove the date from file
         fsufanl=$(echo $file2 | cut -d. -f1)
-        if [ $fsufanl = "sfcanl_data" ]; then
-          file2=$(echo $file2 | sed -e "s/sfcanl_data/sfc_data/g")
+        if [ $fsufanl = ${sfcfield} ]; then
+          file2=$(echo $file2 | sed -e "s/${sfcfield}/sfc_data/g")
+          echo "Link ${file} to INPUT directory"
           $NLN $file $DATA/INPUT/$file2
         fi
       done

@@ -36,6 +36,10 @@ fi
 export ENSEND=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
 export ENSBEG=$((ENSEND - NMEM_EFCSGRP + 1))
 
+if [ ${ENSED} -gt ${NMEM_ENKF} ]; then
+    echo "Member number ${ENSED} exceeds ensemble size ${NMEM_ENKF} and exit."
+    exit 100
+fi
 
 ###############################################################
 # Run relevant script

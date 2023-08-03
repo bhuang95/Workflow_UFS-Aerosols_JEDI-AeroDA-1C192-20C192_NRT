@@ -105,32 +105,6 @@
 
 	<dependency>
 		<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_prepobs_aod_noaa_viirs.sh</cyclestr></sh>
-		<!--
-		<and>
-			<or>
-				<not>
-					<datadep><cyclestr>&OBSDIR_NRT;/&AODTYPE;-&CASE;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
-				</not>
-				<not>
-					<datadep><cyclestr>&OBSDIR_NRT;/&AODTYPE;-&CASE;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
-				</not>
-			</or>
-			<or>
-				<and>
-					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status_j01.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
-					<streq><left>&AODSAT;</left><right>j01</right></streq>
-				</and>
-				<and>
-					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status_npp.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
-					<streq><left>&AODSAT;</left><right>npp</right></streq>
-				</and>
-				<and>
-					<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/prepaodobs_status.sh @Y@m@d@H &CYCINTHR; </cyclestr></sh>
-					<streq><left>&AODSAT;</left><right>npp j01</right></streq>
-				</and>
-			</or>
-		</and>
-		-->
 	</dependency>
 
 </task>

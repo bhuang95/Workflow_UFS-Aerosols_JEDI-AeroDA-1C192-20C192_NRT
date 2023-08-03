@@ -84,7 +84,7 @@ fi
 
 
 NGRPS=\$((10#\${NMEM} / 10#\${NMEM_GRP}))
-if [ ${ENSRUN} = "TRUE" ] then
+if [ ${ENSRUN} = "YES" ] then
     ENKFDIR=${ROTDIR}/${PSLOT}/dr-data/enkfgdas.${GYMD}/${GH}
     ENKFDIR_ATMOS=${ENKFDIR}/atmos/
     ENKFDIR_CHEM=${ENKFDIR}/chem/
@@ -324,7 +324,7 @@ if [ -s \${cntlGDAS} ]; then
        echo "HTAR at gdas.\${cycN} completed !"
     fi
     
-    if [ \${ENSRUN} = "TRUE" ]; then
+    if [ \${ENSRUN} = "YES" ]; then
     ### Start EnKF
         enkfGDAS=\${dataDir}/enkfgdas.\${cycYMD}/\${cycH}/
         enkfGDAS_atmos=\${dataDir}/enkfgdas.\${cycYMD}/\${cycH}/atmos

@@ -18,13 +18,12 @@ CASE_CNTL=${CASE_CNTL:-"C192"}
 CASE_CNTL_GDAS=${CASE_CNTL_GDAS:-"C768"}
 CASE_ENKF=${CASE_ENKF:-"C192"}
 CASE_ENKF_GDAS=${CASE_ENKF_GDAS:-"C384"}
-NMEM_AERO=${NMEM_AERO:-"20"}
+NMEM_ENKF=${NMEM_ENKF:-"20"}
 FHR=${CYCINTHR:-"06"}
 LEVS=${LEVS:-"128"}
-ENSFILE_MISSING=${ENSFILE_MISSING:-"NO"}
-ENSFILE_m3SFCANL=${ENSFILE_m3SFCANL:-"NO"}
-EMSFILE_MISSRING_RECORD=${EMSFILE_MISSRING_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/record.miss_GDASEnsAnl"}
-METDIR_HERA=${METDIR_HERA:-"/scratch1/NCEPDEV/rstprod/prod/com//gfs/v16.3/"}
+GDASENKF_MISSING=${GDASENKF_MISSING:-"NO"}
+GDASENKF_MISSRING_RECORD=${GDASENKF_MISSRING_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/record.miss_GDASENKF"}
+METDIR_HERA_CNTL=${METDIR_HERA_CNTL:-"/scratch1/NCEPDEV/rstprod/prod/com//gfs/v16.3/"}
 METDIR_NRT=${METDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/"}
 
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
@@ -68,8 +67,8 @@ echo "STEP-01: Convert gdas analysis to CASE resolution"
 [[ ! -d ${DATA}/heradata ]] && mkdir -p  ${DATA}/heradata
 
 ${NLN} ${CHGRES_GAU} ./enkf_chgres_recenter_nc.x   
-${NLN} ${METDIR_HERA}/${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${CDUMP}.t${CHH}z.atmanl.nc  ${DATA}/heradata/${CDUMP}.t${CHH}z.atmanl.nc
-${NLN} ${METDIR_HERA}/${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${CDUMP}.t${CHH}z.sfcanl.nc  ${DATA}/heradata/${CDUMP}.t${CHH}z.sfcanl.nc
+${NLN} ${METDIR_HERA_CNTL}/${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${CDUMP}.t${CHH}z.atmanl.nc  ${DATA}/heradata/${CDUMP}.t${CHH}z.atmanl.nc
+${NLN} ${METDIR_HERA_CNTL}/${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${CDUMP}.t${CHH}z.sfcanl.nc  ${DATA}/heradata/${CDUMP}.t${CHH}z.sfcanl.nc
 
 [[ -e ${DATA}/ref_file.nc ]] && ${NRM} ${DATA}/ref_file.nc
 ${NLN} ${HOMEgfs}/fix/echgres/ref.${CASE_CNTL}.nc ${DATA}/ref_file.nc
@@ -104,7 +103,7 @@ else
    exit ${ERR1}
 fi
 
-### Convert sfcanl RESTART files to CASE resolution 
+### Convert sfcanl files to CASE resolution 
 echo "STEP-02: Convert sfcanl RESTART files to CASE resolution"
 FIXOROG=${HOMEgfs}/fix/orog/
 FIXAM=${HOMEgfs}/fix/am/
@@ -139,7 +138,7 @@ if [ ${ERR2} -eq 0 ]; then
        ${NMV} fort.41 ${OUTDIR}/
    itile=1
    while [ ${itile} -le 6 ]; do
-       ${NMV} out.sfc.tile${itile}.nc ${OUTDIR}/${CYMD}.${CHH}0000.sfc_data.tile${itile}.nc 
+       ${NMV} out.sfc.tile${itile}.nc ${OUTDIR}/${CYMD}.${CHH}0000.sfcanl_data.tile${itile}.nc 
        itile=$((itile+1))
    done
 
@@ -149,25 +148,30 @@ else
 fi
 
 ### STEP-03 Copy control gdas files to ensemble if ensemble files missing && ${CASE_CNTL} = ${CASE_ENKF}
-if [ ${ENSFILE_MISSING} = "YES" -a ${CASE_CNTL} = ${CASE_ENKF} ]; then
+if [ ${GDASENKF_MISSING} = "YES" -a ${CASE_CNTL} = ${CASE_ENKF} ]; then
     echo "WCOSS ensemble file missing and copy control SFC files"
     mem0=1
-    CNTLOUTDIR=${METDIR_NRT}/${CASE_ENKF}/gdas.${CYY}${CMM}${CDD}/${CHH}/
-    while [[ ${mem0} -le ${NMEM_AERO} ]]; do
+    CNTLOUTDIR=${METDIR_NRT}/${CASE_CNTL}/gdas.${CYY}${CMM}${CDD}/${CHH}/
+    while [[ ${mem0} -le ${NMEM_ENKF} ]]; do
         mem1=$(printf "%03d" ${mem0})
         mem="mem${mem1}"
         MEMOUTDIR=${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/${mem}/
+        MEMOUTDIR_GES=${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/${mem}/
         [[ ! -d ${MEMOUTDIR} ]] && mkdir -p ${MEMOUTDIR}
-        [[ ! -d ${MEMOUTDIR_RST} ]] && mkdir -p ${MEMOUTDIR_RST}
+        [[ ! -d ${MEMOUTDIR_GES} ]] && mkdir -p ${MEMOUTDIR_GES}
+
         ${NCP} ${CNTLOUTDIR}/gdas.t${CHH}z.atmanl.nc ${MEMOUTDIR}/gdas.t${CHH}z.ratmanl.nc
-        if [ ${ENSFILE_m3SFCANL} = "YES" ]; then
-          ${NCP} ${CNTLOUTDIR}/RESTART  ${MEMOUTDIR}/RESTART_m3SFCANL
-        else
-          ${NCP} ${CNTLOUTDIR}/RESTART  ${MEMOUTDIR}/RESTART_6hFcst
-        fi
+        ${NCP} ${CNTLOUTDIR}/RESTART  ${MEMOUTDIR_GES}/RESTART
+        while [ ${itile} -le 6 ]; do
+	    FILE1=${CNTLOUTDIR}/RESTART/${CYMD}.${CHH}0000.sfcanl_data.tile${itile}.nc
+	    FILE2=${MEMOUTDIR_GES}/RESTART/${GYMD}.${GHH}0000.sfcf0${FHR}_data.tile${itile}.nc
+            ${NMV} ${FILE1} ${FILE2} 
+	    ${CNTLOUTDIR}/RESTART/${CYMD}.${CHH}0000.sfcanl_data.tile${itile}.nc 
+           itile=$((itile+1))
+        done
         mem0=$((mem0+1))
     done
-   echo ${CDATE} >> ${EMSFILE_MISSRING_RECORD}
+   echo ${CDATE} >> ${GDASENKF_MISSING_RECORD}
 fi
 
 if [ ${ERR1} = 0 -a ${ERR2} = 0 ]; then

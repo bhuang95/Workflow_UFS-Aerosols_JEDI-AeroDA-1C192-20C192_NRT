@@ -15,6 +15,7 @@ PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 GBBDIR_NRT=${GBBDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GBBEPx/"}
 GBBDIR_HERA=${GBBDIR_HERA:-"/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/"}
 CDATE=${CDATE:-"2023062900"}
+CDUMP=${CDUMP:-"gdas"}
 
 GBBFIXSH=${HOMEgfs}/ush/GBBEPx/fix_GBBEPx.sh
 

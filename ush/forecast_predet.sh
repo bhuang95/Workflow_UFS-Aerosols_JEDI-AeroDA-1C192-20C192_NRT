@@ -243,13 +243,30 @@ FV3_GFS_predet(){
     prefix=$CDUMP
     rprefix=$rCDUMP
     memchar=""
+    sfcfield=sfcanl_data
+    sfcfiles=${METDIR_NRT}/${CASE}/${rprefix}.$PDY/$cyc/$memchar/RESTART/${PDY}.${cyc}0000.*.nc
+    if [ ${AERODA} = "YES" ]; then
+        trcrfield="fv_tracer_aeroanl"
+    else
+        trcrfield="fv_tracer"
+    fi
   else
     prefix=enkf$CDUMP
     rprefix=enkf$rCDUMP
     memchar=mem$(printf %03i $MEMBER)
+    sfcfield=sfcf006_data
+    sfcfiles=${METDIR_NRT}/${CASE}/${rprefix}.$gPDY/$gcyc/$memchar/RESTART/${gPDY}.${gcyc}0000.*.nc
+    if [ ${AERODA} = "YES" ]; then
+        if [ ${RECENTER_ENKF_AERO} = "YES" ]; then
+            trcrfield="fv_tracer_raeroanl"
+	else
+            trcrfield="fv_tracer_aeroanl"
+	fi
+    else
+        trcrfield="fv_tracer"
+    fi
   fi
   memdir=$ROTDIR/${prefix}.$PDY/$cyc/atmos/$memchar/
-  sfcanldir=$METRETDIR/${rprefix}.$PDY$cyc/$memchar/
   if [ ! -d $memdir ]; then mkdir -p $memdir; fi
   #HBO+
   COMIN_OBS=${DMPDIR}/${prefix}.${PDY}/$cyc/atmos/$memchar/

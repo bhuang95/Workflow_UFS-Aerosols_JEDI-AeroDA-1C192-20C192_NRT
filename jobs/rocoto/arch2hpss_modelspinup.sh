@@ -32,8 +32,8 @@ PSLOT=${PSLOT:-"cycExp_ATMA_warm"}
 #CASE_ENKF=${CASE_ENKF:-"C192"}
 NMEM_ENKF=${NMEM_ENKF:-"40"}
 ARCHHPSSDIR=${ARCHHPSSDIR:-"/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/"}
-ENSRUN=${ENSRUN:-"TRUE"}
-AERODA=${AERODA:-"TRUE"}
+ENSRUN=${ENSRUN:-"YES"}
+AERODA=${AERODA:-"YES"}
 
 source "${HOMEgfs}/ush/preamble.sh"
 # Source FV3GFS workflow modules
@@ -160,7 +160,7 @@ if [ -s \${cntlGDAS} ]; then
        echo "HTAR at gdas.\${cycN} completed !"
     fi
     
-    if [ \${ENSRUN} = "TRUE" ]; then
+    if [ \${ENSRUN} = "YES" ]; then
     ### Start EnKF
         enkfGDAS=\${dataDir}/enkfgdas.\${cycYMD}/\${cycH}/
         enkfGDAS_atmos=\${dataDir}/enkfgdas.\${cycYMD}/\${cycH}/atmos

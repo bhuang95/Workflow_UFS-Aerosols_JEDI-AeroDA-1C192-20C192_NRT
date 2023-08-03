@@ -42,9 +42,9 @@ done
 
 ulimit -s unlimited
 ###############################################################
+export CDATE=${CDATE:-"2017110100"}
 export HOMEgfs=${HOMEgfs:-"home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
 export EXPDIR=${EXPDIR:-"${HOMEgfs}/dr-work/"}
-export CDATE=${CDATE:-"2017110100"}
 export ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/cycExp_ATMA_warm/dr-data"}
 export DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/cycExp_ATMA_warm/"}
 export METDIR_NRT=${METDIR_NRT:-"${ROTDIR}/RetrieveGDAS"}
@@ -61,7 +61,7 @@ export DATA=${DATA:-${DATAROOT}/${jobid}}
 mkdir -p $DATA
 
 GDATE=`$NDATE -$assim_freq ${CDATE}`
-GDASDIR=${METRETDIR}/
+GDASDIR=${METDIR_NRT}/${CASE_CNTL}/
 
 NTHREADS_CALCINC=${NTHREADS_CALCINC:-1}
 ncmd=${ncmd:-1}
@@ -91,7 +91,7 @@ export OMP_NUM_THREADS=$NTHREADS_CALCINC
 mkdir -p $ROTDIR/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/
 BKGFILE=${ROTDIR}/${CDUMP}.${GYMD}/${GH}/${COMPONENT}/${CDUMP}.t${GH}z.atmf${FHR}.nc 
 INCFILE=${ROTDIR}/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${CDUMP}.t${CH}z.atminc.nc
-ANLFILE=${GDASDIR}/${CDUMP}.${CDATE}/${CDUMP}.t${CH}z.atmanl.nc
+ANLFILE=${GDASDIR}/${CDUMP}.${CDATE}/${CH}/${CDUMP}.t${CH}z.atmanl.nc
 
 ${NLN} ${BKGFILE} atmges_mem001
 ${NLN} ${ANLFILE} atmanl_mem001
@@ -119,12 +119,6 @@ ERR=$?
 if [[ $ERR != 0 ]]; then
     exit ${ERR}
 fi
-#export ERR=$rc
-#export err=$ERR
-#$ERRSCRIPT || exit 3
-#unlink atmges_mem001
-##unlink atmanl_mem001
-#unlink atminc_mem001
 
 set +x 
 rm -rf ${DATA}

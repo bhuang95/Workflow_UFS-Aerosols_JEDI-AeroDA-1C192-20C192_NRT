@@ -17,6 +17,7 @@ CEDSYEAR=${CEDSYEAR:-"2019"}
 CEDSDIR_NRT=${CEDSDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/CEDS/v2019/"}
 CEDSDIR_HERA=${CEDSDIR_HERA:-"/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/CEDS/v2019/2019/"}
 CDATE=${CDATE:-"2023062900"}
+CDUMP=${CDUMP:-"gdas"}
 
 module purge
 source "${HOMEgfs}/ush/preamble.sh"

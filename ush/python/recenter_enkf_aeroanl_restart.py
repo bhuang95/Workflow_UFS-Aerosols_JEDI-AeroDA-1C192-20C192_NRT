@@ -40,7 +40,7 @@ if __name__ == '__main__':
     cntlpre = "CNTL"
     emeanpre = "EMEAN"
     cmmpre = "CMM"
-    jedienspre = "JEDI"
+    jedienspre = "JEDITMP"
     rplenspre = "RPL"
     rceenspre = "RCE"
 

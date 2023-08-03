@@ -129,8 +129,8 @@ while [[ ${ITILE} -le 6 ]]; do
     ANLFILE=${COMIN_GES_ENS}/${COMPONENT}/ensmean/RESTART/${CYMD}.${CH}0000.fv_tracer_aeroanl.res.tile${ITILE}.nc
     ANLFILE_TMP=${COMIN_GES_ENS}/${COMPONENT}/ensmean/RESTART/${CYMD}.${CH}0000.fv_tracer_aeroanl_tmp.res.tile${ITILE}.nc
     ${NCP} ${GESFILE} ${ANLFILE}
-    ${NLN} ${ANLFILE_TMP} ./input.tile${ITILE}
-    ${NLN} ${ANLFILE} ./output.tile${ITILE}
+    ${NLN} ${ANLFILE_TMP} ./JEDITMP.mem000.tile${ITILE}
+    ${NLN} ${ANLFILE} ./RPL.mem000.tile${ITILE}
     #${NLN} ${GESFILE} ./ges.tile${ITILE}
     ITILE=$((ITILE+1))
 done
@@ -138,7 +138,7 @@ done
 echo ${RPLTRCRVARS} > INVARS.nml
 ${NCP} ${RPLEXEC} ./replace_aeroanl_restart.py
 
-srun --export=all -n 1 python replace_aeroanl_restart.py -v INVARS.nml
+srun --export=all -n 1 python replace_aeroanl_restart.py -i 0 -j 1 -v INVARS.nml
 ERR=$?
 
 if  [ ${ERR} -ne 0 ]; then

@@ -21,13 +21,17 @@ CASE_ENKF_GDAS=${CASE_ENKF_GDAS:-"C384"}
 NMEM_AERO=${NMEM_AERO:-"20"}
 FHR=${CYCINTHR:-"06"}
 LEVS=${LEVS:-"128"}
-ENSFILE_MISSING=${ENSFILE_MISSING:-"NO"}
-ENSFILE_m3SFCANL=${ENSFILE_m3SFCANL:-"NO"}
-EMSFILE_MISSRING_RECORD=${EMSFILE_MISSRING_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/record.miss_GDASEnsAnl"}
-METDIR_HERA=${METDIR_HERA:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/global-workflow-CCPP2-Chem-NRT-clean/dr-data/downloadHpss/"}
+GDASENKF_MISSING=${GDASENKF_MISSING:-"NO"}
+GDASENKF_MISSRING_RECORD=${GDASENKF_MISSRING_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/record.miss_GDASEnsAnl"}
+METDIR_HERA_ENKF=${METDIR_HERA_ENKF:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/global-workflow-CCPP2-Chem-NRT-clean/dr-data/downloadHpss/"}
 METDIR_NRT=${METDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/"}
 NMEM_EFCSGRP=${NMEM_EFCSGRP:-"2"}
 ENSGRP=${ENSGRP:-"01"}
+
+if [ ${GDASENKF_MISSING} = "YES" -a ${CASE_CNTL} = ${CASE_ENKF} ]; then
+    echo "GDASENKF anl file missing and copy from CNTL and exit now."
+    exit 0
+fi
 
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 CHGRES_GAU=${CHGRES_GAU:-"${HOMEgfs}/exec/enkf_chgres_recenter_nc.x"}
@@ -35,7 +39,7 @@ CHGRES_CUBE=${CHGRES_CUBE:-"${HOMEgfs}/exec/chgres_cube"}
 CALC_ANL=${CALC_ANL:-"${HOMEgfs}/exec/calc_analysis.x"}
 #CALC_ANL=/home/Bo.Huang/JEDI-2020/GSDChem_cycling/global-workflow-CCPP2-Chem-NRT-clean/exec/calc_analysis.x
 
-ENSED=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
+MEMEND=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
 MEMBEG=$((MEMEND - NMEM_EFCSGRP + 1))
 #MEMBEG=1
 #MEMAEND=1
@@ -77,6 +81,7 @@ GYY=`echo "${GDATE}" | cut -c1-4`
 GMM=`echo "${GDATE}" | cut -c5-6`
 GDD=`echo "${GDATE}" | cut -c7-8`
 GHH=`echo "${GDATE}" | cut -c9-10`
+GYMD=${GYY}${GMM}${GDD}
 
 CDATEP3=$(${NDATE} 3 ${CDATE})
 CP3YY=`echo "${CDATEP3}" | cut -c1-4`
@@ -125,8 +130,8 @@ while [ ${imem} -le ${MEMEND} ]; do
     imemstr=`printf %03d ${imem}`
     mem="mem${imemstr}"
     [[ ! -d ${DATA}/heradata/${mem} ]] && mkdir -p ${DATA}/heradata/${mem}
-    ${NLN} ${METDIR_HERA}/enkf${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${mem}/${CDUMP}.t${CHH}z.ratminc.nc ${DATA}/heradata/${mem}/${CDUMP}.t${CHH}z.ratminc.nc.${FHR}
-    ${NLN} ${METDIR_HERA}/enkf${CDUMP}.${GYY}${GMM}${GDD}/${GHH}/atmos/${mem}/${CDUMP}.t${GHH}z.atmf0${FHR}.nc ${DATA}/heradata/${mem}/${CDUMP}.t${GHH}z.atmf0${FHR}.nc.${FHR}
+    ${NLN} ${METDIR_HERA_ENKF}/enkf${CDUMP}.${CYY}${CMM}${CDD}/${CHH}/atmos/${mem}/${CDUMP}.t${CHH}z.ratminc.nc ${DATA}/heradata/${mem}/${CDUMP}.t${CHH}z.ratminc.nc.${FHR}
+    ${NLN} ${METDIR_HERA_ENKF}/enkf${CDUMP}.${GYY}${GMM}${GDD}/${GHH}/atmos/${mem}/${CDUMP}.t${GHH}z.atmf0${FHR}.nc ${DATA}/heradata/${mem}/${CDUMP}.t${GHH}z.atmf0${FHR}.nc.${FHR}
 
 [[ -e calc_analysis.nml ]] && ${NRM} calc_analysis.nml
 cat > calc_analysis.nml <<EOF
@@ -229,7 +234,7 @@ while [ ${imem} -le ${MEMEND} ]; do
     mem="mem${imemstr}"
     export COMIN=${DATA}/heradata/${mem}/
     [[ ! -d ${COMIN} ]] && mkdir -p ${COMIN}
-    ${NLN} ${METDIR_HERA}/enkf${CDUMP}.${GYY}${GMM}${GDD}/${GHH}/atmos/${mem}/${CDUMP}.t${GHH}z.sfcf0${FHR}.nc ${COMIN}/${CDUMP}.t${GHH}z.sfcf0${FHR}.nc
+    ${NLN} ${METDIR_HERA_ENKF}/enkf${CDUMP}.${GYY}${GMM}${GDD}/${GHH}/atmos/${mem}/${CDUMP}.t${GHH}z.sfcf0${FHR}.nc ${COMIN}/${CDUMP}.t${GHH}z.sfcf0${FHR}.nc
 
     ${NRM} ${DATA}/out.sfc.tile?.nc
     ${NRM} ${DATA}/fort.41
@@ -238,12 +243,12 @@ ERR4=$?
 if [[ ${ERR4} -eq 0 ]]; then
    echo "chgres_cube for 6h sfc fcst runs successful for ${mem} and move data."
 
-   OUTDIR=${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/${mem}/RESTART_6hFcst
+   OUTDIR=${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/${mem}/RESTART
    [[ ! -d ${OUTDIR} ]] && mkdir -p ${OUTDIR}
    ${NMV} fort.41 ${OUTDIR}/
    itile=1
    while [ ${itile} -le 6 ]; do
-       ${NMV} out.sfc.tile${itile}.nc ${OUTDIR}/${CYMD}.${CHH}0000.sfc_data.tile${itile}.nc 
+       ${NMV} out.sfc.tile${itile}.nc ${OUTDIR}/${GYMD}.${GHH}0000.sfcf0${FHR}_data.tile${itile}.nc 
        itile=$((itile+1))
    done
 else
@@ -253,9 +258,9 @@ fi
 imem=$((imem+1))
 done
 
-#if [ ${ERR4} = 0 ]; then
-#   ${NRM} ${DATA}
-#fi
+if [ ${ERR4} -eq 0 ]; then
+    ${NRM} ${DATA}
+fi
 err=${ERR4}
 echo $(date) EXITING $0 with return code $err >&2
 exit $err
