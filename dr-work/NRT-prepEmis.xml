@@ -51,7 +51,6 @@
 	<!ENTITY MEGANDIR_NRT     "&EMISDIR_NRT;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
 	<!ENTITY MEGANDIR_HERA     "&EMISDIR_HERA;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/&MEGANYEAR;/">
 
-
 	<!-- Machine related entities -->
 	<!ENTITY ACCOUNT    "wrf-chem">
 	<!ENTITY SCHEDULER  "slurm">
@@ -61,7 +60,7 @@
 	<!ENTITY PARTITION_PREPEMIS "service">
 
 	<!-- ROCOTO parameters that control workflow -->
-	<!ENTITY CYCLETHROTTLE "2">
+	<!ENTITY CYCLETHROTTLE "1">
 	<!ENTITY TASKTHROTTLE  "10">
 	<!ENTITY MAXTRIES      "2">
 
@@ -132,7 +131,7 @@
 
 </task>
 
-<task name="gdasmegan" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
+<task name="gdasmegan" cycledefs="gdas" maxtries="&MAXTRIES;">
 
 	<command>&JOBS_DIR;/prepemis_megan.sh</command>
 
@@ -161,7 +160,17 @@
 			<taskdep task="gdasgbbepx"/>
 		</and>
 	</dependency>
+</task>
 
+<task name="finalizetask" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
+	<sh shell="/bin/bash"><cyclestr>echo @Y@m@d@H &EXPDIR;/record.txt</cyclestr></sh> 
+	<dependency>
+		<and>
+			<taskdep task="gdasgbbepx"/>
+			<taskdep task="gdasceds"/>
+			<taskdep task="gdasmegan"/>
+		</and>
+	</dependency>
 </task>
 
 </workflow>

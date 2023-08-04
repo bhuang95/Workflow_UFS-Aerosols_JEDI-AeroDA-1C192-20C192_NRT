@@ -24,8 +24,8 @@ export ENSB_WEG="1.00"
 
 export AODOPE="AodLUTs"
 
-export COMIN_OBS=${OBSDIR}
-export AODTYPE=${AODTYPE}
+#export COMIN_OBS=${OBSDIR_NRT}
+#export AODTYPE=${AODTYPE}
 export AEROANL_VAR=${HOMEgfs}/scripts/exgdas_global_aeroanl_3denvar_run.sh
 export AEROANL_ENKF=${HOMEgfs}/scripts/exgdas_global_aeroanl_enkf_run.sh
 export MEANTRCRVARS="sphum,so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,no3an1,no3an2,no3an3"

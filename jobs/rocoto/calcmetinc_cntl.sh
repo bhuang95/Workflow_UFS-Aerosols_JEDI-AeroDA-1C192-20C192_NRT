@@ -91,7 +91,7 @@ export OMP_NUM_THREADS=$NTHREADS_CALCINC
 mkdir -p $ROTDIR/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/
 BKGFILE=${ROTDIR}/${CDUMP}.${GYMD}/${GH}/${COMPONENT}/${CDUMP}.t${GH}z.atmf${FHR}.nc 
 INCFILE=${ROTDIR}/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${CDUMP}.t${CH}z.atminc.nc
-ANLFILE=${GDASDIR}/${CDUMP}.${CDATE}/${CH}/${CDUMP}.t${CH}z.atmanl.nc
+ANLFILE=${GDASDIR}/${CDUMP}.${CYMD}/${CH}/${CDUMP}.t${CH}z.atmanl.nc
 
 ${NLN} ${BKGFILE} atmges_mem001
 ${NLN} ${ANLFILE} atmanl_mem001
@@ -120,7 +120,6 @@ if [[ $ERR != 0 ]]; then
     exit ${ERR}
 fi
 
-set +x 
 rm -rf ${DATA}
 exit ${ERR}
 ###############################################################

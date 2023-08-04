@@ -112,7 +112,7 @@ while [ ${IMEM} -le ${ENSED} ]; do
     mkdir -p ${ROTDIR}/enkf${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${MEMSTR}/
     BKGFILE=${ROTDIR}/enkf${CDUMP}.${GYMD}/${GH}/${COMPONENT}/${MEMSTR}/${CDUMP}.t${GH}z.atmf${FHR}.nc 
     INCFILE=${ROTDIR}/enkf${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${MEMSTR}/${CDUMP}.t${CH}z.ratminc.nc
-    ANLFILE=${GDASDIR}/enkf${CDUMP}.${CDATE}/${CH}/${MEMSTR}/${CDUMP}.t${CH}z.ratmanl.nc
+    ANLFILE=${GDASDIR}/enkf${CDUMP}.${CYMD}/${CH}/${MEMSTR}/${CDUMP}.t${CH}z.ratmanl.nc
 
     ${NLN} ${BKGFILE} ./atmges_mem001
     ${NLN} ${ANLFILE} ./atmanl_mem001
@@ -141,7 +141,6 @@ EOF
     IMEM=$((IMEM+1))
 done
 
-set +x 
 rm -rf ${DATA}
 exit ${ERR}
 ###############################################################

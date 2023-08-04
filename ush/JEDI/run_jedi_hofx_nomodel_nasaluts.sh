@@ -5,7 +5,7 @@ NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/nd
 JEDIDIR=${HOMEjedi:-$HOMEgfs/sorc/jedi.fd/}
 DATA=${DATA:-$pwd/analysis.$$}
 ROTDIR=${ROTDIR:-/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/}
-OBSDIR=${OBSDIR:-"MissingOBSDIR"}
+OBSDIR_NRT=${OBSDIR_NRT:-"MissingOBSDIR_NRT"}
 AODTYPE=${AODTYPE:-"MissingAODTYPE"}
 RSTDIR=${RSTDIR:-"MissingRSTDIR"}
 TRCR=${TRCR:-"MissingTRCR"}
@@ -91,8 +91,8 @@ ${NLN} ${JEDIDIR}/geos-aero/test/Data ${DATA}/
 # Link observations (only for VIIRS or MODIS)
 OBSTIME=${ANLTIME}
 if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
-    OBSIN=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_npp.${OBSTIME}.nc
-    OBSIN1=${OBSDIR}/${OBSTIME}/${AODTYPE}_AOD_j01.${OBSTIME}.nc
+    OBSIN=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD_npp.${OBSTIME}.iodav3.nc
+    OBSIN1=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD_j01.${OBSTIME}.iodav3.nc
     SENSORID=v.viirs-m_npp
     SENSORID1=v.viirs-m_npp
     OBSOUT=aod_viirs_npp_obs_${OBSTIME}.nc4
@@ -247,6 +247,7 @@ if [ ${ERR} -ne 0 ]; then
 fi
 
 ${NMV} ${DIAGDIR}/${HOFXOUT} ${HOFXDIR}/${HOFXOUT}
+${NMV} ${DIAGDIR}/${HOFXOUT1} ${HOFXDIR}/${HOFXOUT1}
 ${NCP} ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml ${HOFXDIR}/
 
 ERR=$?

@@ -239,6 +239,9 @@ FV3_GFS_predet(){
 
   #-------------------------------------------------------
   # member directory
+  GDATE=$($NDATE -$assim_freq $CDATE)
+  gPDY=$(echo $GDATE | cut -c1-8)
+  gcyc=$(echo $GDATE | cut -c9-10)
   if [ $MEMBER -lt 0 ]; then
     prefix=$CDUMP
     rprefix=$rCDUMP
@@ -283,11 +286,7 @@ FV3_GFS_predet(){
   COMOUTaero=${ROTDIR}/${prefix}.${PDY}/${cyc}/chem/$memchar/
   #HBO+
 
-  GDATE=$($NDATE -$assim_freq $CDATE)
-  gPDY=$(echo $GDATE | cut -c1-8)
-  gcyc=$(echo $GDATE | cut -c9-10)
   gmemdir=$ROTDIR/${rprefix}.$gPDY/$gcyc/atmos/$memchar/
-
   if [[ "$DOIAU" = "YES" ]]; then
     sCDATE=$($NDATE -3 $CDATE)
     sPDY=$(echo $sCDATE | cut -c1-8)

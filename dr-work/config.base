@@ -224,7 +224,7 @@ export OPS_RES="C768" # Do not change
 
 # Resolution specific parameters
 export LEVS=128
-export CASE=${CASE_CNTL:-"C96"}
+export CASE=${CASE:-"C96"}
 export CASE_ENKF=${CASE_ENKF:-"C96"}
 case "$CASE" in
     "C48") export OCNRES=500;;

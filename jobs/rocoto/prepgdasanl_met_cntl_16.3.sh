@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -A wrf-chem
-#SBATCH -q debug
-#SBATCH -t 30:00
-#SBATCH -n 40
-#SBATCH --nodes=1
-#SBATCH -J calc_analysis
-#SBATCH -o log1.out
+##SBATCH -A wrf-chem
+##SBATCH -q debug
+##SBATCH -t 30:00
+##SBATCH -n 40
+##SBATCH --nodes=1
+##SBATCH -J calc_analysis
+##SBATCH -o log1.out
 
 ###############################################################
 set -x

@@ -9,11 +9,12 @@ source "${HOMEgfs}/ush/preamble.sh"
 status=$?
 [[ ${status} -ne 0 ]] && exit "${status}"
 
-export job="aeroanlrun"
-export job1="aeroanlenkfrun"
+export job="aeroanlvar"
+export job1="aeroanlenkf"
 export jobid="${job1}.$$"
 export DATA=${DATA:-${DATAROOT}/${jobid}}
 export WIPE_DATA="NO"
+export COMIN_OBS=${OBSDIR_NRT}
 
 ###############################################################
 # Execute the JJOB

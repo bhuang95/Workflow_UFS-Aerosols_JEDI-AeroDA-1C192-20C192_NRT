@@ -35,7 +35,7 @@ IODA1_IODA2_EXEC=${HOMEjedi}/bin/ioda-upgrade-v1-to-v2.x
 IODA2_IODA3_EXEC=${HOMEjedi}/bin/ioda-upgrade-v2-to-v3.x
 IODA2_IODA3_OBSYAML=${HOMEjedi}/../fv3-bundle/ioda/share/ioda/yaml/validation/ObsSpace.yaml
 
-AODOUTDIR=${OBSDIR_NRT}/${AODTYPE}-${CASE}/${CDATE}/
+AODOUTDIR=${OBSDIR_NRT}/${AODTYPE}/${CASE}/${CDATE}/
 [[ ! -d ${AODOUTDIR} ]] && mkdir -p ${AODOUTDIR}
 
 . ${HOMEjedi}/jedi_module_base.hera.sh

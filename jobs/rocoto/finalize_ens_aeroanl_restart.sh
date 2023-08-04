@@ -25,7 +25,7 @@ export ROTDIR=${ROTDIR:-""}
 export ENSGRP=${ENSGRP:-"01"}
 export RECENTER_ENKF_AERO=${RECENTER_ENKF_AERO:-"YES"}
 export NMEM_EFCSGRP=${NMEM_EFCSGRP:-"2"}
-export NMEM_ENKF=${NMEM_EFCSGRP:-"20"}
+export NMEM_ENKF=${NMEM_ENKF:-"20"}
 export RECENTEREXEC="${HOMEgfs}/ush/python/recenter_enkf_aeroanl_restart.py"
 export RPLTRCRVARS=${RPLTRCRVARS:-""}
 

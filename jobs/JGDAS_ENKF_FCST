@@ -16,8 +16,6 @@ export rCDUMP="gdas"
 # Begin JOB SPECIFIC work
 ##############################################
 
-export CASE=${CASE_ENKF}
-
 # COMOUT is used in script
 export COMOUT="${ROTDIR}/enkf${CDUMP}.${PDY}/${cyc}"
 
@@ -36,8 +34,8 @@ fi
 export ENSEND=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
 export ENSBEG=$((ENSEND - NMEM_EFCSGRP + 1))
 
-if [ ${ENSED} -gt ${NMEM_ENKF} ]; then
-    echo "Member number ${ENSED} exceeds ensemble size ${NMEM_ENKF} and exit."
+if [ ${ENSEND} -gt ${NMEM_ENKF} ]; then
+    echo "Member number ${ENSEND} exceeds ensemble size ${NMEM_ENKF} and exit."
     exit 100
 fi
 

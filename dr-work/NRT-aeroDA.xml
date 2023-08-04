@@ -15,16 +15,25 @@
 	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
 
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DATAROOTTOP "/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/&PSLOT;/">
+	<!ENTITY COMROOT "/scratch1/NCEPDEV/global/glopara/com/">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "202307250000">
-	<!ENTITY EDATE "202307250000">
+	<!ENTITY SDATE "202307250600">
+	<!ENTITY EDATE "202307250600">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
 	<!ENTITY RUN "gdas">
 	<!ENTITY RUN_ENVIR "emc">
 	<!ENTITY NMEM_ENKF     "20">
-	<!ENTITY NMEM_EFCSGRP     "2">
+	<!ENTITY NMEM_EFCSGRP_FCST     "2">
+	<!ENTITY NMEM_EFCSGRP_OTHER     "5">
 	<!ENTITY AERODA "YES">
 	<!ENTITY RECENTER_ENKF_AERO "YES">
 	<!ENTITY ENSRUN "YES">
@@ -32,7 +41,7 @@
 	<!-- GDAS met setup-->
 	<!ENTITY METDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/">
 	<!ENTITY CASE     "C192">
-	<!ENTITY CASE_CNTL     "&CASE;">
+	<!ENTITY CASE_CNTL     "C192">
 	<!ENTITY CASE_ENKF     "C192">
 
 	<!-- Obs setup-->
@@ -43,23 +52,24 @@
 	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/record.miss_NOAAVIIRSnpp">
 	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/record.miss_NOAAVIIRSj01">
 
-	<!-- Directories for driving the workflow -->
-	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
-	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
-	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!-- Aerosol Emission directory -->
+	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/">
 
-	<!-- Experiment temp directory setup -->
-	<!ENTITY DATAROOTTOP "/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/&PSLOT;/">
-	<!ENTITY COMROOT "/scratch1/NCEPDEV/global/glopara/com/">
-	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/GBBEPx/">
+
+        <!ENTITY CEDSVER "2019">
+	<!ENTITY CEDSDIR_NRT     "&EMISDIR_NRT;/CEDS/v&CEDSVER;/">
+
+        <!ENTITY MEGANVER "2019-10">
+	<!ENTITY MEGANDIR_NRT     "&EMISDIR_NRT;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
 
 	<!-- Archive directory setup -->
-	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/">
+	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/&PSLOT;/dr-data/">
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
 	<!ENTITY ACCOUNT    "wrf-chem">
-	<!ENTITY QUEUE      "batch">
+	<!ENTITY QUEUE      "debug">
 	<!ENTITY SCHEDULER  "slurm">
 
 	<!-- ROCOTO task control -->
@@ -89,7 +99,7 @@
 	<!ENTITY NATIVE_ANAL_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_ANAL_ENKF_GDAS     "&QUEUE;">
-	<!ENTITY WALLTIME_ANAL_ENKF_GDAS  "00:59:00">
+	<!ENTITY WALLTIME_ANAL_ENKF_GDAS  "00:29:00">
 	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "9:ppn=16:tpp=1">
 	<!ENTITY MEMORIES_ANAL_ENKF_GDAS "80000M">
 	<!ENTITY NATIVE_ANAL_ENKF_GDAS    "--export=NONE">
@@ -142,13 +152,15 @@
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/metinc_cntl.log</cyclestr></join>
 
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
-	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 
 	<dependency>
@@ -160,10 +172,9 @@
 
 </task>
 
-
 <metatask name="gdasmetincenkf">
 
-	<var name="grp">01 02 03 04 05 06 07 08 09 10</var>
+	<var name="grp">01 02 03 04</var>
 
 	<task name="gdasmetinc_enkf#grp#" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
 
@@ -182,6 +193,8 @@
 		<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/metinc_enkf_#grp#.log</cyclestr></join>
 
 		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 		<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 		<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
@@ -189,10 +202,10 @@
 		<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 		<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
-		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_OTHER;</value></envar>
 		<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
+		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<dependency>
 			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_calcmetinc_enkf.sh</cyclestr></sh>
 		</dependency>
@@ -217,22 +230,19 @@
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-	<envar><name>NET</name><value>&NET;</value></envar>
 	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
-	<envar><name>RUN</name><value>&RUN;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
-	<envar><name>OBSDIR</name><value>&OBSDIR;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
@@ -240,10 +250,10 @@
 
 	<dependency>
 		<and>
-			<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+			<!--taskdep task="gdasarch" cycle_offset="-06:00:00"/-->
 			<streq><left>&AERODA;</left><right>YES</right></streq>
-			<datadep age="300"><cyclestr>&OBSDIR;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.nc</cyclestr></datadep>
-			<datadep age="300"><cyclestr>&OBSDIR;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.nc</cyclestr></datadep>
+			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 		</and>
 	</dependency>
 
@@ -266,22 +276,20 @@
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-	<envar><name>NET</name><value>&NET;</value></envar>
 	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 	<envar><name>RUN</name><value>&RUN;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
-	<envar><name>OBSDIR</name><value>&OBSDIR;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
@@ -289,10 +297,10 @@
 
 	<dependency>
 		<and>
-			<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+			<!--taskdep task="gdasarch" cycle_offset="-06:00:00"/-->
 			<streq><left>&AERODA;</left><right>YES</right></streq>
-			<datadep age="300"><cyclestr>&OBSDIR;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.nc</cyclestr></datadep>
-			<datadep age="300"><cyclestr>&OBSDIR;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.nc</cyclestr></datadep>
+			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 		</and>
 	</dependency>
 
@@ -300,7 +308,7 @@
 
 <metatask name="gdasaeroanlefinal">
 
-	<var name="grp">01 02 03 04 05 06 07 08 09 10</var>
+	<var name="grp">01 02 03 04</var>
 
 	<task name="gdasaeroanl_efinal#grp#" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
 
@@ -318,13 +326,18 @@
 
 
 		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
+		<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
+		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 		<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+		<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
 		<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 		<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
-		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_OTHER;</value></envar>
 
 		<dependency>
 			<and>
@@ -337,7 +350,7 @@
 
 <metatask name="gdasaerodiag">
 
-	<var name="grp">01 02 03 04 05 06 07 08 09 10</var>
+	<var name="grp">01 02 03 04</var>
 
 	<task name="gdasaerodiag#grp#" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
 
@@ -355,20 +368,23 @@
 
 		<envar><name>CASE</name><value>&CASE;</value></envar>
 		<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
-		<envar><name>OBSDIR</name><value>&OBSDIR;</value></envar>
+		<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
 		<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 		<envar><name>AERODA</name><value>&AERODA;</value></envar>
 		<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 		<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 		<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_OTHER;</value></envar>
 		<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+		<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 		<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
 	        <envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 		<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
 		<dependency>
 			<metataskdep metatask="gdasaeroanlefinal"/>
@@ -392,30 +408,36 @@
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasfcst.log</cyclestr></join>
 
 	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>AERODA</name><value>&AERODA;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+	<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-	<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
-	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
-	<envar><name>NET</name><value>&NET;</value></envar>
 	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
 	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
-	<envar><name>RUN</name><value>&RUN;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+	<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
+	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
+	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
+	<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
 
 	<dependency>
 		<and>
-			<taskdep task="gdascalcinc"/>
-			<taskdep task="gdasaeroanlrun"/>
+			<taskdep task="gdasmetinccntl"/>
+			<taskdep task="gdasaeroanlvar"/>
+			<metataskdep metatask="gdasaerodiag"/>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 		</and>
 	</dependency>
 </task>
@@ -438,32 +460,38 @@
 
 		<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasefcs#grp#.log</cyclestr></join>
 
-		<envar><name>SDATE</name><value>&SDATE;</value></envar>
-		<envar><name>EDATE</name><value>&EDATE;</value></envar>
 		<envar><name>CASE</name><value>&CASE_ENKF;</value></envar>
+		<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
+		<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 		<envar><name>AERODA</name><value>&AERODA;</value></envar>
 		<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 		<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_FCST;</value></envar>
+		<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
 		<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 		<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
-		<envar><name>RUN_ENVIR</name><value>&RUN_ENVIR;</value></envar>
 		<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
-		<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 		<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
-		<envar><name>NET</name><value>&NET;</value></envar>
+		<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
-		<envar><name>RUN</name><value>&RUN;</value></envar>
 		<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
+		<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
+		<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+		<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
+		<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
+		<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
 		<dependency>
 			<and>
-				<metataskdep metatask="gdasenscalcinc"/>
+				<metataskdep metatask="gdasmetincenkf"/>
 				<metataskdep metatask="gdasaeroanlefinal"/>
+				<metataskdep metatask="gdasaerodiag"/>
+				<taskdep task="gdasfcst"/>
+				<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 			</and>
 		</dependency>
 	</task>
@@ -488,10 +516,15 @@
 		<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasemean#itile#.log</cyclestr></join>
 
 		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 		<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 		<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+		<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 		<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+		<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
+		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<envar><name>ITILE</name><value>#itile#</value></envar>
 		<dependency>
 			<metataskdep metatask="gdasefmn"/>
@@ -514,28 +547,24 @@
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasarch.log</cyclestr></join>
 
-	<envar><name>SDATE</name><value>&SDATE;</value></envar>
-	<envar><name>EDATE</name><value>&EDATE;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CASE</name><value>&CASE;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_OTHER;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>AERODA</name><value>&AERODA;</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
-	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
 	<envar><name>ACCOUNT_HPSS</name><value>&ACCOUNT_HPSS;</value></envar>
-	<envar><name>NET</name><value>&NET;</value></envar>
 	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 	<envar><name>RUN</name><value>&RUN;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
-	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 

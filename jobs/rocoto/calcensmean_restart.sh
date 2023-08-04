@@ -47,7 +47,7 @@ ANLPREFIX=${FYMD}.${FH}0000
 [[ ! -d ${FENSMEANRTDIR} ]] && mkdir -p ${FENSMEANRTDIR}
 
 # Calculate  mean for fv3_tracer and _core files
-TILEFILES="fv_tracer.res.tile${ITILE}.nc  fv_tracer_aeroanl.res.tile${ITILE}.nc  fv_core.res.tile${ITILE}.nc"
+TILEFILES="fv_tracer.res.tile${ITILE}.nc  fv_core.res.tile${ITILE}.nc"
 #TILEFILES="fv_tracer.res.tile${ITILE}.nc_anl"
 for TILEFILE in ${TILEFILES}; do
     rm -rf ${DATA}/*

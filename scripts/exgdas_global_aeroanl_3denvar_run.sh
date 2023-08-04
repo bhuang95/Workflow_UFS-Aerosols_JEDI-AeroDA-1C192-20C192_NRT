@@ -137,7 +137,7 @@ done
 echo ${RPLTRCRVARS} > INVARS.nml
 ${NCP} ${RPLEXEC} ./replace_aeroanl_restart.py
 
-srun --export=all -n 1 python replace_aeroanl_restart.py -i 0 -j 1 -v INVARS.nml
+srun --export=all -n 1 python replace_aeroanl_restart.py -i 0 -j 0 -v INVARS.nml
 
 ERR=$?
 if  [ ${ERR} -ne 0 ]; then

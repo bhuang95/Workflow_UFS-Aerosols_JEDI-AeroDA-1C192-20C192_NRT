@@ -64,12 +64,12 @@ FV3_GFS_postdet(){
       #tracer_aeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_aeroanl.res.tile6.nc
       #tracer_raeroanl=$gmemdir/RESTART/${sPDY}.${scyc}0000.fv_tracer_raeroanl.res.tile6.nc
 
-      for file in $(ls $gmemdir/RESTART/${sPDY}.${scyc}0000.${trcr}.*.nc); do
+      for file in $(ls $gmemdir/RESTART/${sPDY}.${scyc}0000.${trcrfield}.*.nc); do
           file2=$(echo $(basename $file))
           file2=$(echo $file2 | cut -d. -f3-) # remove the date from file
           fsuf=$(echo $file2 | cut -d. -f1)
           if [ $fsuf = ${trcrfield} ]; then
-            file2=$(echo $file2 | sed -e "s/${trcr}/fv_tracer/g")
+            file2=$(echo $file2 | sed -e "s/${trcrfield}/fv_tracer/g")
             $NLN $file $DATA/INPUT/$file2
           fi
       done
