@@ -1,0 +1,2 @@
+       CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
+       CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION

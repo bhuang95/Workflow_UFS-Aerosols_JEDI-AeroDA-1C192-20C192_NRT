@@ -21,17 +21,17 @@ GHH=$(echo "${GDATE}" | cut -c9-10)
 
 ecode=0
 nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/atmos/mem???/gdas.t${CHH}z.ratminc.nc | wc -l)
-if [ ${nfiles} != ${NMEM_AERO} ]; then
+if [ ${nfiles} != ${NMEM_ENKF} ]; then
     ecode=$((ecode+1))
 fi
 
 nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.atmf006.nc | wc -l)
-if [ ${nfiles} != ${NMEM_AERO} ]; then
+if [ ${nfiles} != ${NMEM_ENKF} ]; then
     ecode=$((ecode+1))
 fi
 
 nfiles=$(ls ${METDIR_HERA_ENKF}/enkfgdas.${GYY}${GMM}${GDD}/${GHH}/atmos/mem???/gdas.t${GHH}z.sfcf006.nc | wc -l)
-if [ ${nfiles} != ${NMEM_AERO} ]; then
+if [ ${nfiles} != ${NMEM_ENKF} ]; then
     ecode=$((ecode+1))
 fi
 

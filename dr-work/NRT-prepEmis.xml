@@ -15,7 +15,7 @@
 
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY SDATE "202308040000">
+	<!ENTITY SDATE "202308020000">
 	<!ENTITY EDATE "202308100000">
 	<!ENTITY INTERVAL "24:00:00">
 
@@ -52,7 +52,7 @@
 	<!ENTITY MEGANDIR_HERA     "&EMISDIR_HERA;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/&MEGANYEAR;/">
 
 	<!-- Machine related entities -->
-	<!ENTITY ACCOUNT    "wrf-chem">
+	<!ENTITY ACCOUNT    "chem-var">
 	<!ENTITY SCHEDULER  "slurm">
 	<!ENTITY QUEUE_PREPEMIS     "batch">
 	<!ENTITY WALLTIME_PREPEMIS  "00:10:00">
@@ -68,7 +68,7 @@
 
 <workflow realtime="F" scheduler="&SCHEDULER;" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
 
-	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/log.prepGBBEPx.@Y@m@d@H</cyclestr></log>
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/log.prepEmis</cyclestr></log>
 
 	<!-- Define the cycles -->
 	<cycledef group="gdas" >&SDATE;     &EDATE;     &INTERVAL;</cycledef>

@@ -56,15 +56,15 @@ done
     
 isuccess=$(grep 'SUCCEEDED' ${rstat} | wc -l)
 
-#if [ ${isuccess} != ${icount} ]; then
-#    echo "Cycle ${sdate} failed or not complete and wait..."
-#    exit 0
-#else
+if [ ${isuccess} != ${icount} ]; then
+    echo "Cycle ${sdate} failed or not complete and wait..."
+    exit 0
+else
     echo "Contine to check if enkfgdas files in next cycle exist on HPSS"
     rm -rf ${GDASDIR_HERA}/enkfgdas.????????
     rm -rf ${GDASDIR_HERA}/gdas.????????
     rm -rf ${GDASDIR_HERA}/tmp_??????????
-#fi
+fi
 
 sdate=$(${incdate} ${CYCINTHR} ${sdate_old})	
 edate=$(${incdate} ${CYCINTHR} ${sdate})

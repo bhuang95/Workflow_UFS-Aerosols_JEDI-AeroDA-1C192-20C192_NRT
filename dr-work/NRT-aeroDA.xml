@@ -421,7 +421,7 @@
 	<envar><name>AERODA</name><value>&AERODA;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
-	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
+	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_FCST;</value></envar>
 	<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>

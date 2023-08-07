@@ -18,7 +18,7 @@ CASE_CNTL=${CASE_CNTL:-"C192"}
 CASE_CNTL_GDAS=${CASE_CNTL_GDAS:-"C768"}
 CASE_ENKF=${CASE_ENKF:-"C192"}
 CASE_ENKF_GDAS=${CASE_ENKF_GDAS:-"C384"}
-NMEM_AERO=${NMEM_AERO:-"20"}
+NMEM_ENKF=${NMEM_ENKF:-"20"}
 FHR=${CYCINTHR:-"06"}
 LEVS=${LEVS:-"128"}
 GDASENKF_MISSING=${GDASENKF_MISSING:-"NO"}
@@ -44,17 +44,21 @@ MEMBEG=$((MEMEND - NMEM_EFCSGRP + 1))
 #MEMBEG=1
 #MEMAEND=1
 
-NLN='/bin/ln -sf'
-NRM='/bin/rm -rf'
-NMV='/bin/mv'
-NCP='/bin/cp -r'
-
 if [ ${ENSFILE_MISSING} = "YES" ]; then
     echo "Ensemble files missing, may already copied from control. Check and continue..."
     ERR1=0
     exit ${ERR1}
 fi
 
+if [ ${MEMEND} -gt ${NMEM_ENKF} ]; then
+    echo "Member number ${MEMEND} exceeds ensemble size ${NMEM_ENKF} and exit."
+    exit 100
+fi
+
+NLN='/bin/ln -sf'
+NRM='/bin/rm -rf'
+NMV='/bin/mv'
+NCP='/bin/cp -r'
 
 module purge 
 source "${HOMEgfs}/ush/preamble.sh"
