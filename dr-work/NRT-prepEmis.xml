@@ -15,8 +15,8 @@
 
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY SDATE "202307240000">
-	<!ENTITY EDATE "202308020000">
+	<!ENTITY SDATE "202308040000">
+	<!ENTITY EDATE "202308100000">
 	<!ENTITY INTERVAL "24:00:00">
 
 	<!-- Run Envrionment -->
@@ -131,7 +131,7 @@
 
 </task>
 
-<task name="gdasmegan" cycledefs="gdas" maxtries="&MAXTRIES;">
+<task name="gdasmegan" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
 
 	<command>&JOBS_DIR;/prepemis_megan.sh</command>
 
@@ -158,17 +158,6 @@
 		<and>
 			<datadep age="120"><cyclestr>&MEGANDIR_HERA;/MEGAN.OFFLINE.BIOVOC.&MEGANYEAR;.emis.&MEGANYEAR;@m@d.nc</cyclestr></datadep>
 			<taskdep task="gdasgbbepx"/>
-		</and>
-	</dependency>
-</task>
-
-<task name="finalizetask" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
-	<sh shell="/bin/bash"><cyclestr>echo @Y@m@d@H &EXPDIR;/record.txt</cyclestr></sh> 
-	<dependency>
-		<and>
-			<taskdep task="gdasgbbepx"/>
-			<taskdep task="gdasceds"/>
-			<taskdep task="gdasmegan"/>
 		</and>
 	</dependency>
 </task>

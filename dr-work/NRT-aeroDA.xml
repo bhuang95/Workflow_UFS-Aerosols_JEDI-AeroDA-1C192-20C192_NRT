@@ -24,8 +24,8 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "202307250600">
-	<!ENTITY EDATE "202307250600">
+	<!ENTITY SDATE "202308031800">
+	<!ENTITY EDATE "202308100000">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
@@ -49,8 +49,8 @@
 	<!ENTITY AODSAT     "npp j01">
 	<!ENTITY CASE_OBS     "C192">
 	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/&CASE_OBS;">
-	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/record.miss_NOAAVIIRSnpp">
-	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/record.miss_NOAAVIIRSj01">
+	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
+	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_J01">
 
 	<!-- Aerosol Emission directory -->
 	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/">
@@ -65,11 +65,13 @@
 
 	<!-- Archive directory setup -->
 	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/&PSLOT;/dr-data/">
+	<!ENTITY ARCHRETHR "12">
+	<!ENTITY NMEM_ENSGRP_ARCH "10">
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
 	<!ENTITY ACCOUNT    "wrf-chem">
-	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE      "batch">
 	<!ENTITY SCHEDULER  "slurm">
 
 	<!-- ROCOTO task control -->
@@ -167,6 +169,7 @@
 		<and>
 			<datadep age="120"><cyclestr>&METDIR_NRT;/&CASE_CNTL;/gdas.@Y@m@d/@H/gdas.t@Hz.atmanl.nc</cyclestr></datadep>
 			<datadep><cyclestr offset="-6:00:00">&ROTDIR;/gdas.@Y@m@d/@H/atmos/gdas.t@Hz.atmf006.nc</cyclestr></datadep>
+			<cycleexistdep cycle_offset="-06:00:00"/>
 		</and>
 	</dependency>
 
@@ -207,7 +210,10 @@
 		<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
 		<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
 		<dependency>
-			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_calcmetinc_enkf.sh</cyclestr></sh>
+			<and>
+				<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_calcmetinc_enkf.sh</cyclestr></sh>
+				<cycleexistdep cycle_offset="-06:00:00"/>
+			</and>
 		</dependency>
 	</task>
 
@@ -254,6 +260,7 @@
 			<streq><left>&AERODA;</left><right>YES</right></streq>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<cycleexistdep cycle_offset="-06:00:00"/>
 		</and>
 	</dependency>
 
@@ -301,6 +308,7 @@
 			<streq><left>&AERODA;</left><right>YES</right></streq>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<cycleexistdep cycle_offset="-06:00:00"/>
 		</and>
 	</dependency>
 
@@ -434,9 +442,14 @@
 
 	<dependency>
 		<and>
-			<taskdep task="gdasmetinccntl"/>
-			<taskdep task="gdasaeroanlvar"/>
-			<metataskdep metatask="gdasaerodiag"/>
+			<or>
+				<and>
+					<taskdep task="gdasmetinccntl"/>
+					<taskdep task="gdasaeroanlvar"/>
+					<metataskdep metatask="gdasaerodiag"/>
+				</and>
+				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+			</or>
 			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 		</and>
 	</dependency>
@@ -487,10 +500,14 @@
 		<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
 		<dependency>
 			<and>
-				<metataskdep metatask="gdasmetincenkf"/>
-				<metataskdep metatask="gdasaeroanlefinal"/>
-				<metataskdep metatask="gdasaerodiag"/>
-				<taskdep task="gdasfcst"/>
+				<or>
+					<and>
+						<taskdep task="gdasmetinccntl"/>
+						<taskdep task="gdasaeroanlvar"/>
+						<metataskdep metatask="gdasaerodiag"/>
+					</and>
+					<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+				</or>
 				<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 			</and>
 		</dependency>
@@ -558,22 +575,17 @@
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
-	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
-	<envar><name>ACCOUNT_HPSS</name><value>&ACCOUNT_HPSS;</value></envar>
-	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
-	<envar><name>RUN</name><value>&RUN;</value></envar>
+	<envar><name>ARCHRETHR</name><value>&ARCHRETHR;</value></envar>
+	<envar><name>NMEM_ENSGRP_ARCH</name><value>&NMEM_ENSGRP_ARCH;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
 	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
-	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
-	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 
 	<dependency>
 		<and>
 			<taskdep task="gdasfcst"/>
 			<metataskdep metatask="gdasefmn"/>
 			<metataskdep metatask="gdasemean"/>
-			<metataskdep metatask="gdasaerodiag"/>
 		</and>
 	</dependency>
 </task>

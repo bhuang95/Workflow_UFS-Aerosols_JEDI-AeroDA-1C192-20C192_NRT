@@ -15,8 +15,8 @@
 
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY SDATE "202308010000">
-	<!ENTITY EDATE "202308010000">
+	<!ENTITY SDATE "202308040000">
+	<!ENTITY EDATE "202308100000">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CASE_OBS     "C192">
@@ -44,13 +44,13 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Record directories -->
-	<!ENTITY MISS_NOAA_NPP_RECORD "&EXPDIR;/record.miss_NOAAVIIRSnpp">
-	<!ENTITY MISS_NOAA_J01_RECORD "&EXPDIR;/record.miss_NOAAVIIRSj01">
+	<!ENTITY MISS_NOAA_NPP_RECORD "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
+	<!ENTITY MISS_NOAA_J01_RECORD "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_J01">
 
 	<!-- Machine related entities -->
 	<!ENTITY ACCOUNT    "wrf-chem">
 	<!ENTITY SCHEDULER  "slurm">
-	<!ENTITY QUEUE_PREPAODOBS     "debug">
+	<!ENTITY QUEUE_PREPAODOBS     "batch">
 	<!ENTITY WALLTIME_PREPAODOBS  "00:20:00">
 	<!ENTITY RESOURCES_PREPAODOBS "<nodes>10:ppn=4:tpp=10</nodes>">
 
