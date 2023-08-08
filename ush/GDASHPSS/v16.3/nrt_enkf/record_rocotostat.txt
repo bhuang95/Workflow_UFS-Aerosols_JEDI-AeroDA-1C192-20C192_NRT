@@ -1,2 +1,10 @@
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
+================================================================================================================================
+202308040000             gdasmetcntl                    47841741           SUCCEEDED                   0         1         237.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
+================================================================================================================================
+202308040000           gdasmetenkf01                    47841743           SUCCEEDED                   0         1         445.0
+202308040000           gdasmetenkf02                    47841744           SUCCEEDED                   0         1         430.0
+202308040000           gdasmetenkf03                    47841746           SUCCEEDED                   0         1         432.0
+202308040000           gdasmetenkf04                    47841747           SUCCEEDED                   0         1         433.0
+202308040000           gdasmetenkf05                    47841748           SUCCEEDED                   0         1         449.0

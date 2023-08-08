@@ -13,8 +13,10 @@ set -x
 
 source config_hera2hpss
 
+NDATE="/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"
+
 module load hpss
-export PATH="/apps/hpss/bin:$PATH"
+#export PATH="/apps/hpss/bin:$PATH"
 set -x
 
 NCP="/bin/cp -r"
@@ -23,6 +25,13 @@ NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
 
 GDATE=$(${NDATE} -${CYCINTHR} ${CDATE})
+RMDATE=$(${NDATE} -${CYCINTHR} ${GDATE})
+RMDIR=${TMPDIR}/../${RMDATE}
+RMREC=${RMDIR}/remove.record
+
+if ( grep YES ${MISSNASAAOD_RECORD} ); then
+    ${NRM} ${RMDIR}
+fi
 
 CY=${CDATE:0:4}
 CM=${CDATE:4:2}
@@ -48,19 +57,19 @@ fi
 
 # Back up gdas cntl
 # Copy cntl
-LOGDIR=${ROTDIR}/${PSLOT}/dr-data/logs/${GDATE}/
-CNTLDIR=${ROTDIR}/${PSLOT}/dr-data/gdas.${GYMD}/${GH}
+LOGDIR=${ROTDIR}/logs/${GDATE}/
+CNTLDIR=${ROTDIR}/gdas.${GYMD}/${GH}
 CNTLDIR_ATMOS=${CNTLDIR}/atmos/
 CNTLDIR_CHEM=${CNTLDIR}/chem/
 CNTLDIR_DIAG=${CNTLDIR}/diag/
 CNTLDIR_ATMOS_RT=${CNTLDIR_ATMOS}/RESTART
 
-CNTLBAK=${ROTDIR}/${PSLOT}/dr-data-backup/gdas.${GYMD}/${GH}
-CNTLBAK_ATMOS_RT=${CNTBAK}/atmos/RESTART/
+CNTLBAK=${ROTDIR}/../dr-data-backup/gdas.${GYMD}/${GH}
+CNTLBAK_ATMOS_RT=${CNTLBAK}/atmos/RESTART/
 CNTLBAK_DIAG=${CNTLBAK}/diag/aod_obs
 
-[[ ! -d ${CNTLBAK_ATMOS_RT} ]] $$ mkdir -p ${CNTLBAK_ATMOS_RT}
-[[ ! -d ${CNTLBAK_DIAG} ]] $$ mkdir -p ${CNTLBAK_DIAG}
+[[ ! -d ${CNTLBAK_ATMOS_RT} ]] && mkdir -p ${CNTLBAK_ATMOS_RT}
+[[ ! -d ${CNTLBAK_DIAG} ]] && mkdir -p ${CNTLBAK_DIAG}
 
 if [ -s ${CNTLDIR_ATMOS} ]; then
     ${NCP} ${LOGDIR} ${CNTLDIR}/logs
@@ -90,21 +99,24 @@ if [ -s ${CNTLDIR_ATMOS} ]; then
         echo "HTAR cntl data failed at ${CDATE}" >> ${HPSSRECORD}
         exit ${ERR}
     fi
-fi
+fi # Done with loop through cntl
 
 # Back up gdasenkf cntl
-NGRPS=$((10#${NMEM_ENKF} / 10#${NMEM_ENSGRP_ARCH}))
-if [ ${ENSRUN} = "YES" ] then
-    ENKFDIR=${ROTDIR}/${PSLOT}/dr-data/enkfgdas.${GYMD}/${GH}
+if [ ${ENSRUN} = "YES" ]; then
+    NGRPS=$((10#${NMEM_ENKF} / 10#${NMEM_ENSGRP_ARCH}))
+    ENKFDIR=${ROTDIR}/enkfgdas.${GYMD}/${GH}
     ENKFDIR_ATMOS=${ENKFDIR}/atmos/
     ENKFDIR_CHEM=${ENKFDIR}/chem/
     ENKFDIR_DIAG=${ENKFDIR}/diag/
     ENKFDIR_ATMOS_MEAN_RT=${ENKFDIR_ATMOS}/ensmean/RESTART
 
-    ENKFBAK=${ROTDIR}/${PSLOT}/dr-data-backup/enkfgdas.${GYMD}/${GH}
+    ENKFBAK=${ROTDIR}/../dr-data-backup/enkfgdas.${GYMD}/${GH}
     ENKFBAK_ATMOS=${ENKFBAK}/atmos/
     ENKFBAK_DIAG=${ENKFBAK}/diag/aod_obs
     ENKFBAK_ATMOS_MEAN_RT=${ENKFBAK_ATMOS}/ensmean/RESTART
+
+    [[ ! -d ${ENKFBAK_DIAG} ]] && mkdir -p ${ENKFBAK_DIAG}
+    [[ ! -d ${ENKFBAK_ATMOS_MEAN_RT} ]] && mkdir -p ${ENKFBAK_ATMOS_MEAN_RT}
 
     ${NRM} ${ENKFDIR_ATMOS}/mem???/*.txt
 
@@ -133,8 +145,8 @@ if [ ${ENSRUN} = "YES" ] then
         ENSED=$((${NMEM_ENSGRP_ARCH} * 10#${IGRP}))
 	ENSST=$((${ENSED} - ${NMEM_ENSGRP_ARCH} + 1))
 	    
-	LGRP_ATMOS=${TMPDir}/list.atmos.grp${IGRP}
-	LGRP_CHEM=${TMPDir}/list.chem.grp${IGRP}
+	LGRP_ATMOS=${TMPDIR}/list.atmos.grp${IGRP}
+	LGRP_CHEM=${TMPDIR}/list.chem.grp${IGRP}
 	[[ -f ${LGRP_ATMOS} ]] && rm -rf ${LGRP_ATMOS}
 	[[ -f ${LGRP_CHEM} ]] && rm -rf ${LGRP_CHEM}
 
@@ -189,7 +201,7 @@ if [ ${ENSRUN} = "YES" ] then
     ${NCP} ${CNTLDIR_DIAG}/* ${CPCNTLDIAG}/
     cd ${ENKFDIR_DIAG}
     TARFILE=${DATAHPSSDIR}/diag.cntlenkf.${GDATE}.tar
-    htar -P -cvf ${TARFILE}  $(cat ${LGRP})
+    htar -P -cvf ${TARFILE} *
     ERR=$?
     if [ ${ERR} -ne 0 ]; then
         echo "HTAR enkf diag data failed at ${GDATE}" >> ${HPSSRECORD}
@@ -202,36 +214,49 @@ fi #ENSRUN
 if [ ${AERODA} = "YES" ]; then
     GDASMETDIR_CNTL=${METDIR_NRT}/${CASE_CNTL}/gdas.${GYMD}/${GH}
     GDASMETDIR_ENKF=${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${GYMD}/${GH}
+    OBSDIR=${OBSDIR_NRT}/${GDATE}
+    
+    BAKDIRS="${GDASMETDIR_CNTL} ${GDASMETDIR_ENKF} ${OBSDIR}"
+    for BAKDIR in ${BAKDIRS}; do
+        if [ ${BAKDIR} = ${GDASMETDIR_CNTL} ]; then
+            DATAINFO="gdasmet_cntl"
+        elif [ ${BAKDIR} = ${GDASMETDIR_ENKF} ]; then
+            DATAINFO="gdasmet_enkf"
+        elif [ ${BAKDIR} = ${OBSDIR} ]; then
+            DATAINFO="aod_${AODTYPE}"
+        else
+	    echo "file names don't matcn and exit now."
+	    exit 100
+	fi
 
-    cd ${GDASMETDIR_CNTL}
-    TARFILE=${DATAHPSSDIR}/gdasmet_gdas.${GDATE}.tar
-    htar -P -cvf ${TARFILE} *
-    ERR=$?
-    if [ ${ERR} -ne 0 ]; then
-        echo "HTAR GDASMET cntl data failed at ${GDATE}" >> ${HPSSRECORD}
-        exit ${ERR}
-    fi
+        if [ ! -s ${BAKDIR} ]; then
+            echo "${DATAINFO} missing at ${GDATE}" >> ${HPSSRECORD}
+            exit 100
+        else
+            cd ${BAKDIR}
+            TARFILE=${DATAHPSSDIR}/${DATAINFO}.${GDATE}.tar
+            htar -P -cvf ${TARFILE} *
+            ERR=$?
+            if [ ${ERR} -ne 0 ]; then
+                echo "HTAR ${DATAINFO} failed at ${GDATE}" >> ${HPSSRECORD}
+                exit ${ERR}
+            fi
+	fi
+    done
 
-    cd ${GDASMETDIR_ENKF}
-    TARFILE=${DATAHPSSDIR}/gdasmet_enkfgdas.${GDATE}.tar
-    htar -P -cvf ${TARFILE} *
-    ERR=$?
-    if [ ${ERR} -ne 0 ]; then
-        echo "HTAR GDASMET enkf data failed at ${GDATE}" >> ${HPSSRECORD}
-        echo ${CDATE} >> ${HPSSRECORD}
-        exit ${ERR}
-    fi
 fi # ${AERODA}
-
 
 if [ ${ERR} -eq 0 ]; then
     echo "HTAR is successful at ${GDATE}"
     ${NRM} ${CNTLDIR}
     if [ ${AERODA} = "YES" ]; then
-        ${NRM} ${ENKFDIR}
         ${NRM} ${GDASMETDIR_ENKF}
         ${NRM} ${GDASMETDIR_CNTL}
     fi
+    if [ ${AERODA} = "YES" -o ${ENSRUN} = "YES" ]; then
+        ${NRM} ${ENKFDIR}
+    fi
+     echo "YES" > ${TMPDIR}/remove.record
 else
     echo "HTAR failed at ${GDATE}" >> ${HPSSRECORD}
     exit ${ERR}

@@ -11,6 +11,7 @@
 set -x
 #TMPDIR=$(pwd)
 HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_cycling/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
+EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/"}
 PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 CDATE=${CDATE:-"2023062300"}
 CDUMP=${CDUMP:-"gdas"}
@@ -266,5 +267,6 @@ if [ ${ERR4} -eq 0 ]; then
     ${NRM} ${DATA}
 fi
 err=${ERR4}
+echo ${CDATE} > ${EXPDIR}/TaskRecords/cmplCycle_prepGDAS.rc
 echo $(date) EXITING $0 with return code $err >&2
 exit $err

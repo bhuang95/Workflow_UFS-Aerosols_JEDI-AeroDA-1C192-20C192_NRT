@@ -1,5 +1,0 @@
-(1) exec/calca_analysis.x
---- Used old CCPP version, because new UFS-Aerosols version has hdf error
-
-(2) GBBEPx plum variable seems not set for forecast parm/chem/ExtData.gbbepx
-(3) CDES emission missing for 2023 and format not correct to use montly value.

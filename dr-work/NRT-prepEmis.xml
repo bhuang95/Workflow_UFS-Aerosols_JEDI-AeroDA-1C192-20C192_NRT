@@ -88,6 +88,7 @@
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>
 	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
@@ -114,6 +115,7 @@
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>
@@ -146,6 +148,7 @@
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CDUMP</name><value>gdas</value></envar>

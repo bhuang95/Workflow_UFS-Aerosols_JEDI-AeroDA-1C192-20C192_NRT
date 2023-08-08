@@ -28,3 +28,7 @@ ${RORUNCMD} -w ${XMLDIR_DA}/NRT-prepAOD-NOAA_VIIRS.xml -d ${DBDIR_DA}/NRT-prepAO
 ### Run AeroDA
 echo "Run AeroDA"
 ${RORUNCMD} -w ${XMLDIR_DA}/NRT-aeroDA.xml -d ${DBDIR_DA}/NRT-aeroDA.db
+
+### Run AeroDA
+echo "Run FreeRun"
+${RORUNCMD} -w ${XMLDIR_DA}/NRT-freeRun.xml -d ${DBDIR_DA}/NRT-freeRun.db

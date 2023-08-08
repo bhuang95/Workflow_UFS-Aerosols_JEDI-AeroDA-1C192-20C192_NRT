@@ -62,7 +62,7 @@ EOF
 
 /apps/slurm/default/bin/sbatch sbatch_arch2hpss.sh
 ERR=$?
-echo ${CDATE} > ${EXPDIR}/TaskRecords/cmplCycle_aeroDA.rc
+echo ${CDATE} > ${EXPDIR}/TaskRecords/cmplCycle_freeRun.rc
 sleep 60
 
 exit ${ERR}

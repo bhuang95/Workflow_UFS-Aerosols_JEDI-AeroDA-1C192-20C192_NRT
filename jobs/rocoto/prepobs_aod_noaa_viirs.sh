@@ -13,6 +13,7 @@
 set -x
 HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/expRuns/exp_UFS-Aerosols/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/"}
+EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/"}
 PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 CDUMP=${CDUMP:-"gdas"}
 CDATE=${CDATE:-"2023062500"}
@@ -229,6 +230,6 @@ done
 if [[ $err -eq 0 ]]; then
     /bin/rm -rf $DATA
 fi
-    
+echo ${CDATE} > ${EXPDIR}/TaskRecords/cmplCycle_prepAOD-NOAA_VIIRS.rc
 echo $(date) EXITING $0 with return code $err >&2
 exit $err

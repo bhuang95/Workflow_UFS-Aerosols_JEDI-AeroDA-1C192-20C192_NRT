@@ -11,6 +11,7 @@
 set -x
 
 HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
+EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/"}
 PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 MEGANVER=${MEGANVER:-"2019-10"}
 MEGANYEAR=${MEGANYEAR:-"2021"}
@@ -64,5 +65,6 @@ else
 fi
 
 rm -rf ${DATA}
+echo ${CDATE} > ${EXPDIR}/TaskRecords/cmplCycle_prepEmis.rc
 echo $(date) EXITING $0 with return code ${ERR} >&2
 exit ${ERR}

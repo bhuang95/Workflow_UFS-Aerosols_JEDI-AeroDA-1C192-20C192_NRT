@@ -64,9 +64,9 @@
 	<!ENTITY MEGANDIR_NRT     "&EMISDIR_NRT;/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
 
 	<!-- Archive directory setup -->
-	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/&PSLOT;/dr-data/">
+	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/">
 	<!ENTITY ARCHRETHR "12">
-	<!ENTITY NMEM_ENSGRP_ARCH "10">
+	<!ENTITY NMEM_ENSGRP_ARCH "5">
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
@@ -113,12 +113,12 @@
 	<!ENTITY NATIVE_DIAG_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_FCST_GDAS     "&QUEUE;">
-	<!ENTITY WALLTIME_FCST_GDAS  "00:29:00">
+	<!ENTITY WALLTIME_FCST_GDAS  "00:10:00">
 	<!ENTITY RESOURCES_FCST_GDAS "9:ppn=40:tpp=1">
 	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_EFCS_GDAS     "&QUEUE;">
-	<!ENTITY WALLTIME_EFCS_GDAS  "00:29:00">
+	<!ENTITY WALLTIME_EFCS_GDAS  "00:15:00">
 	<!ENTITY RESOURCES_EFCS_GDAS "9:ppn=40:tpp=1">
 	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE">
 
@@ -566,6 +566,7 @@
 
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>CASE</name><value>&CASE;</value></envar>
+	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
@@ -575,11 +576,15 @@
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
 	<envar><name>ARCHRETHR</name><value>&ARCHRETHR;</value></envar>
 	<envar><name>NMEM_ENSGRP_ARCH</name><value>&NMEM_ENSGRP_ARCH;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
 	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>CASE_OBS</name><value>&CASE_OBS;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 
 	<dependency>
 		<and>

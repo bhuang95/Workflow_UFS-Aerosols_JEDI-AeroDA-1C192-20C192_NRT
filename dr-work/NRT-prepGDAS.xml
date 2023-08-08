@@ -140,6 +140,7 @@
 
 	        <envar><name>PSLOT</name><value>&PSLOT;</value></envar>
         	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+        	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
         	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
         	<envar><name>METDIR_HERA_ENKF</name><value>&METDIR_HERA_ENKF;</value></envar>
         	<envar><name>LEVS</name><value>&LEVS;</value></envar>
