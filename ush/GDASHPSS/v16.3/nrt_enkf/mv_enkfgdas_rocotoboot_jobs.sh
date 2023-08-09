@@ -53,21 +53,21 @@ while [ ${cdate} -le ${edate} ]; do
             exit 1
         fi
 
-        srcdir=${tmpdir}/gdas.${cyy}${cmm}${cdd}/${chh}
-        detdir=${GDASDIR_HERA}/gdas.${cyy}${cmm}${cdd}/
-	[ ! -d ${detdir} ] && mkdir -p ${detdir} 
-
-	echo ${srcdir}
-	echo ${detdir}
-	echo '+++++++++++++++'
-        mv ${srcdir} ${detdir}
-
-        err=$?
-        if [ $err -ne 0 ]; then
-            echo 'Move control failed'
-            echo ${cdate}
-            exit 1
-        fi
+#        srcdir=${tmpdir}/gdas.${cyy}${cmm}${cdd}/${chh}
+#        detdir=${GDASDIR_HERA}/gdas.${cyy}${cmm}${cdd}/
+#	[ ! -d ${detdir} ] && mkdir -p ${detdir} 
+#
+#	echo ${srcdir}
+#	echo ${detdir}
+#	echo '+++++++++++++++'
+#        mv ${srcdir} ${detdir}
+#
+#        err=$?
+#        if [ $err -ne 0 ]; then
+#            echo 'Move control failed'
+#            echo ${cdate}
+#            exit 1
+#        fi
     fi
     cdate=`${incdate} 6 ${cdate}`
 

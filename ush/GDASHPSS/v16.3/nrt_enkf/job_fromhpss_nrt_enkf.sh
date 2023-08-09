@@ -109,7 +109,7 @@ while [ ${cdate} -le ${edate} ]; do
 
       DATAH=$(/apps/slurm/default/bin/sbatch --parsable --partition=service --ntasks=1 --mem=$MEM -t $WALLT -A $PROJECT_CODE -q $QUEUE -J get_${CDUMP} \
        -o ${GDASDIR_HERA}/log.data.${CDUMP} -e ${GDASDIR_HERA}/log.data.${CDUMP} ${UTILDIR_NRT}/get_v16.data.hpssDownload.sh ${CDUMP})
-      DEPEND=${DEPEND}":$DATAH"
+#      DEPEND=${DEPEND}":$DATAH"
 
       if [ "$CDUMP" = "gdas" ] ; then
         DATA1=$(/apps/slurm/default/bin/sbatch --parsable --partition=service --ntasks=1 --mem=$MEM -t $WALLT -A $PROJECT_CODE -q $QUEUE -J get_grp1 \

@@ -25,11 +25,11 @@ NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
 
 GDATE=$(${NDATE} -${CYCINTHR} ${CDATE})
-RMDATE=$(${NDATE} -${CYCINTHR} ${GDATE})
+RMDATE=${GDATE}
 RMDIR=${TMPDIR}/../${RMDATE}
 RMREC=${RMDIR}/remove.record
 
-if ( grep YES ${MISSNASAAOD_RECORD} ); then
+if ( grep YES ${RMREC} ); then
     ${NRM} ${RMDIR}
 fi
 
