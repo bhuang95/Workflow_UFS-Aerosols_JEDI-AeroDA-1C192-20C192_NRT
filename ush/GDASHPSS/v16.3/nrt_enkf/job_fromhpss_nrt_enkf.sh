@@ -51,7 +51,7 @@ while [ ${cdate_old} -le ${edate_old} ]; do
 /apps/rocoto/1.3.3/bin/rocotostat -w ${GDASANLXML} -d ${GDASANLDB} -c ${cdate_old}00 -t gdasmetcntl >> ${rstat}
 /apps/rocoto/1.3.3/bin/rocotostat -w ${GDASANLXML} -d ${GDASANLDB} -c ${cdate_old}00 -m gdasmetenkf >> ${rstat}
     icount=$((${icount} + ${TASKNUM}))
-    cdate_old=$(${incdate} ${CYCINTHR} ${cdate_old})
+    cdate_old=$(${incdate} 6 ${cdate_old})
 done
     
 isuccess=$(grep 'SUCCEEDED' ${rstat} | wc -l)

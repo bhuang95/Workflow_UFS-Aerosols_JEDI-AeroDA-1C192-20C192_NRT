@@ -49,8 +49,8 @@
 
 	<!-- MET File Directories -->
 	<!ENTITY METDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/">
-	<!--ENTITY METDIR_HERA_CNTL "/scratch1/NCEPDEV/rstprod/prod/com/gfs/v16.3"-->
-	<!ENTITY METDIR_HERA_CNTL "&ROTDIR;/GDASfromHPSS/">
+	<!ENTITY METDIR_HERA_CNTL "/scratch1/NCEPDEV/rstprod/prod/com/gfs/v16.3">
+	<!--ENTITY METDIR_HERA_CNTL "&ROTDIR;/GDASfromHPSS/"-->
 	<!ENTITY METDIR_HERA_ENKF "&ROTDIR;/GDASfromHPSS/">
     
 	<!-- Machine related entities -->
@@ -67,9 +67,9 @@
 	<!ENTITY ARCHIVE_TO_HPSS "YES">
 
 	<!-- ROCOTO parameters that control workflow -->
-	<!ENTITY CYCLETHROTTLE "4">
-	<!ENTITY TASKTHROTTLE  "10">
-	<!ENTITY MAXTRIES      "10">
+	<!ENTITY CYCLETHROTTLE "8">
+	<!ENTITY TASKTHROTTLE  "24">
+	<!ENTITY MAXTRIES      "3">
 
 ]>
 
