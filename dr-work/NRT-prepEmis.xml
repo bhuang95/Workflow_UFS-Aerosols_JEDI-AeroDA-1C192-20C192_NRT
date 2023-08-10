@@ -16,7 +16,7 @@
 	<!-- Experiment parameters such as name, starting, ending dates -->
 	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
 	<!ENTITY SDATE "202308020000">
-	<!ENTITY EDATE "202308100000">
+	<!ENTITY EDATE "202310100000">
 	<!ENTITY INTERVAL "24:00:00">
 
 	<!-- Run Envrionment -->
