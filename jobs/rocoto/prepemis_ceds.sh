@@ -18,6 +18,8 @@ CEDSDIR_NRT=${CEDSDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020
 CEDSDIR_HERA=${CEDSDIR_HERA:-"/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/CEDS/v2019/2019/"}
 CDATE=${CDATE:-"2023062900"}
 CDUMP=${CDUMP:-"gdas"}
+PRODINTHR=${PRODINTHR:-"24"}
+NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 
 module purge
 source "${HOMEgfs}/ush/preamble.sh"
@@ -34,6 +36,7 @@ NLN='/bin/ln -sf'
 NCP='/bin/cp -r'
 NMV='/bin/mv'
 
+CDATE=$(${NDATE} ${PRODINTHR} ${CDATE})
 CYY=$(echo "${CDATE}" | cut -c1-4)
 CMM=$(echo "${CDATE}" | cut -c5-6)
 CDD=$(echo "${CDATE}" | cut -c7-8)

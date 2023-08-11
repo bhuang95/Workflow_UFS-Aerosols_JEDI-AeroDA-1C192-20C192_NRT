@@ -35,6 +35,7 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Emission directory-->
+	<!ENTITY PRODINTHR "24">
 	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/nexus/">
 	<!ENTITY EMISDIR_HERA "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/">
 
@@ -123,10 +124,11 @@
 	<envar><name>CEDSYEAR</name><value>&CEDSYEAR;</value></envar>
 	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
 	<envar><name>CEDSDIR_HERA</name><value>&CEDSDIR_HERA;</value></envar>
+	<envar><name>PRODINTHR</name><value>&PRODINTHR;</value></envar>
 
 	<dependency>
 		<and>
-			<datadep age="120"><cyclestr>&CEDSDIR_HERA;/CEDS.&CEDSVER;.emis.&CEDSYEAR;@m@d.nc</cyclestr></datadep>
+			<datadep age="120"><cyclestr offset="24:00:00">&CEDSDIR_HERA;/CEDS.&CEDSVER;.emis.&CEDSYEAR;@m@d.nc</cyclestr></datadep>
 			<taskdep task="gdasgbbepx"/>
 		</and>
 	</dependency>
@@ -156,10 +158,11 @@
 	<envar><name>MEGANYEAR</name><value>&MEGANYEAR;</value></envar>
 	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
 	<envar><name>MEGANDIR_HERA</name><value>&MEGANDIR_HERA;</value></envar>
+	<envar><name>PRODINTHR</name><value>&PRODINTHR;</value></envar>
 
 	<dependency>
 		<and>
-			<datadep age="120"><cyclestr>&MEGANDIR_HERA;/MEGAN.OFFLINE.BIOVOC.&MEGANYEAR;.emis.&MEGANYEAR;@m@d.nc</cyclestr></datadep>
+			<datadep age="120"><cyclestr offset="24:00:00">&MEGANDIR_HERA;/MEGAN.OFFLINE.BIOVOC.&MEGANYEAR;.emis.&MEGANYEAR;@m@d.nc</cyclestr></datadep>
 			<taskdep task="gdasgbbepx"/>
 		</and>
 	</dependency>

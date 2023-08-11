@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for cycling Global Forecast System
+
+	AUTHOR:
+		Rahul Mahajan
+		rahul.mahajan@noaa.gov
+
+	NOTES:
+		This workflow was automatically generated at 2019-12-02 18:05:39.230602
+	-->
+
+	<!-- Experiment parameters such as name, starting, ending dates -->
+	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
+	<!ENTITY SDATE "202308040000">
+	<!ENTITY EDATE "202310100000">
+	<!ENTITY INTERVAL "06:00:00">
+	<!ENTITY CYCINTHR "6">
+	<!ENTITY CASE     "">
+
+	<!-- Run Envrionment -->
+	<!ENTITY RUN_ENVIR "emc">
+	<!ENTITY machine "HERA">
+
+	<!-- Experiment top run directory-->
+	<!ENTITY AODTYPE     "AERONET">
+	<!ENTITY AODLEV     "AOD15">
+	<!ENTITY AODWINHR     "1">
+	<!ENTITY AODLUNAR     "NO">
+	<!ENTITY AOD550NM     "YES">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs">
+	<!ENTITY OBSDIR_NOAA_VIIRS_NRT "&OBSDIR_NRT;/NOAA_VIIRS/C192">
+
+	<!-- Experiment and Rotation directory -->
+	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/"> 
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"> 
+	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
+	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
+	<!ENTITY HOMEioda "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/ioda-bundle/ioda-bundle-20230809/build">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
+	<!-- Record directories -->
+	<!ENTITY MISS_AERONET_RECORD "&EXPDIR;/TaskRecords/record.miss_&AODTYPE;_&AODLEV;">
+	<!ENTITY MISS_VIIRS_RECORD "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
+
+	<!-- Machine related entities -->
+	<!ENTITY ACCOUNT    "chem-var">
+	<!ENTITY SCHEDULER  "slurm">
+	<!ENTITY QUEUE_PREPAODOBS     "batch">
+	<!ENTITY WALLTIME_PREPAODOBS  "00:20:00">
+	<!ENTITY PARTITION_PREPAODOBS "service">
+	<!ENTITY RESOURCES_PREPAODOBS "<cores>1</cores>">
+
+	<!-- ROCOTO parameters that control workflow -->
+	<!ENTITY CYCLETHROTTLE "4">
+	<!ENTITY TASKTHROTTLE  "4">
+	<!ENTITY MAXTRIES      "2">
+
+
+]>
+
+<workflow realtime="F" scheduler="&SCHEDULER;" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
+
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/log.prepAOD-AERONET</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gdas" >&SDATE;     &EDATE;     &INTERVAL;</cycledef>
+
+<task name="gdasaeronetaod" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
+
+	<command>&JOBS_DIR;/prepobs_aod_aeronet.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_gdasaeronetaod_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_PREPAODOBS;</queue>
+	<partition>&PARTITION_PREPAODOBS;</partition>
+	&RESOURCES_PREPAODOBS;
+	<walltime>&WALLTIME_PREPAODOBS;</walltime>
+	
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasaeronetaod.log</cyclestr></join>
+
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEioda</name><value>&HOMEioda;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CDUMP</name><value>gdas</value></envar>
+	<envar><name>CYCINTHR</name><value>&CYCINTHR;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>AODLEV</name><value>&AODLEV;</value></envar>
+	<envar><name>AODWINHR</name><value>&AODWINHR;</value></envar>
+	<envar><name>AODLUNAR</name><value>&AODLUNAR;</value></envar>
+	<envar><name>AOD550NM</name><value>&AOD550NM;</value></envar>
+	<envar><name>MISS_AERONET_RECORD</name><value>&MISS_AERONET_RECORD;</value></envar>
+
+	<dependency>
+		<or>
+			<datadep><cyclestr>&OBSDIR_NOAA_VIIRS_NRT;/@Y@m@d@H/NOAA_VIIRS_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<!--
+			<sh shell="/bin/bash"><cyclestr>grep @Y@m@d@H &MISS_VIIRS_RECORD;</cyclestr></sh>
+			-->
+		</or>
+	</dependency>
+
+</task>
+
+</workflow>

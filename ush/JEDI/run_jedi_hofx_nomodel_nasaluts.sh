@@ -2,9 +2,9 @@
 set -x
 
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
-JEDIDIR=${HOMEjedi:-$HOMEgfs/sorc/jedi.fd/}
-DATA=${DATA:-$pwd/analysis.$$}
-ROTDIR=${ROTDIR:-/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/}
+JEDIDIR=${HOMEjedi:-"$HOMEgfs/sorc/jedi.fd/"}
+DATA=${DATA:-"$pwd/analysis.$$"}
+ROTDIR=${ROTDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/"}
 OBSDIR_NRT=${OBSDIR_NRT:-"MissingOBSDIR_NRT"}
 AODTYPE=${AODTYPE:-"MissingAODTYPE"}
 RSTDIR=${RSTDIR:-"MissingRSTDIR"}

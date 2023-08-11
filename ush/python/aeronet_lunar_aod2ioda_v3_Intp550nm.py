@@ -43,12 +43,6 @@ from datetime import datetime, timedelta
 from builtins import object, str
 from pathlib import Path
 
-#sys.path.append('/home/Bo.Huang/JEDI-2020/miscScripts-home/JEDI-Support/aeronetScript/readAeronet/lib-python/')
-#sys.path.append('/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/ioda-bundle/ioda-bundle-20230809/build/lib/')
-#sys.path.append('/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/ioda-bundle/ioda-bundle-20230809/build/lib/python3.9/')
-#sys.path.append('/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/ioda-bundle/ioda-bundle-20230809/build/iodaconv/src/')
-#import pytspack as pts
-
 import pyiodaconv.ioda_conv_engines as iconv
 from collections import defaultdict, OrderedDict
 from pyiodaconv.orddicts import DefaultOrderedDict
@@ -59,7 +53,7 @@ def dateparse(x):
 
 def add_data(dates=None,
              product='AOD15',
-             lunar_merge=1,
+             lunar_merge=True,
              latlonbox=None,
              daily=False,
              interp_to_aod_values=None,
@@ -131,10 +125,10 @@ class AERONET(object):
             product = '&' + self.prod + '=1'
             self.inv_type = ''
 
-        if self.lunar_merge == 1:
+        if self.lunar_merge:
             lunar_merge = '&lunar_merge=1'
-        elif self.lunar_merge == 0:
-            lunar_merge = '&lunar_merge=0'
+        #elif self.lunar_merge:
+        #    lunar_merge = '&lunar_merge=0'
         else:
             lunar_merge = ''
 
@@ -186,7 +180,6 @@ class AERONET(object):
         df.dropna(subset=['latitude', 'longitude'], inplace=True)
         df.dropna(axis=1, how='all', inplace=True)
         self.df = df
-        print('Done with reading')
 
     def get_columns(self):
         header = pd.read_csv(self.url, skiprows=5, header=None,
@@ -202,7 +195,7 @@ class AERONET(object):
     def add_data(self,
                  dates=None,
                  product='AOD15',
-                 lunar_merge=1,
+                 lunar_merge=True,
                  latlonbox=None,
                  daily=False,
                  interp_to_aod_values=None,
@@ -253,13 +246,13 @@ class AERONET(object):
             except ImportError:
                 print('You must install pytspack before using this function')
             #aod_columns = [aod_column for aod_column in row.index if 'aod_' in aod_column]
-            if self.lunar_merge == 0:
-                aod_columns = ['aod_340nm', 'aod_380nm', 'aod_440nm', 'aod_500nm', 'aod_675nm', 'aod_870nm', 'aod_1020nm', 'aod_1640nm']
-            elif self.lunar_merge == 1:
+            if self.lunar_merge:
                 aod_columns = ['aod_440nm', 'aod_500nm', 'aod_675nm', 'aod_870nm', 'aod_1020nm','aod_1640nm']
             else:
-                print('lunar_merge is not defined and exit.')
-                exit(100)
+                aod_columns = ['aod_340nm', 'aod_380nm', 'aod_440nm', 'aod_500nm', 'aod_675nm', 'aod_870nm', 'aod_1020nm', 'aod_1640nm']
+            #else:
+            #    print('lunar_merge is not defined and exit.')
+            #    exit(100)
             aod_columns_nu = ['aod_440nm', 'aod_500nm', 'aod_675nm', 'aod_870nm']
             aods_nu = row[aod_columns_nu]
             aods_all = row[aod_columns]
@@ -310,24 +303,24 @@ if __name__ == '__main__':
         type=str, required=True)
     required.add_argument(
         '-l', '--lunar',
-        help="Lunar AOD (=1, otherwise, = 0)",
-        type=int, required=True)
+        help="Lunar AOD (=YES, otherwise, = NO)",
+        type=str, required=True)
     required.add_argument(
         '-q', '--aodqa',
         help="AOD quality (AOD15 or AOD20)",
         type=str, required=True)
     required.add_argument(
         '-p', '--intp550',
-        help="Interp 550 nm AOD (=1, otherwise, = 0)",
-        type=int, required=True)
+        help="Interp 550 nm AOD (=YES, otherwise, = NO)",
+        type=str, required=True)
 
     args = parser.parse_args()
     date_center1 = args.time
     hwindow1 = args.window
     outfile = args.output
-    lunar=args.lunar
-    aodqa=args.aodqa
-    intpaod=args.intp550
+    lunar = (args.lunar == 'YES')
+    aodqa = args.aodqa
+    intpaod = (args.intp550 == 'YES')
 
     date_center = datetime.strptime(date_center1, '%Y%m%d%H')
     do_filter = False
@@ -348,7 +341,7 @@ if __name__ == '__main__':
     dates = pd.date_range(start=date_start, end=date_end, freq='H')
 
     # Define AOD wavelengths, channels and frequencies
-    if lunar == 1:
+    if lunar:
         aod_wav = np.array([440., 500., 675, 870., 1020., 1640.], dtype=np.float32)
         aod_chan = np.array([3, 4, 5, 6, 7, 8], dtype=np.intc)
     else:
@@ -356,7 +349,7 @@ if __name__ == '__main__':
         aod_chan = np.array([1, 2, 3, 4, 5, 6, 7, 8], dtype=np.intc)
 
     # An example of interpolating AOD at 550 nm
-    if intpaod == 1:
+    if intpaod:
         aod_new_wav = np.array([550.], dtype=np.float32)
         aod_new_chan = np.array([9], dtype=np.intc)
         aod_wav = np.concatenate([aod_wav, aod_new_wav])
@@ -372,8 +365,8 @@ if __name__ == '__main__':
     print(aod_chan)
     print(frequency)
 
-    if lunar == 1:
-        if intpaod == 1:
+    if lunar:
+        if intpaod:
             outcols = ['time', 'siteid', 'longitude', 'latitude', 'elevation',
                        'aod_440nm', 'aod_500nm', 'aod_675nm',
                        'aod_870nm', 'aod_1020nm', 'aod_1640nm', 'aod_intp_550nm']
@@ -388,7 +381,7 @@ if __name__ == '__main__':
                                                'aod_675nm', 'aod_870nm',
                                                'aod_1020nm', 'aod_1640nm']}
     else:
-        if intpaod == 1: 
+        if intpaod: 
             outcols = ['time', 'siteid', 'longitude', 'latitude', 'elevation',
                        'aod_340nm', 'aod_380nm', 'aod_440nm', 'aod_500nm', 'aod_675nm',
                        'aod_870nm', 'aod_1020nm', 'aod_1640nm', 'aod_intp_550nm']
@@ -428,7 +421,7 @@ if __name__ == '__main__':
     AttrData = {}
     AttrData['ioda_object_type'] = aodqa
     AttrData['sensor'] = 'aeronet'
-    if lunar == 1:
+    if lunar:
         AttrData['lunar_aod'] = 'YES'
     else:
         AttrData['lunar_aod'] = 'NO'
@@ -476,8 +469,8 @@ if __name__ == '__main__':
         outdata[varDict[key]['errKey']] = np.where(outdata[varDict[key]['valKey']] == np.float32(-9999.),
                                                    np.float32(-9999.), np.float32(0.02))
     
-    if intpaod == 1:
-        if lunar == 1:
+    if intpaod:
+        if lunar:
             outdata[varDict['aerosolOpticalDepth']['errKey']][:,5]=outdata[varDict['aerosolOpticalDepth']['errKey']][:,1]
             outdata[varDict['aerosolOpticalDepth']['qcKey']][:,5]=np.where(outdata[varDict['aerosolOpticalDepth']['valKey']][:,5] == np.float32(-9999.), 
                                                                               1, outdata[varDict['aerosolOpticalDepth']['qcKey']][:,1])
