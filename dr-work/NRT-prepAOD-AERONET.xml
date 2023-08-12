@@ -29,10 +29,10 @@
 	<!ENTITY AODTYPE     "AERONET">
 	<!ENTITY AODLEV     "AOD15">
 	<!ENTITY AODWINHR     "1">
-	<!ENTITY AODLUNAR     "NO">
+	<!ENTITY AODLIGHT     "SOLAR">
 	<!ENTITY AOD550NM     "YES">
-	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs">
-	<!ENTITY OBSDIR_NOAA_VIIRS_NRT "&OBSDIR_NRT;/NOAA_VIIRS/C192">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;_&AODLIGHT;_&AODLEV;/">
+	<!ENTITY OBSDIR_NOAA_VIIRS_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/NOAA_VIIRS/C192">
 
 	<!-- Experiment and Rotation directory -->
 	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/"> 
@@ -99,7 +99,7 @@
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 	<envar><name>AODLEV</name><value>&AODLEV;</value></envar>
 	<envar><name>AODWINHR</name><value>&AODWINHR;</value></envar>
-	<envar><name>AODLUNAR</name><value>&AODLUNAR;</value></envar>
+	<envar><name>AODLIGHT</name><value>&AODLIGHT;</value></envar>
 	<envar><name>AOD550NM</name><value>&AOD550NM;</value></envar>
 	<envar><name>MISS_AERONET_RECORD</name><value>&MISS_AERONET_RECORD;</value></envar>
 

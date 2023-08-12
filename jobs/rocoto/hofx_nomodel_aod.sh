@@ -32,11 +32,17 @@ export CASE_ENKF=${CASE_ENKF:-"C192"}
 export AODTYPE=${AODTYPE:-"NOAA_VIIRS"}
 export COMPONENT=${COMPONENT:-"atmos"}
 export ENSRUN=${ENSRUN:-"YES"}
+export ENSDIAG=${ENSDIAG:-"YES"}
 export AERODA=${AERODA:-"YES"}
 export NCORES=${ncore_hofx:-"6"}
 export LAYOUT=${layout_hofx:-"1,1"}
 export IO_LAYOUT=${io_layout_hofx:-"1,1"}
 export assim_freq=${assim_freq:-"6"}
+
+if ( echo ${AODTYPE} | grep -q "NASA" ); then
+    echo "NASA VIIRS AOD retrievals not avaiable and skip"
+    exit 0
+fi
 
 JEDIUSH=${HOMEgfs}/ush/JEDI/
 
@@ -47,6 +53,7 @@ if [ ${ENSED} -gt ${NMEM_ENKF} ]; then
     echo "Member number ${ENSED} exceeds ensemble size ${NMEM_ENKF} and exit."
     exit 100
 fi
+
 
 GDATE=$(date +%Y%m%d%H -d "${CDATE:0:8} ${CDATE:8:2} - ${assim_freq} hours")
 
@@ -70,15 +77,6 @@ NLN="/bin/ln -sf"
 mkdir -p ${DATA1}
 cd ${DATA1}
 
-#ndate1=${NDATE}
-# hard coding some modules here...
-#source /apps/lmod/7.7.18/init/bash
-#source ${HOMEjedi}/jedi_module_base.hera.sh
-#source /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/codeDev/JEDI/jedi-bundle/20230113/build/jedi_module_base.hera.sh 
-#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
-#export OMP_NUM_THREADS=1
-#ulimit -s unlimited
-
 ### Determine what to field to perform
 HOFXFIELDS=""
 
@@ -90,14 +88,18 @@ if [ ${ENSRUN} = "YES" ]; then
     if [ ${ENSGRP} = "01" ]; then
         HOFXFIELDS="${HOFXFIELDS} meanbckg"
     fi
-    HOFXFIELDS="${HOFXFIELDS} membckg"
+    if [ ${ENSDIAG} = "YES" ]; then
+        HOFXFIELDS="${HOFXFIELDS} membckg"
+    fi
 fi
 
 if [ ${AERODA} = "YES" ]; then
     if [ ${ENSGRP} = "01" ]; then
         HOFXFIELDS="${HOFXFIELDS} cntlanal meananal"
     fi
-    HOFXFIELDS="${HOFXFIELDS} memanal"
+    if [ ${ENSDIAG} = "YES" ]; then
+        HOFXFIELDS="${HOFXFIELDS} memanal"
+    fi
 fi
 
 echo "HOFXFIELDS=${HOFXFIELDS}"
@@ -144,7 +146,13 @@ for FIELD in ${HOFXFIELDS}; do
 	fi
 	#MEMOPT="${MEMOPT}${MEMSTR}"
         export RSTDIR=${ROTDIR}/${ENKFOPT}gdas.${GYMD}/${GH}/${COMPONENT}/${MEMOPT}${MEMSTR}/RESTART/
-        export HOFXDIR=${ROTDIR}/${ENKFOPT}gdas.${CYMD}/${CH}/diag/${MEMOPT}${MEMSTR}
+
+	ROTDIRBASE=$(basename ${ROTDIR})
+	if [ ${ROTDIRBASE} = "dr-data-backup" ]; then
+            export HOFXDIR=${ROTDIR}/${ENKFOPT}gdas.${CYMD}/${CH}/diag/aod_obs/${MEMOPT}${MEMSTR}
+	else
+            export HOFXDIR=${ROTDIR}/${ENKFOPT}gdas.${CYMD}/${CH}/diag/${MEMOPT}${MEMSTR}
+	fi
 
 	export DATA=${DATA1}/${MEMOPT}${MEMSTR}/${FIELD}
 	[[ ! -d ${HOFXDIR} ]] && mkdir -p  ${HOFXDIR}

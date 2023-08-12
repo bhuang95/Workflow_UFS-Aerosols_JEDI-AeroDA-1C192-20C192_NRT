@@ -88,9 +88,15 @@ ${NLN} ${JEDIDIR}/geos-aero/test/testinput/geosaod.rc ${DATA}/geosaod.rc
 ${NLN} ${JEDIDIR}/geos-aero/test/testinput/Chem_MieRegistry.rc ${DATA}/Chem_Registry.rc
 ${NLN} ${JEDIDIR}/geos-aero/test/Data ${DATA}/
 
+#if [ "${AODTYPE}" == *"AERONET"* ]; then
+if ( echo ${AODTYPE} | grep -q "AERONET" ); then
+    ${NLN} ${JEDIDIR}/geos-aero/test/testinput/geosaod_aeronet.rc ${DATA}/geosaod_aeronet.rc
+fi
+
 # Link observations (only for VIIRS or MODIS)
 OBSTIME=${ANLTIME}
-if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
+#if [ "${AODTYPE}" == "NOAA_VIIRS" ]; then
+if ( echo ${AODTYPE} | grep -q "NOAA_VIIRS" ); then
     OBSIN=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD_npp.${OBSTIME}.iodav3.nc
     OBSIN1=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD_j01.${OBSTIME}.iodav3.nc
     SENSORID=v.viirs-m_npp
@@ -101,8 +107,15 @@ if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
     HOFXOUT1=${AODTYPE}_j01_obs_hofx_3dvar_LUTs_${TRCR}_${OBSTIME}.nc4
     ${NLN} ${OBSIN} ${DATAINPUT}/${OBSOUT}
     ${NLN} ${OBSIN1} ${DATAINPUT}/${OBSOUT1}
+#elif [ "${AODTYPE}" == *"AERONET"* ]; then
+elif ( echo ${AODTYPE} | grep -q "AERONET" ); then
+    OBSIN=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD.${OBSTIME}.iodav3.nc
+    SENSORID=aeronet
+    OBSOUT=aeronet_aod.${OBSTIME}.nc4
+    HOFXOUT=${AODTYPE}_obs_hofx_3dvar_LUTs_${TRCR}_${OBSTIME}.nc4
+    ${NLN} ${OBSIN} ${DATAINPUT}/${OBSOUT}
 else
-    echo "AODTYBE must be VIIRS or MODIS; exit this program now!"
+    echo "AODTYBE must be VIIRS or AERONET; exit this program now!"
     exit 1
 fi
 
@@ -163,6 +176,8 @@ state:
 "
 
 # Generate the yaml block for AOD observations
+#if [ "${AODTYPE}" == "NOAA_VIIRS" ]; then
+if ( echo ${AODTYPE} | grep -q "NOAA_VIIRS" ); then
 OBSBLK="  
 observations:
   observers:    
@@ -209,6 +224,41 @@ observations:
         RCFile: geosaod.rc
         model units coeff: 1.e-9
 "
+#elif [ "${AODTYPE}" == *"AERONET"* ]; then
+elif ( echo ${AODTYPE} | grep -q "AERONET" ); then
+OBSBLK="  
+observations:
+  observers:    
+  - obs space:
+      name: Aod
+      obsdatain:
+        engine:
+          type: H5File
+          obsfile: ./INPUT/${OBSOUT}
+      obsdataout:
+        engine:
+          type: H5File
+          obsfile: ./DIAG/${HOFXOUT}
+      simulated variables: [aerosolOpticalDepth]
+      channels: 1-8
+    obs operator:
+      name: AodLUTs
+      obs options:
+        Sensor_ID: ${SENSORID}
+        AerosolOption: aerosols_gocart_2
+        RCFile: geosaod_aeronet.rc
+        model units coeff: 1.e-9
+    obs filters:
+    - filter: Temporal Thinning
+      seed_time: ${ANLTIMEFMT}
+      min_spacing: PT03H
+      category_variable:
+        name: MetaData/stationIdentification
+"
+else
+    echo "AODTYPE must be VIIRS or AERONET; exit this program now!"
+    exit 1
+fi
 
 # Create yaml file
 cat << EOF > ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml
@@ -220,7 +270,7 @@ geometry:
     field table filename: field_table_gfdl
   akbk: ./INPUT/akbk.nc
   layout: [${LAYOUT}]
-  io_layout: [${IOLAYOUT}]
+  io_layout: [${IO_LAYOUT}]
   npx: ${NPX}
   npy: ${NPY}
   npz: ${NPZ}
@@ -234,7 +284,6 @@ EOF
 cat ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml
 
 source ${HOMEjedi}/jedi_module_base.hera.sh
-#source /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/codeDev/JEDI/jedi-bundle/20230113/build/jedi_module_base.hera.sh
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
 export OMP_NUM_THREADS=1
 ulimit -s unlimited

@@ -19,7 +19,6 @@
 	<!ENTITY EDATE "202310100000">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
-	<!ENTITY CASE_OBS     "C192">
 
 	<!-- Run Envrionment -->
 	<!ENTITY RUN_ENVIR "emc">
@@ -28,7 +27,8 @@
 	<!-- Experiment top run directory-->
 	<!ENTITY AODTYPE     "NOAA_VIIRS">
 	<!ENTITY AODSAT     "npp j01">
-	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs">
+	<!ENTITY CASE_OBS     "C192">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/&CASE_OBS;/">
 	<!ENTITY OBSDIR_NESDIS "/scratch2/BMC/public/data/sat/nesdis/viirs/aod/conus/">
 
 	<!-- Experiment and Rotation directory -->

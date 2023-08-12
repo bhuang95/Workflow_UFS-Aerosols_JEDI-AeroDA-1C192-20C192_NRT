@@ -13,6 +13,8 @@ TASKS="
        NRT-aeroDA
        "
 
+       #NRT-postDiag-aodObs-freeRun
+       #NRT-postDiag-aodObs-aeroDA
 for TASK in ${TASKS}; do
     echo "Run ${TASK}"
     ${RORUNCMD} -w ${XMLDIR_DA}/${TASK}.xml -d ${DBDIR_DA}/${TASK}.db

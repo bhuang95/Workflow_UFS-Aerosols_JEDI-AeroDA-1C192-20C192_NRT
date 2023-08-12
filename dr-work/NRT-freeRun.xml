@@ -38,6 +38,7 @@
 	<!ENTITY AERODA "NO">
 	<!ENTITY RECENTER_ENKF_AERO "YES">
 	<!ENTITY ENSRUN "NO">
+	<!ENTITY ENSDIAG "NO">
 
 	<!-- GDAS met setup-->
 	<!ENTITY METDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/">
@@ -199,6 +200,7 @@
 		<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 		<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
 		<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
+		<envar><name>ENSDIAG</name><value>&ENSDIAG;</value></envar>
 		<envar><name>AERODA</name><value>&AERODA;</value></envar>
 		<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
 		<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>

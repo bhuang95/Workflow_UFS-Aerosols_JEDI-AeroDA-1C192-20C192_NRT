@@ -5,36 +5,36 @@
 ================================================================================================================================
 202308090000           gdasmetenkf01                    48143316           SUCCEEDED                   0         1         464.0
 202308090000           gdasmetenkf02                    48143317           SUCCEEDED                   0         1         452.0
-202308090000           gdasmetenkf03                    48143318             RUNNING                   -         0           0.0
-202308090000           gdasmetenkf04                    48143319             RUNNING                   -         0           0.0
-202308090000           gdasmetenkf05                    48143320              QUEUED                   -         0           0.0
+202308090000           gdasmetenkf03                    48143318           SUCCEEDED                   0         1         554.0
+202308090000           gdasmetenkf04                    48143319           SUCCEEDED                   0         1         549.0
+202308090000           gdasmetenkf05                    48143320           SUCCEEDED                   0         1         573.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
 202308090600             gdasmetcntl                    47986213           SUCCEEDED                   0         1         235.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308090600           gdasmetenkf01                    48143321              QUEUED                   -         0           0.0
-202308090600           gdasmetenkf02                    48143322              QUEUED                   -         0           0.0
-202308090600           gdasmetenkf03                    48143323              QUEUED                   -         0           0.0
-202308090600           gdasmetenkf04                    48143324              QUEUED                   -         0           0.0
-202308090600           gdasmetenkf05                    48143325              QUEUED                   -         0           0.0
+202308090600           gdasmetenkf01                    48143321           SUCCEEDED                   0         1         569.0
+202308090600           gdasmetenkf02                    48143322           SUCCEEDED                   0         1         570.0
+202308090600           gdasmetenkf03                    48143323           SUCCEEDED                   0         1         564.0
+202308090600           gdasmetenkf04                    48143324           SUCCEEDED                   0         1         572.0
+202308090600           gdasmetenkf05                    48143325           SUCCEEDED                   0         1         579.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
 202308091200             gdasmetcntl                    47987700           SUCCEEDED                   0         1         228.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308091200           gdasmetenkf01                    48143326              QUEUED                   -         0           0.0
-202308091200           gdasmetenkf02                    48143327              QUEUED                   -         0           0.0
-202308091200           gdasmetenkf03                    48143328              QUEUED                   -         0           0.0
-202308091200           gdasmetenkf04                    48143329              QUEUED                   -         0           0.0
-202308091200           gdasmetenkf05                    48143330              QUEUED                   -         0           0.0
+202308091200           gdasmetenkf01                    48143326           SUCCEEDED                   0         1         585.0
+202308091200           gdasmetenkf02                    48143327           SUCCEEDED                   0         1         568.0
+202308091200           gdasmetenkf03                    48143328           SUCCEEDED                   0         1         568.0
+202308091200           gdasmetenkf04                    48143329           SUCCEEDED                   0         1         577.0
+202308091200           gdasmetenkf05                    48143330           SUCCEEDED                   0         1         595.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
 202308091800             gdasmetcntl                    48016468           SUCCEEDED                   0         1         235.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308091800           gdasmetenkf01                    48143331              QUEUED                   -         0           0.0
-202308091800           gdasmetenkf02                    48143332              QUEUED                   -         0           0.0
-202308091800           gdasmetenkf03                    48143333              QUEUED                   -         0           0.0
-202308091800           gdasmetenkf04                    48143334              QUEUED                   -         0           0.0
-202308091800           gdasmetenkf05                    48143335              QUEUED                   -         0           0.0
+202308091800           gdasmetenkf01                    48143331           SUCCEEDED                   0         1         587.0
+202308091800           gdasmetenkf02                    48143332           SUCCEEDED                   0         1         558.0
+202308091800           gdasmetenkf03                    48143333           SUCCEEDED                   0         1         554.0
+202308091800           gdasmetenkf04                    48143334           SUCCEEDED                   0         1         578.0
+202308091800           gdasmetenkf05                    48143335           SUCCEEDED                   0         1         589.0

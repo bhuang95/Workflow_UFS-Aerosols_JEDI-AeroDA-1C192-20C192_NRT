@@ -22,18 +22,21 @@ PYEXE=${HOMEgfs}/ush/python/aeronet_lunar_aod2ioda_v3_Intp550nm.py
 AODTYPE=${AODTYPE:-"AERONET"}
 AODLEV=${AODLEV:-"AOD15"}
 AODWINHR=${AODWINHR:-"1"}
-AODLUNAR=${AODLUNAR:-"NO"}
+AODLIGHT=${AODLIGHT:-"SOLAR"}
 AOD550NM=${AOD550NM:-"YES"}
 MISS_AERONET_RECORD=${MISS_VIIRS_RECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/TaskRecords/record.miss_AERONET_AOD16"}
 
-if [ ${AODLUNAR} = 'YES' ]; then
-    LIGHT='LUNAR'
+if [ ${AODLIGHT} = 'SOLAR' ]; then
+    AODLUNAR='NO'
+elif [ ${AODLIGHT} = 'LUNAR' ]; then
+    AODLUNAR='YES'
 else
-    LIGHT='SOLAR'
+    echo "Define AODLIGHT as SOLAR or LUNAR only"
+    exit 100
 fi
 
-TGTDIR=${OBSDIR_NRT}/${AODTYPE}_${LIGHT}_${AODLEV}/${CDATE}
-TGTFILE=${AODTYPE}_${LIGHT}_${AODLEV}_AOD.${CDATE}.iodav3.nc
+TGTDIR=${OBSDIR_NRT}/${CDATE}
+TGTFILE=${AODTYPE}_${AODLIGHT}_${AODLEV}_AOD.${CDATE}.iodav3.nc
 
 [[ ! -d ${TGTDIR} ]] && mkdir -p ${TGTDIR}
 
