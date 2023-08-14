@@ -611,6 +611,15 @@ data_out_GFS() {
           for file in $(ls ${rPDY}.${rcyc}0000.*) ; do
             $NMV $file $memdir/RESTART/$file
           done
+### HBO-st
+### To copy restart files when output restart time  equal to FHMAX
+	  if [ $rst_int -eq ${FHMAX} ]; then
+              for file in $(find . ! -name "*0000.*" -type f) ; do
+		file1=$(echo $(basename $file))
+                $NMV $file1 $memdir/RESTART/${rPDY}.${rcyc}0000.$file1
+              done
+          fi
+### HBO-ed
         fi
       done
       $NCP $DATA/input.nml ${memdir}/

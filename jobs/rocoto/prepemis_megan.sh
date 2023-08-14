@@ -19,6 +19,7 @@ MEGANDIR_NRT=${MEGANDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-20
 MEGANDIR_HERA=${MEGANDIR_HERA:-"/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/nexus/EGAN_OFFLINE_BVOC/v2019-10/2021/"}
 CDATE=${CDATE:-"2023062900"}
 CDUMP=${CDUMP:-"gdas"}
+PRODINTHR=${PRODINTHR:-"24"}
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 
 module purge
@@ -36,7 +37,7 @@ NLN='/bin/ln -sf'
 NCP='/bin/cp -r'
 NMV='/bin/mv'
 
-CDATE=$(${NDATE} 24 ${CDATE})
+CDATE=$(${NDATE} ${PRODINTHR}  ${CDATE})
 CYY=$(echo "${CDATE}" | cut -c1-4)
 CMM=$(echo "${CDATE}" | cut -c5-6)
 CDD=$(echo "${CDATE}" | cut -c7-8)

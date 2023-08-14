@@ -34,19 +34,21 @@ for IDATE in ${MDATE} ${CDATE} ${PDATE}; do
     done
 done
 
-if [ ${CH} = "18" ]; then
-   DAYINTHR=48
-   PDATE=$(${NDATE} +${DAYINTHR} ${CDATE})
-   PYY=$(echo ${PDATE} | cut -c1-4)
-   PYMD=$(echo ${PDATE} | cut -c1-8)
-   CEDSFILE=${CEDSDIR_NRT}/${PYY}/CEDS.${CEDSVER}.emis.${PYMD}.nc
-   MEGANFILE=${MEGANDIR_NRT}/${PYY}/MEGAN.OFFLINE.BIOVOC.${PYY}.emis.${PYMD}.nc
-   for IFILE in ${CEDSFILE} ${MEGANFILE}; do
-       if [ ! -f ${IFILE} ]; then
-           echo "Missing ${IFILE}"
-           exit 99
-       fi
-   done
-fi
+#if [ ${CH} = "18" ]; then
+#   DAYINTHR=48
+#   PDATE=$(${NDATE} +${DAYINTHR} ${CDATE})
+#   PYY=$(echo ${PDATE} | cut -c1-4)
+#   PYMD=$(echo ${PDATE} | cut -c1-8)
+#
+#   GBBFILE=${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${PYMD}.nc
+#   CEDSFILE=${CEDSDIR_NRT}/${PYY}/CEDS.${CEDSVER}.emis.${PYMD}.nc
+#   MEGANFILE=${MEGANDIR_NRT}/${PYY}/MEGAN.OFFLINE.BIOVOC.${PYY}.emis.${PYMD}.nc
+#   for IFILE in ${GBBFILE}  ${CEDSFILE} ${MEGANFILE}; do
+#       if [ ! -f ${IFILE} ]; then
+#           echo "Missing ${IFILE}"
+#           exit 99
+#       fi
+#   done
+#fi
 
 exit 0

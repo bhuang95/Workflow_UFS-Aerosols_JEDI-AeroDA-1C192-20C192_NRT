@@ -11,6 +11,8 @@ TASKS="
        NRT-prepAOD-AERONET 
        NRT-freeRun 
        NRT-aeroDA
+       NRT-postDiag-aodObs-freeRun
+       NRT-postDiag-aodObs-aeroDA
        "
 
        #NRT-postDiag-aodObs-freeRun

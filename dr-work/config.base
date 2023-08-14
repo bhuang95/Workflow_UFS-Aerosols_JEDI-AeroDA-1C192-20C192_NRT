@@ -246,7 +246,7 @@ fi
 
 # Output frequency of the forecast model (for cycling)
 export FHMIN=6 #0
-export FHMAX=7 #9
+export FHMAX=6 #9
 export FHOUT=6 #3           # Will be changed to 1 in config.base if DO_GLDAS is set or (DOHYBVAR set to NO and l4densvar set to false)
 #HBO+
 export FHMIN_ENKF=${FHMIN}
