@@ -28,6 +28,7 @@
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"> 
 	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_prepEmis.rc">
 
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
@@ -159,6 +160,7 @@
 	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
 	<envar><name>MEGANDIR_HERA</name><value>&MEGANDIR_HERA;</value></envar>
 	<envar><name>PRODINTHR</name><value>&PRODINTHR;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 
 	<dependency>
 		<and>

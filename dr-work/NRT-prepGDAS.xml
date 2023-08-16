@@ -36,6 +36,7 @@
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"> 
 	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_prepGDAS.rc">
 
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
@@ -156,6 +157,7 @@
         	<envar><name>CDUMP</name><value>gdas</value></envar>
 		<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP;</value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
+		<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 
 		<dependency>
 			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_prepgdas_enkf.sh</cyclestr></sh>

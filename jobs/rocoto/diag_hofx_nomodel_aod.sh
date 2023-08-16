@@ -20,6 +20,8 @@ source "${HOMEgfs}/ush/jjob_header.sh" -e "aeroanlrun" -c "base aeroanlrun"
 
 export ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/cycExp_ATMA_warm/dr-data"}
 export JEDIDIR=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build"}
+export EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/"}
+export TASKRC=${TASKRC:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/TaskRecords/cmplCycle_misc.rc"}
 export OBSDIR_NRT=${OBSDIR_NRT:-""}
 export CDATE=${CDATE:-"2017110100"}
 export CDUMP=${CDUMP:-"gdas"}
@@ -176,7 +178,7 @@ done
 # Postprocessing
 mkdata="YES"
 [[ $mkdata = "YES" ]] && rm -rf ${DATA1}
-
+echo ${CDATE} > ${TASKRC}
 #set +x
 if [ $VERBOSE = "YES" ]; then
    echo $(date) EXITING $0 with return code $ERR >&2

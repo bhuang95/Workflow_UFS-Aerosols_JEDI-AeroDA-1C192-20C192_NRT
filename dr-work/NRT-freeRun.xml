@@ -15,6 +15,7 @@
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"> 
 	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT_XML;/dr-work/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_freeRun.rc">
 
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEgfs  "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
@@ -73,7 +74,7 @@
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
 	<!ENTITY ACCOUNT    "wrf-chem">
-	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE      "batch">
 	<!ENTITY SCHEDULER  "slurm">
 
 	<!-- ROCOTO task control -->
@@ -145,7 +146,7 @@
 
 	<jobname><cyclestr>&PSLOT;_gdascalcinc_@H</cyclestr></jobname>
 
-	<queue>&QUEUE;</queue>
+	<queue>&QUEUE_CALCINC_GDAS;</queue>
 	<partition>&PARTITION;</partition>
 	<account>&ACCOUNT;</account>
 	<walltime>&WALLTIME_CALCINC_GDAS;</walltime>
@@ -184,7 +185,7 @@
 
 	<task name="gdasaerodiag#grp#" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
 
-		<command>&JOBS_DIR;/hofx_nomodel_aod.sh</command>
+		<command>&JOBS_DIR;/diag_hofx_nomodel_aod.sh</command>
 
 		<jobname><cyclestr>&PSLOT;_gdasaerodiag#grp#_@H</cyclestr></jobname>
 		<account>&ACCOUNT;</account>
@@ -311,6 +312,7 @@
 	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
 	<envar><name>CASE_OBS</name><value>&CASE_OBS;</value></envar>
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 
 	<dependency>
 		<and>
