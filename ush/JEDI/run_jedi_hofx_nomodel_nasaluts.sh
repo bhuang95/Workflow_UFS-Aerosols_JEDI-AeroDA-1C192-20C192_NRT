@@ -251,7 +251,7 @@ observations:
     obs filters:
     - filter: Temporal Thinning
       seed_time: ${ANLTIMEFMT}
-      min_spacing: PT01H
+      min_spacing: PT06H
       category_variable:
         name: MetaData/stationIdentification
 "
