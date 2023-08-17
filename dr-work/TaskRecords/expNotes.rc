@@ -2,6 +2,7 @@
 	(1.1) 08/08/2023:  Years for CEDS (v2019/2019) and Megan (v2019-10/2021 now)
 	(1.2) 08/08/2023: NRT GBBEPx has out of bound warning for TA (t6 vs t7)
 	(1.3) 08/08/2023: SU2G_instance_SU.rc: volcano source: /dev/null
+	(1.4) 08/16/2023: GBBEPx fillValue issue: https://docs.google.com/presentation/d/1JtjlWgoGhyWVGDH_4PF3PeFWpBw8dq6f/edit#slide=id.p5
 
 (2) To be fixed
 	(2.1) 08/08/2023:exec/calca_analysis.x fromold CCPP version, because new UFS-Aerosols 

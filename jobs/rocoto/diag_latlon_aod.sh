@@ -1,28 +1,33 @@
 #!/bin/bash
-#SBATCH -N 1
-#SBATCH -t 00:30:00
-##SBATCH -p hera
-#SBATCH -q debug
-#SBATCH -A chem-var
-#SBATCH -J fgat
-#SBATCH -D ./
-#SBATCH -o /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/miscLog/calc_fv3grid_aod_aeroda.out
-#SBATCH -e /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/miscLog/calc_fv3grid_aod_aeroda.out
+##SBATCH -N 1
+##SBATCH -t 00:30:00
+###SBATCH -p hera
+##SBATCH -q debug
+##SBATCH -A chem-var
+##SBATCH -J fgat
+##SBATCH -D ./
+##SBATCH -o latlon_aod.out
+##SBATCH -e latlon_aod.out
 
+set -x
+
+PSLOT=${PSLOT:-"UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
 HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
 HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/"}
-ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"}
-CDATE=${CDATE:-"2023081200"}
+ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-data-backup"}
+EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/"}
+TASKRC=${TASKRC:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work/TaskRecords/cmplCycle_misc.rc"}
+CDATE=${CDATE:-"2023081100"}
 CASE_CNTL=${CASE_CNTL:-"C192"}
 CASE_ENKF=${CASE_ENKF:-"C192"}
 AERODA=${AERODA:-"YES"}
 ENSRUN=${ENSRUN:-"YES"}
-ENSDIAG=${ENSDIAG:-"YES"}
+ENSDIAG=${ENSDIAG:-"NO"}
 ENSGRP=${ENSGRP:-"01"}
 NMEM_EFCSGRP=${NMEM_EFCSGRP:-"5"}
 NMEM_ENKF=${NMEM_ENKF:-"20"}
 CYCINTHR=${CYCINTHR:-"6"}
-DATAROOT=${DATAROOT:-"./tests/"}
+DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Aerosols/TestScripts/grid-aod/tests/"}
 COMPONENT=${COMPONENT:-"atmos"}
 
 NDATE="/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"
@@ -34,6 +39,7 @@ NCORES=40
 source ${HOMEjedi}/jedi_module_base.hera.sh
 ERR=$?
 [[ ${ERR} -ne 0 ]] && exit 1
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/libs/fortran-datetime/lib"
 
 jobid="diag_fv3_aod".$$
 DATA1=${DATA:-${DATAROOT}/${jobid}}
@@ -51,7 +57,6 @@ GDATE=$(${NDATE} -${CYCINTHR} ${CDATE})
 
 CYMD=${CDATE:0:8}
 CH=${CDATE:8:2}
-CDATEPRE="${CYMD}.${CH}0000"
 GYMD=${GDATE:0:8}
 GH=${GDATE:8:2}
 
@@ -127,7 +132,6 @@ for FIELD in ${HOFXFIELDS}; do
 	else
             MEMSTR=""
 	fi
-	#MEMOPT="${MEMOPT}${MEMSTR}"
         RSTDIR=${ROTDIR}/${ENKFOPT}gdas.${GYMD}/${GH}/${COMPONENT}/${MEMOPT}${MEMSTR}/RESTART/
 
 	ROTDIRBASE=$(basename ${ROTDIR})
@@ -142,19 +146,28 @@ for FIELD in ${HOFXFIELDS}; do
         export HOMEgfs HOMEjedi RSTDIR FV3AODDIR CDATE CASE  TRCR NCORES FV3AODEXEC LLAODEXEC
 	[[ ! -d ${DATA} ]] && mkdir -p  ${DATA}
 	cd ${DATA}
-	echo "Running run_fv3_aod_LUTs for ${FIELD}-${TRCR}"
+	echo "Running run_latlon_aod_LUTs for ${FIELD}-${TRCR}"
         $JEDIUSH/run_latlon_aod_nasaluts.sh
 	ERR=$?
 	if [ ${ERR} -ne 0 ]; then
-	    echo "run_fv3_aod_LUTs failed for ${FIELD}-${TRCR} and exit"
+	    echo "run_latlon_aod_LUTs failed for ${FIELD}-${TRCR} and exit"
 	    exit 1
 	else
-	    echo "run_fv3_aod_LUTs completed for ${FIELD}-${TRCR} and move on"
+	    echo "run_latlon_aod_LUTs completed for ${FIELD}-${TRCR} and move on"
+	    ${NRM} ${DATA}
         fi
-
-
 
 	IMEM=$((IMEM+1))
     done
 done
 
+# Postprocessing
+mkdata="YES"
+VERBOSE="YES"
+[[ $mkdata = "YES" ]] && rm -rf ${DATA1}
+echo ${CDATE} > ${TASKRC}
+#set +x
+if [ $VERBOSE = "YES" ]; then
+   echo $(date) EXITING $0 with return code $ERR >&2
+fi
+exit ${ERR}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Link executables to working director
+set -x
 
 HOMEgfs=${HOMEgfs}
 HOMEjedi=${HOMEjedi}
@@ -17,7 +17,6 @@ CYMD=${CDATE:0:8}
 CH=${CDATE:8:2}
 CDATEPRE="${CYMD}.${CH}0000"
 
-NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
 
 ${NLN} ${FV3AODEXEC} ./gocart_aod_fv3_mpi_LUTs.x
@@ -25,15 +24,18 @@ ${NLN} ${LLAODEXEC} ./fv3aod2ll.x
 ${NLN} ${HOMEjedi}/geos-aero/test/testinput/geosaod.rc ./geosaod.rc
 ${NLN} ${HOMEjedi}/geos-aero/test/testinput/Chem_MieRegistry.rc ./Chem_MieRegistry.rc
 ${NLN} ${HOMEjedi}/geos-aero/test/Data ./
-${NLN} ${HOMEgfs}/fix/nasaluts/all_wavelengths.rc ./
+${NLN} ${HOMEgfs}/fix_self/nasaluts/all_wavelengths.rc ./
+
+FV3AODDIR=./FV3AOD
 
 [[ ! -d ${OUTDATADIR} ]] && mkdir -p ${OUTDATADIR}
+[[ ! -d ${FV3AODDIR} ]] && mkdir -p ${FV3AODDIR}
 
 FAKBK=${CDATEPRE}.fv_core.res.nc
 for ITILE in $(seq 1 6); do
     FCORE=${CDATEPRE}.fv_core.res.tile${ITILE}.nc
     FTRACER=${CDATEPRE}.${TRCR}.res.tile${ITILE}.nc
-    FAOD=${CDATEPREC}.fv_aod_LUTs.${TRCR}.res.tile${ITILE}.nc
+    FAOD=${CDATEPRE}.fv_aod_LUTs.${TRCR}.res.tile${ITILE}.nc
 
 [[ -f ./gocart_aod_fv3_mpi.nl ]] && rm -rf  ./gocart_aod_fv3_mpi.nl
 cat << EOF > ./gocart_aod_fv3_mpi.nl 	
@@ -42,7 +44,7 @@ cat << EOF > ./gocart_aod_fv3_mpi.nl
  fname_akbk = "${FAKBK}"
  fname_core = "${FCORE}"
  fname_tracer = "${FTRACER}"
- output_dir = "${OUTDATADIR}"
+ output_dir = "${FV3AODDIR}"
  fname_aod = "${FAOD}"
 /
 &record_model
@@ -71,8 +73,8 @@ if [ ${ERR} -ne 0 ]; then
 fi
 done
 
-FV3AOD=${CDATEPREC}.fv_aod_LUTs.${TRCR}.res.tile?.nc
-GRIDAOD=fv3_aod_nasaluts_${CDATE}_ll.nc
+FV3AOD=${CDATEPRE}.fv_aod_LUTs.${TRCR}.res.tile?.nc
+GRIDAOD=fv3_aod_LUTs_${TRCR}_${CDATE}_ll.nc
 
 [[ -f fv3aod2ll.nl ]] && rm -rf fv3aod2ll.nl
 cat > fv3aod2ll.nl <<EOF
@@ -80,7 +82,7 @@ cat > fv3aod2ll.nl <<EOF
  date="${CDATE}"
  input_grid_dir="${HOMEgfs}/fix_self/grid_spec/${CASE}"
  fname_grid="${CASE}_grid_spec.tile?.nc"
- input_fv3_dir="${OUTAODDIR}"
+ input_fv3_dir="${FV3AODDIR}"
  fname_fv3="${FV3AOD}"
 /
 &record_interp
@@ -88,18 +90,18 @@ cat > fv3aod2ll.nl <<EOF
  dlat=0.5
 /
 &record_output
- output_dir="${OUTAODDIR}"
+ output_dir="${OUTDATADIR}"
  fname_aod_ll="${GRIDAOD}"
 /
 EOF
 
 #srun --export=all -n ${NCORES}  ./fv3aod2ll.x
+cat fv3aod2ll.nl
 ./fv3aod2ll.x
 ERR=$?
 if [ ${ERR} -ne 0 ]; then
     echo "fv3aod2ll.x failed an exit!!!"
     exit 1
 fi
-
 
 exit ${ERR}

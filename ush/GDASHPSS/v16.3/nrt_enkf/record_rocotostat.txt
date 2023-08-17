@@ -1,40 +1,40 @@
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308130000             gdasmetcntl                    48227623           SUCCEEDED                   0         1         237.0
+202308140000             gdasmetcntl                    48261988           SUCCEEDED                   0         1         251.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308130000           gdasmetenkf01                    48303756           SUCCEEDED                   0         1         482.0
-202308130000           gdasmetenkf02                    48303757           SUCCEEDED                   0         1         500.0
-202308130000           gdasmetenkf03                    48303758           SUCCEEDED                   0         1         481.0
-202308130000           gdasmetenkf04                    48303759           SUCCEEDED                   0         1         497.0
-202308130000           gdasmetenkf05                    48303760           SUCCEEDED                   0         1         482.0
+202308140000           gdasmetenkf01                    48354839           SUCCEEDED                   0         1         523.0
+202308140000           gdasmetenkf02                    48354846           SUCCEEDED                   0         1         520.0
+202308140000           gdasmetenkf03                    48354847           SUCCEEDED                   0         1         533.0
+202308140000           gdasmetenkf04                    48354848           SUCCEEDED                   0         1         532.0
+202308140000           gdasmetenkf05                    48354849           SUCCEEDED                   0         1         544.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308130600             gdasmetcntl                    48227946           SUCCEEDED                   0         1         222.0
+202308140600             gdasmetcntl                    48262246           SUCCEEDED                   0         1         223.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308130600           gdasmetenkf01                    48303761           SUCCEEDED                   0         1         493.0
-202308130600           gdasmetenkf02                    48303762           SUCCEEDED                   0         1         480.0
-202308130600           gdasmetenkf03                    48303763           SUCCEEDED                   0         1         481.0
-202308130600           gdasmetenkf04                    48303764           SUCCEEDED                   0         1         483.0
-202308130600           gdasmetenkf05                    48303765           SUCCEEDED                   0         1         480.0
+202308140600           gdasmetenkf01                    48354850           SUCCEEDED                   0         1         483.0
+202308140600           gdasmetenkf02                    48354851           SUCCEEDED                   0         1         544.0
+202308140600           gdasmetenkf03                    48354852           SUCCEEDED                   0         1         532.0
+202308140600           gdasmetenkf04                    48354853           SUCCEEDED                   0         1         525.0
+202308140600           gdasmetenkf05                    48354854           SUCCEEDED                   0         1         540.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308131200             gdasmetcntl                    48236018           SUCCEEDED                   0         1         236.0
+202308141200             gdasmetcntl                    48273532           SUCCEEDED                   0         1         220.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308131200           gdasmetenkf01                    48303766           SUCCEEDED                   0         1         478.0
-202308131200           gdasmetenkf02                    48303767           SUCCEEDED                   0         1         485.0
-202308131200           gdasmetenkf03                    48303769           SUCCEEDED                   0         1         497.0
-202308131200           gdasmetenkf04                    48303770           SUCCEEDED                   0         1         459.0
-202308131200           gdasmetenkf05                    48303771           SUCCEEDED                   0         1         476.0
+202308141200           gdasmetenkf01                    48354855           SUCCEEDED                   0         1         571.0
+202308141200           gdasmetenkf02                    48354856           SUCCEEDED                   0         1         537.0
+202308141200           gdasmetenkf03                    48354857           SUCCEEDED                   0         1         543.0
+202308141200           gdasmetenkf04                    48354858           SUCCEEDED                   0         1         538.0
+202308141200           gdasmetenkf05                    48354859           SUCCEEDED                   0         1         543.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308131800             gdasmetcntl                    48244638           SUCCEEDED                   0         1         236.0
+202308141800             gdasmetcntl                    48287838           SUCCEEDED                   0         1         241.0
        CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
 ================================================================================================================================
-202308131800           gdasmetenkf01                    48303772           SUCCEEDED                   0         1         471.0
-202308131800           gdasmetenkf02                    48303773           SUCCEEDED                   0         1         498.0
-202308131800           gdasmetenkf03                    48303774           SUCCEEDED                   0         1         464.0
-202308131800           gdasmetenkf04                    48303775           SUCCEEDED                   0         1         488.0
-202308131800           gdasmetenkf05                    48303776           SUCCEEDED                   0         1         471.0
+202308141800           gdasmetenkf01                    48354860           SUCCEEDED                   0         1         523.0
+202308141800           gdasmetenkf02                    48354861           SUCCEEDED                   0         1         544.0
+202308141800           gdasmetenkf03                    48354862           SUCCEEDED                   0         1         540.0
+202308141800           gdasmetenkf04                    48354863           SUCCEEDED                   0         1         536.0
+202308141800           gdasmetenkf05                    48354864           SUCCEEDED                   0         1         536.0

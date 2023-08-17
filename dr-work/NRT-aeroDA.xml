@@ -397,6 +397,7 @@
 		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
+		<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 		<dependency>
 			<metataskdep metatask="gdasaeroanlefinal"/>
 		</dependency>
