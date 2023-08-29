@@ -7,8 +7,7 @@ DBDIR_DA="/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/
 TASKS="
        NRT-prepAOD-NOAA_VIIRS 
        NRT-prepAOD-AERONET 
-       NRT-postDiag-aodObs-freeRun
-       NRT-postDiag-aodObs-aeroDA
+       NRT-prepEmis 
        "
 
        #NRT-prepEmis 
