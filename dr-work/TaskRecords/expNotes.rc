@@ -7,4 +7,8 @@
 (2) To be fixed
 	(2.1) 08/08/2023:exec/calca_analysis.x fromold CCPP version, because new UFS-Aerosols 
 		version has hdf error.
-			
+
+(3) Add stochastic emission perturbations
+	(3.1) ush/forecast_postdet.sh-dev: Add ExtData.other_stochAeroEmis and GBBEPx files
+	(3.2) scripts/exglobal_forecast.sh-dev: Run stoch_aeroemis.sh before fcst executables
+	(3.3) parm/chem: add ExtData.other_stochAeroEmis and ExtData.gbbepx_v004_stochAeroEmis
