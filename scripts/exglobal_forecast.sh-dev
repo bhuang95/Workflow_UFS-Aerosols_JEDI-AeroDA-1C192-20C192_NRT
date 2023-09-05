@@ -190,7 +190,7 @@ fi
 
 if [ $machine != 'sandbox' ]; then
 
-  if [ ${STOCH_AEROEMIS} = "YES" ]; then
+  if [ ${AEROEMIS_STOCH} = "YES" ]; then
       echo "Stochastically perturbing aerosol emissions"
       $SCRIPTDIR/stoch_aeroemis.sh
       export ERR=$?

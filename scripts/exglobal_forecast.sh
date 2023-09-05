@@ -188,8 +188,16 @@ if [ $esmf_profile ]; then
   export ESMF_RUNTIME_PROFILE_OUTPUT=SUMMARY
 fi
 
-
 if [ $machine != 'sandbox' ]; then
+
+  if [ ${AEROEMIS_STOCH} = "YES" ]; then
+      echo "Stochastically perturbing aerosol emissions"
+      $SCRIPTDIR/stoch_aeroemis.sh
+      export ERR=$?
+      export err=$ERR
+      $ERRSCRIPT || exit $err
+  fi
+
   $NCP $FCSTEXECDIR/$FCSTEXEC $DATA/.
   export OMP_NUM_THREADS=$NTHREADS_FV3
   $APRUN_FV3 $DATA/$FCSTEXEC 1>&1 2>&2

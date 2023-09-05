@@ -1027,14 +1027,25 @@ GOCART_rc() {
     [[ $status -ne 0 ]] && exit $status
     # attempt to generate ExtData configuration file if not provided
     if [ ! -f $DATA/AERO_ExtData.rc ]; then
-      { \
-        echo "PrimaryExports%%" ; \
-        cat ${AERO_CONFIG_DIR}/ExtData.other ; \
-        cat ${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none} ; \
-        echo "%%" ; \
-      } > $DATA/AERO_ExtData.rc
-      status=$?
-      if (( status != 0 )); then exit $status; fi
+        if [ ${AEROEMIS_STOCH} = "YES" ]; then
+          { \
+            echo "PrimaryExports%%" ; \
+            cat ${AERO_CONFIG_DIR}/ExtData.other_stochAeroEmis ; \
+            cat ${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none}_stochAeroEmis ; \
+            echo "%%" ; \
+          } > $DATA/AERO_ExtData.rc
+          status=$?
+          if (( status != 0 )); then exit $status; fi
+        else
+          { \
+            echo "PrimaryExports%%" ; \
+            cat ${AERO_CONFIG_DIR}/ExtData.other ; \
+            cat ${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none} ; \
+            echo "%%" ; \
+          } > $DATA/AERO_ExtData.rc
+          status=$?
+          if (( status != 0 )); then exit $status; fi
+	fi
     fi
   fi
 }

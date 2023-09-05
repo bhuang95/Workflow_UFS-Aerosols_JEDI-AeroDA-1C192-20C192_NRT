@@ -1027,7 +1027,7 @@ GOCART_rc() {
     [[ $status -ne 0 ]] && exit $status
     # attempt to generate ExtData configuration file if not provided
     if [ ! -f $DATA/AERO_ExtData.rc ]; then
-        if [ ${STOCH_AEROEMIS} = "YES" ]; then
+        if [ ${AEROEMIS_STOCH} = "YES" ]; then
           { \
             echo "PrimaryExports%%" ; \
             cat ${AERO_CONFIG_DIR}/ExtData.other_stochAeroEmis ; \
