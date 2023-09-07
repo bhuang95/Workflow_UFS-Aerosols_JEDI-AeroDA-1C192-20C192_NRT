@@ -13,3 +13,5 @@
 	(3.2) scripts/exglobal_forecast.sh-dev: Run stoch_aeroemis.sh before fcst executables
 	(3.3) parm/chem: add ExtData.other_stochAeroEmis and ExtData.gbbepx_v004_stochAeroEmis
 	(3.4) Modify jobs/rocoto/prepemis_gbbepx.sh to change fillvalue to small value only, but no perturbation. 
+
+(4) 09/07/2023: GBBEPX FILLVALUE_CREC=YES turned starting from GBBEPx_all01GRID.emissions_v004_20230906.nc

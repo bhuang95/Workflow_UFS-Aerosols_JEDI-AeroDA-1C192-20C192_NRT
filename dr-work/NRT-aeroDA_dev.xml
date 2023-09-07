@@ -56,8 +56,18 @@
 
 	<!-- Aerosol Emission directory -->
 	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/">
-	<!ENTITY AEROEMIS_STOCH_CNTL "NO">
+	<!ENTITY AEROEMIS_STOCH_CNTL "YES">
+	<!ENTITY AEROEMIS_EXTSUF_CNTL "_stochAeroEmis">
+	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".T.">
 	<!ENTITY AEROEMIS_STOCH_ENKF "YES">
+	<!ENTITY AEROEMIS_EXTSUF_ENKF "_stochAeroEmis">
+	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".T.">
+	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM DUSTSRC">
+	<!ENTITY AEROEMIS_SPPT "1.0">
+	<!ENTITY AEROEMIS_SPPT_TAU "6" >
+	<!ENTITY AEROEMIS_SPPT_LSCALE "50000">
 
 	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx/">
 
@@ -443,12 +453,20 @@
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 	<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
-	<envar><name>AEROEMIS_STOCH</name><value>&AEROEMIS_STOCH_CNTL;</value></envar>
 	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
 	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
 	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
 	<envar><name>DUSTDIR_NRT</name><value>&DUSTDIR_NRT;</value></envar>
 	<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
+	<envar><name>AEROEMIS_STOCH</name><value>&AEROEMIS_STOCH_CNTL;</value></envar>
+	<envar><name>AEROEMIS_EXTSUF</name><value>&AEROEMIS_EXTSUF_CNTL;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT</name><value>&AEROEMIS_STOCH_INIT_CNTL;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT_RST00Z</name><value>&AEROEMIS_STOCH_INIT_RST00Z_CNTL;</value></envar>
+	<envar><name>AEROEMIS_SRCS</name><value>&AEROEMIS_SRCS;</value></envar>
+	<envar><name>AEROEMIS_SPPT</name><value>&AEROEMIS_SPPT;</value></envar>
+	<envar><name>AEROEMIS_SPPT_TAU</name><value>&AEROEMIS_SPPT_TAU;</value></envar>
+	<envar><name>AEROEMIS_SPPT_LSCALE</name><value>&AEROEMIS_SPPT_LSCALE;</value></envar>
+
 
 	<dependency>
 		<and>

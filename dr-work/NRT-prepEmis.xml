@@ -42,6 +42,7 @@
 
 	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/GBBEPx/">
 	<!ENTITY GBBDIR_HERA     "/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/">
+	<!ENTITY GBBFIXFV_CREC "YES">
 
         <!ENTITY CEDSVER "2019">
         <!ENTITY CEDSYEAR "2019">
@@ -95,6 +96,7 @@
 	<envar><name>CDUMP</name><value>gdas</value></envar>
 	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
 	<envar><name>GBBDIR_HERA</name><value>&GBBDIR_HERA;</value></envar>
+	<envar><name>FILLVALUE_CREC</name><value>&GBBFIXFV_CREC;</value></envar>
 
 	<dependency>
 		<datadep age="120"><cyclestr>&GBBDIR_HERA;/GBBEPx-all01GRID_v4r0_@Y@m@d.nc</cyclestr></datadep>

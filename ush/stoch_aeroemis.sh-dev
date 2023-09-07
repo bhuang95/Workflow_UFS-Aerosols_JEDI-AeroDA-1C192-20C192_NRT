@@ -36,21 +36,21 @@ COMPONENT="atmos"
 #[[ $status -ne 0 ]] && exit $status
 export LD_LIBRARY_PATH="/home/Mariusz.Pagowski/MAPP_2018/libs/fortran-datetime/lib:${LD_LIBRARY_PATH}"
 
-
-EMIS_SRCS=${EMIS_SRCS:-"GBBEPx CEDS MEGAN DUSTPARM DUSTSRC"}
-OCNSPPT=${SPPT_EMIS:-"1.0"}
-OCNSPPT_LSCALE=${SPPT_LSCALE_EMIS:-"500000"}
-OCNSPPT_TAU=${SPPT_TAU_EMIS:-"6"}
+EMIS_SRCS=${AEROEMIS_SRCS:-"GBBEPx CEDS MEGAN DUSTPARM DUSTSRC"}
+OCNSPPT=${AEROEMIS_SPPT:-"1.0"}
+OCNSPPT_LSCALE=${AEROEMIS_SPPT_LSCALE:-"500000"}
+OCNSPPT_TAU=${AEROEMIS_SPPT_TAU:-"6"}
+STOCH_INIT=${AEROEMIS_STOCH_INIT:-".F."}
+STOCH_INIT_RST00Z=${AEROEMIS_STOCH_INIT_RST00Z:-".T."}
 TSTEP=${TSTEP:-"1"}
 FCST_HR=${FHMAX:-"6"}
 DELAY_HR=${DELAY_HR:-"6"}
 OUTFREQ_HR=${OUTFREQ_HR:-"1"}
-NX_GRIDS=360
+NX_GRIDS=36
 NY_GRIDS=180
 SPPT_INTP=".T."
 ISEED_TMP=$((CDATE*1000 + MEMBER*10 + 3))
 ISEED_EMISPERT=${ISEED_SPPT:-"${ISEED_TMP}"}
-STOCH_INIT=".F."
 STOCH_WRITE=".T."
 
 PERTEXEC_CHEM=${HOMEgfs}/exec/standalone_stochy_chem.x
@@ -85,7 +85,7 @@ GBBEPx_ORG="${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${CY}${CM}${CD}.nc"
 GBBEPx_PRE="GBBEPx_all01GRID.emissions_v004_"
 #GBBEPx_VHR=$((12-${CH}))
 GBBEPx_VAR="'BC','CO','CO2','MeanFRP','NH3','NOx','OC','PM2.5','SO2'"
-GBBEPx_CREC_FILLV=".T."
+GBBEPx_CREC_FILLV=".F."
 GBBEPx_CV=""
 
 # CEDS files
@@ -136,12 +136,32 @@ elif [ ${MEMBER} -eq 0 ]; then
 else
     ENKFOPT="enkf"
     MEMOPT="mem$(printf %03d ${MEMBER})"
+
 fi
+
+[[ ! -d ${DATA} ]] && mkdir -p ${DATA}
+#[[ ! -d ${DATA}/INPUT ]] && mkdir -p ${DATA}/INPUT
 
 RSTDIR_GDATE=${ROTDIR}/${ENKFOPT}gdas.${GY}${GM}${GD}/${GH}/${COMPONENT}/${MEMOPT}/RESTART/
 RSTDIR_CDATE=${ROTDIR}/${ENKFOPT}gdas.${CY}${CM}${CD}/${CH}/${COMPONENT}/${MEMOPT}/RESTART/
+STOCHPAT_IN=${RSTDIR_GDATE}/${CY}${CM}${CD}.${CH}0000.aeroemis_stoch.res.nc
+STOCHPAT_OUT=${EY}${EM}${ED}.${EH}0000.aeroemis_stoch.res.nc
 
-[[ ! -d ${DATA} ]] && mkdir -p ${DATA}
+if [ ${STOCH_INIT} = ".T." ]; then
+    if [ ${STOCH_INIT_RST00Z} = ".T." -a ${CH} = "00"]; then
+        STOCH_INIT=".F."
+    else
+        if [ ! -e ${STOCHPAT_IN} ]; then
+           STOCH_INIT=".F."
+           echo "WARNING: STOCH_INIT was changed to False due to missing pattern from previoys cycle. "
+        fi
+    fi
+fi
+
+if [ ${STOCH_INIT} = ".T." ]; then
+    DELAY_HR=0
+fi
+
 for EMIS_SRC in ${EMIS_SRCS}; do
     DIR_TGT="${DATA}/pert_${EMIS_SRC}"
     PERTEXEC=${PERTEXEC_CHEM}
@@ -187,16 +207,11 @@ for EMIS_SRC in ${EMIS_SRCS}; do
     [[ ! -d ${DIR_TGT} ]] && mkdir -p ${DIR_TGT}
     cd ${DIR_TGT}
 
-    STOCHPAT_IN=${RSTDIR_GDATE}/${CY}${CM}${CD}.${CH}0000.aeroemis_stoch.res.nc
-    STOCHPAT_OUT=${EY}${EM}${ED}.${EH}0000.aeroemis_stoch.res.nc
 
-    [[ ! -d ./INPUT ]] && mkdir INPUT
-    if [ -e ${STOCHPAT_IN} ]; then
-        STOCH_INIT=".T."
-	DELAY_HR=0
-	${NCP} ${STOCHPAT_IN} ./INPUT/ocn_stoch.res.nc
+    [[ ! -d ./INPUT ]] && mkdir ./INPUT
+    if [ ${STOCH_INIT} = ".T." ]; then
+        ${NCP} ${STOCHPAT_IN} ./INPUT//ocn_stoch.res.nc
     fi
-
     ${NCP} ${FILE_ORG} ./INPUT/${EMIS_SRC}.nc
     ${NCP} ${PERTEXEC} ./standalone_stochy_${EMIS_SRC}.x
 
@@ -247,8 +262,7 @@ if [ ${ERR} -ne 0 ]; then
 else
     echo "Perturbing ${EMIS_SRC} is successful and modify the date if necessary."
     if [ ${STOCH_WRITE}  = ".T." ]; then
-        if [ -e ${STOCHPAT_out} ]; then
-	    [[ ! -d ${RSTDIR_CDATE} ]] && mkdir -p ${RSTDIR_CDATE}
+        if [ -e ${STOCHPAT_OUT} ]; then
 	    ${NMV} ${STOCHPAT_OUT} ${RSTDIR_CDATE}/
 	    STOCH_WRITE=".F."
 	else
@@ -256,6 +270,13 @@ else
             exit 100
 	fi
     fi
+
+    if [ ${DELAY_HR} -eq 0 ]; then
+        FILE_CDATE=${RSTDIR_GDATE}/${FILE_TGT_PRE}${CY}${CM}${CD}t${CH}:00:00z.nc
+	${NCP} ${FILE_CDATE} ./
+    fi
+    FILE_VDATE=${FILE_TGT_PRE}${VY}${VM}${VD}t${VH}:00:00z.nc
+    ${NCP} ${FILE_VDATE} ${RSTDIR_CDATE}/
 #    IHR=0
 #    while [ ${IHR} -le ${FCST_HR} ]; do
 #	IHR0=$(printf "%02d" ${IHR})

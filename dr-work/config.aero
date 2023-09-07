@@ -36,9 +36,3 @@ aero_conv_scav_factors="'*:0.3','so2:0.0','msa:0.0','dms:0.0','nh3:0.4','nh4:0.6
 #
 # Number of diagnostic aerosol tracers (default: 0)
 aero_diag_tracers=2
-
-# Stochastic parameters for emission perturbation
-export EMIS_SRCS="GBBEPx CEDS MEGAN DUSTPARM DUSTSRC"
-export SPPT_EMIS=1.0
-export SPPT_TAU_EMIS=6
-export SPPT_LSCALE_EMIS=500000
