@@ -9,10 +9,10 @@
 		This workflow was automatically generated at 2023-01-27 18:29:13.198072
 	-->
 	<!-- Experiment directory setup -->
-	<!ENTITY PSLOT "UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
-	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/"> 
-	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_NRTcyc/"> 
-	<!ENTITY EXPDIR "&TOPXMLDIR;/&PSLOT;/dr-work/">
+	<!ENTITY PSLOT "ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710">
+	<!ENTITY TOPXMLDIR "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"> 
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"> 
+	<!ENTITY EXPDIR "&TOPXMLDIR;/dr-work-RetExp/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
 	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_aeroDA.rc">
 
@@ -25,8 +25,8 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "202308121200">
-	<!ENTITY EDATE "202308121200">
+	<!ENTITY SDATE "201710060000">
+	<!ENTITY EDATE "201710071200">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
@@ -41,14 +41,18 @@
 	<!ENTITY ENSDIAG "YES">
 
 	<!-- GDAS met setup-->
-	<!ENTITY METDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/GDASAnl/">
+	<!ENTITY METDIR_NRT  "&ROTDIR;/RetrieveGDAS/">
 	<!ENTITY CASE     "C192">
 	<!ENTITY CASE_CNTL     "C192">
 	<!ENTITY CASE_ENKF     "C192">
+	<!ENTITY NMEMSGRPS "01-40">
+	<!ENTITY CHGRESHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/GDASCHGRES-V14/">
+	<!ENTITY METRETDIR "&ROTDIR;/RetrieveGDAS/">
+	<!ENTITY GFSVERSION "V14">
 
 	<!-- Obs setup-->
 	<!ENTITY AODTYPE     "NOAA_VIIRS">
-	<!ENTITY AODSAT     "npp j01">
+	<!ENTITY AODSAT     "npp">
 	<!ENTITY CASE_OBS     "C192">
 	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/&CASE_OBS;">
 	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
@@ -58,18 +62,18 @@
 	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/">
 	<!ENTITY AEROEMIS_STOCH_CNTL "NO">
 	<!ENTITY AEROEMIS_EXTSUF_CNTL "">
-	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".T.">
-	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".F.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".F.">
 	<!ENTITY AEROEMIS_STOCH_ENKF "YES">
 	<!ENTITY AEROEMIS_EXTSUF_ENKF "_stochAeroEmis">
-	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".T.">
-	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".F.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".F.">
 	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM DUSTSRC">
 	<!ENTITY AEROEMIS_SPPT "1.0">
 	<!ENTITY AEROEMIS_SPPT_TAU "6" >
 	<!ENTITY AEROEMIS_SPPT_LSCALE "500000">
 
-	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx/">
+	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx-linked/">
 
         <!ENTITY CEDSVER "2019">
 	<!ENTITY CEDSDIR_NRT     "&EMISDIR_NRT;/nexus/CEDS/v&CEDSVER;/">
@@ -80,18 +84,18 @@
 	<!ENTITY DUSTDIR_NRT "&EMISDIR_NRT;/Dust">
 
 	<!-- Archive directory setup -->
-	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_NRTcyc/">
+	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_RETcyc/">
 	<!ENTITY ARCHRETHR "12">
 	<!ENTITY NMEM_ENSGRP_ARCH "5">
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
 	<!ENTITY ACCOUNT    "wrf-chem">
-	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE      "batch">
 	<!ENTITY SCHEDULER  "slurm">
 
 	<!-- ROCOTO task control -->
-	<!ENTITY MAXTRIES "10">
+	<!ENTITY MAXTRIES "5">
 	<!ENTITY CYCLETHROTTLE "1">
 	<!ENTITY TASKTHROTTLE  "20">
 
@@ -129,12 +133,12 @@
 	<!ENTITY NATIVE_DIAG_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_FCST_GDAS     "&QUEUE;">
-	<!ENTITY WALLTIME_FCST_GDAS  "00:10:00">
+	<!ENTITY WALLTIME_FCST_GDAS  "00:29:00">
 	<!ENTITY RESOURCES_FCST_GDAS "9:ppn=40:tpp=1">
 	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_EFCS_GDAS     "&QUEUE;">
-	<!ENTITY WALLTIME_EFCS_GDAS  "00:15:00">
+	<!ENTITY WALLTIME_EFCS_GDAS  "00:29:00">
 	<!ENTITY RESOURCES_EFCS_GDAS "9:ppn=40:tpp=1">
 	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE">
 
@@ -152,6 +156,48 @@
 	<!-- Define the cycles -->
 	<cycledef group="gdas_half">&SDATE; &EDATE; 06:00:00</cycledef>
 	<cycledef group="gdas">&SDATE; &EDATE; 06:00:00</cycledef>
+
+<task name="gdasretrievemet" cycledefs="gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/retrieve_gdaschgres_v14.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_retrievemet_v14_@H</cyclestr></jobname>
+	<account>&ACCOUNT_HPSS;</account>
+	<queue>&QUEUE_HPSS;</queue>
+	<partition>&PARTITION_HPSS;</partition>
+	<walltime>&WALLTIME_HPSS;</walltime>
+	<nodes>&RESOURCES_HPSS;</nodes>
+	<!--
+	<memory>&MEMORIES_HPSS;</memory>
+	-->
+	<native>&NATIVE_HPSS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/retrievemet_v14.log</cyclestr></join>
+
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>METRETDIR</name><value>&METRETDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>CHGRESHPSSDIR</name><value>&CHGRESHPSSDIR;</value></envar>
+	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
+	<envar><name>NMEMSGRPS</name><value>&NMEMSGRPS;</value></envar>
+	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
+	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_OTHER;</value></envar>
+	<envar><name>AERODA</name><value>&AERODA;</value></envar>
+	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+
+	<dependency>
+		<or>
+			<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+			<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+		</or>
+	</dependency>
+
+</task>
+
+
 
 <task name="gdasmetinccntl" cycledefs="gdas" maxtries="&MAXTRIES;">
 
@@ -185,7 +231,6 @@
 		<and>
 			<datadep age="120"><cyclestr>&METDIR_NRT;/&CASE_CNTL;/gdas.@Y@m@d/@H/gdas.t@Hz.atmanl.nc</cyclestr></datadep>
 			<datadep><cyclestr offset="-6:00:00">&ROTDIR;/gdas.@Y@m@d/@H/atmos/gdas.t@Hz.atmf006.nc</cyclestr></datadep>
-			<cycleexistdep cycle_offset="-06:00:00"/>
 		</and>
 	</dependency>
 
@@ -228,7 +273,6 @@
 		<dependency>
 			<and>
 				<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_calcmetinc_enkf.sh</cyclestr></sh>
-				<cycleexistdep cycle_offset="-06:00:00"/>
 			</and>
 		</dependency>
 	</task>
@@ -275,8 +319,10 @@
 			<!--taskdep task="gdasarch" cycle_offset="-06:00:00"/-->
 			<streq><left>&AERODA;</left><right>YES</right></streq>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+                        <!-- 
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 			<cycleexistdep cycle_offset="-06:00:00"/>
+			-->
 		</and>
 	</dependency>
 
@@ -323,8 +369,10 @@
 			<!--taskdep task="gdasarch" cycle_offset="-06:00:00"/-->
 			<streq><left>&AERODA;</left><right>YES</right></streq>
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_npp.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
+			<!--
 			<datadep age="300"><cyclestr>&OBSDIR_NRT;/@Y@m@d@H/&AODTYPE;_AOD_j01.@Y@m@d@H.iodav3.nc</cyclestr></datadep>
 			<cycleexistdep cycle_offset="-06:00:00"/>
+			-->
 		</and>
 	</dependency>
 
@@ -476,7 +524,9 @@
 					<taskdep task="gdasaeroanlvar"/>
 					<metataskdep metatask="gdasaerodiag"/>
 				</and>
+				<!--
 				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+				-->
 			</or>
 			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 		</and>
@@ -543,7 +593,9 @@
 						<taskdep task="gdasaeroanlvar"/>
 						<metataskdep metatask="gdasaerodiag"/>
 					</and>
+					<!-- 
 					<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+					-->
 				</or>
 				<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
 			</and>
@@ -589,7 +641,7 @@
 
 <task name="gdasarch" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;" final="true">
 
-	<command>&JOBS_DIR;/arch2hpss_aeroda.sh</command>
+	<command>&JOBS_DIR;/arch2hpss_aeroda_ret.sh</command>
 
 	<jobname><cyclestr>&PSLOT;_gdasarch_@H</cyclestr></jobname>
 	<account>&ACCOUNT;</account>

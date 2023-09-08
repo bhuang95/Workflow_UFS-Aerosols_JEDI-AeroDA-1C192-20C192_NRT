@@ -46,7 +46,7 @@ TSTEP=${TSTEP:-"1"}
 FCST_HR=${FHMAX:-"6"}
 DELAY_HR=${DELAY_HR:-"6"}
 OUTFREQ_HR=${OUTFREQ_HR:-"1"}
-NX_GRIDS=36
+NX_GRIDS=360
 NY_GRIDS=180
 SPPT_INTP=".T."
 ISEED_TMP=$((CDATE*1000 + MEMBER*10 + 3))
@@ -148,7 +148,7 @@ STOCHPAT_IN=${RSTDIR_GDATE}/${CY}${CM}${CD}.${CH}0000.aeroemis_stoch.res.nc
 STOCHPAT_OUT=${EY}${EM}${ED}.${EH}0000.aeroemis_stoch.res.nc
 
 if [ ${STOCH_INIT} = ".T." ]; then
-    if [ ${STOCH_INIT_RST00Z} = ".T." -a ${CH} = "00"]; then
+    if [ ${STOCH_INIT_RST00Z} = ".T." -a ${CH} = "00" ]; then
         STOCH_INIT=".F."
     else
         if [ ! -e ${STOCHPAT_IN} ]; then
@@ -275,7 +275,7 @@ else
         FILE_CDATE=${RSTDIR_GDATE}/${FILE_TGT_PRE}${CY}${CM}${CD}t${CH}:00:00z.nc
 	${NCP} ${FILE_CDATE} ./
     fi
-    FILE_VDATE=${FILE_TGT_PRE}${VY}${VM}${VD}t${VH}:00:00z.nc
+    FILE_VDATE=${FILE_TGT_PRE}${EY}${EM}${ED}t${EH}:00:00z.nc
     ${NCP} ${FILE_VDATE} ${RSTDIR_CDATE}/
 #    IHR=0
 #    while [ ${IHR} -le ${FCST_HR} ]; do

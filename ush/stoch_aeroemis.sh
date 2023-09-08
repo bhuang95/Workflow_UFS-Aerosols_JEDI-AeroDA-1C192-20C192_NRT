@@ -46,12 +46,13 @@ TSTEP=${TSTEP:-"1"}
 FCST_HR=${FHMAX:-"6"}
 DELAY_HR=${DELAY_HR:-"6"}
 OUTFREQ_HR=${OUTFREQ_HR:-"1"}
-NX_GRIDS=36
+NX_GRIDS=360
 NY_GRIDS=180
 SPPT_INTP=".T."
 ISEED_TMP=$((CDATE*1000 + MEMBER*10 + 3))
 ISEED_EMISPERT=${ISEED_SPPT:-"${ISEED_TMP}"}
 STOCH_WRITE=".T."
+GBBEPx_VERSION=${AERO_EMIS_FIRE:-"gbbepx_v004"}
 
 PERTEXEC_CHEM=${HOMEgfs}/exec/standalone_stochy_chem.x
 PERTEXEC_DUST=${HOMEgfs}/exec/standalone_stochy_dust.x
@@ -81,8 +82,16 @@ EH=${EDATE:8:2}
 #PERT_FHMAX=$(${NDATE} ${FCST_HR} ${CDATE})
 
 # GBBEPx files
-GBBEPx_ORG="${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${CY}${CM}${CD}.nc"
-GBBEPx_PRE="GBBEPx_all01GRID.emissions_v004_"
+if [ ${GBBEPx_VERSION} = 'gbbepx_v004' ]; then
+    GBBEPx_ORG="${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${CY}${CM}${CD}.nc"
+    GBBEPx_PRE="GBBEPx_all01GRID.emissions_v004_"
+elif [ ${GBBEPx_VERSION} = 'gbbepx_v003' ]; then
+    GBBEPx_ORG="${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v003_${CY}${CM}${CD}.nc"
+    GBBEPx_PRE="GBBEPx_all01GRID.emissions_v003_"
+else
+    echo "GBBEPx_VERSION missing and exit"
+    exit 100
+fi
 #GBBEPx_VHR=$((12-${CH}))
 GBBEPx_VAR="'BC','CO','CO2','MeanFRP','NH3','NOx','OC','PM2.5','SO2'"
 GBBEPx_CREC_FILLV=".F."
@@ -148,7 +157,7 @@ STOCHPAT_IN=${RSTDIR_GDATE}/${CY}${CM}${CD}.${CH}0000.aeroemis_stoch.res.nc
 STOCHPAT_OUT=${EY}${EM}${ED}.${EH}0000.aeroemis_stoch.res.nc
 
 if [ ${STOCH_INIT} = ".T." ]; then
-    if [ ${STOCH_INIT_RST00Z} = ".T." -a ${CH} = "00"]; then
+    if [ ${STOCH_INIT_RST00Z} = ".T." -a ${CH} = "00" ]; then
         STOCH_INIT=".F."
     else
         if [ ! -e ${STOCHPAT_IN} ]; then
@@ -275,7 +284,7 @@ else
         FILE_CDATE=${RSTDIR_GDATE}/${FILE_TGT_PRE}${CY}${CM}${CD}t${CH}:00:00z.nc
 	${NCP} ${FILE_CDATE} ./
     fi
-    FILE_VDATE=${FILE_TGT_PRE}${VY}${VM}${VD}t${VH}:00:00z.nc
+    FILE_VDATE=${FILE_TGT_PRE}${EY}${EM}${ED}t${EH}:00:00z.nc
     ${NCP} ${FILE_VDATE} ${RSTDIR_CDATE}/
 #    IHR=0
 #    while [ ${IHR} -le ${FCST_HR} ]; do
