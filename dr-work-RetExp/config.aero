@@ -27,7 +27,7 @@ case $machine in
 esac
 
 # Biomass burning emission dataset. Choose from: GBBEPx, QFED, NONE (default)
-AERO_EMIS_FIRE=gbbepx_v003
+AERO_EMIS_FIRE=${GBBVER:-"gbbepx_v003"}
 
 # Aerosol convective scavenging factors (list of string array elements)
 # Element syntax: '<tracer_name>:<factor>'. Use <tracer_name> = * to set default factor for all aerosol tracers

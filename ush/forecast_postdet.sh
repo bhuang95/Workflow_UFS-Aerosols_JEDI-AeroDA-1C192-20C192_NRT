@@ -124,7 +124,7 @@ EOF
           res_latlon_dynamics="fv3_increment.nc"
 	#HBO+
         else
-          echo "warm_start=True, but missing increment ${$increment_file}"
+          echo "warm_start=True, but missing increment ${increment_file}"
 	  echo "Exit...."
 	  exit 1
         fi

@@ -5,6 +5,7 @@ GBBDIR_NRT=${GBBDIR_NRT:-"${EMISDIR_NRT}/GBBEPx"}
 CEDSDIR_NRT=${CEDSDIR_NRT:-"${EMISDIR_NRT}/CEDS"}
 MEGANDIR_NRT=${MEGANDIR_NRT:-"${EMISDIR_NRT}/MEGAN_OFFLINE_BVOC"}
 CEDSVER=${CEDSVER:-"2019"}
+GBBVER=${GBBVER:-"gbbepx_v003"}
 CDATE=${CDATE:-"2023062400"}
 DAYINTHR=24
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
@@ -22,7 +23,14 @@ for IDATE in ${MDATE} ${CDATE} ${PDATE}; do
     IHH=$(echo ${IDATE} | cut -c9-10)
     IYMD=$(echo ${IDATE} | cut -c1-8)
 
-    GBBFILE=${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${IYMD}.nc
+    if [ ${GBBVER} = "gbbepx_v003" ]; then
+        GBBFILE=${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v003_${IYMD}.nc
+    elif [ ${GBBVER} = "gbbepx_v004" ]; then
+        GBBFILE=${GBBDIR_NRT}/GBBEPx_all01GRID.emissions_v004_${IYMD}.nc
+    else
+        echo "GBBVER not properly defined and exit 100"
+	exit 100
+    fi
     CEDSFILE=${CEDSDIR_NRT}/${IYY}/CEDS.${CEDSVER}.emis.${IYMD}.nc
     MEGANFILE=${MEGANDIR_NRT}/${IYY}/MEGAN.OFFLINE.BIOVOC.${IYY}.emis.${IYMD}.nc
     

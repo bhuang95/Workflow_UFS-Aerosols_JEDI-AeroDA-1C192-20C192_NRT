@@ -25,7 +25,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "201710060000">
-	<!ENTITY EDATE "201710071200">
+	<!ENTITY EDATE "201710301200">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
@@ -73,6 +73,7 @@
 	<!ENTITY AEROEMIS_SPPT_LSCALE "500000">
 
 	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx-linked/">
+	<!ENTITY GBBVER "gbbepx_v003">
 
         <!ENTITY CEDSVER "2019">
 	<!ENTITY CEDSDIR_NRT     "&EMISDIR_NRT;/nexus/CEDS/v&CEDSVER;/">
@@ -501,6 +502,7 @@
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 	<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
 	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+	<envar><name>GBBVER</name><value>&GBBVER;</value></envar>
 	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
 	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
 	<envar><name>DUSTDIR_NRT</name><value>&DUSTDIR_NRT;</value></envar>
@@ -519,7 +521,7 @@
 		<and>
 			<or>
 				<and>
-					<taskdep task="gdasmetinccntl"/>
+					<metataskdep metatask="gdasmetincenkf"/>
 					<taskdep task="gdasaeroanlvar"/>
 					<metataskdep metatask="gdasaerodiag"/>
 				</and>
@@ -572,6 +574,7 @@
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
 		<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
 		<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+	        <envar><name>GBBVER</name><value>&GBBVER;</value></envar>
 		<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
 		<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
 		<envar><name>DUSTDIR_NRT</name><value>&DUSTDIR_NRT;</value></envar>
