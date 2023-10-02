@@ -54,10 +54,10 @@ if __name__ == '__main__':
     hfxarr=np.array(hfxvec)
     
     bias_all=hfxarr-obsarr
-    biasm_all=np.mean(bias_all)
-    maem_all=np.mean(np.absolute(bias_all))
-    rmsem_all=np.sqrt(np.mean(np.square(bias_all)))
-    brrmsem_all=np.sqrt(np.mean(np.square(bias_all-biasm_all)))
+    biasm_all=np.nanmean(bias_all)
+    maem_all=np.nanmean(np.absolute(bias_all))
+    rmsem_all=np.sqrt(np.nanmean(np.square(bias_all)))
+    brrmsem_all=np.sqrt(np.nanmean(np.square(bias_all-biasm_all)))
     #meanarr=np.empty([1,4])
     #meanarr[0,:]=[biasm_all, rmsem_all, maem_all, brrmsem_all]
 
@@ -72,13 +72,13 @@ if __name__ == '__main__':
         count_ipt=np.size(indice_ipt)  #len(indice_ipt)
         obs_ipt=obsarr[indice_ipt]
         hfx_ipt=hfxarr[indice_ipt]
-        obsm_ipt=np.mean(obs_ipt)
-        hfxm_ipt=np.mean(hfx_ipt)
+        obsm_ipt=np.nanmean(obs_ipt)
+        hfxm_ipt=np.nanmean(hfx_ipt)
         bias_ipt=hfx_ipt-obs_ipt
         biasm_ipt=np.mean(bias_ipt)
         if count_ipt > 1:
-            rmsem_ipt=np.sqrt(np.mean(np.square(bias_ipt)))
-            brrmsem_ipt=np.sqrt(np.mean(np.square(bias_ipt-biasm_ipt)))
+            rmsem_ipt=np.sqrt(np.nanmean(np.square(bias_ipt)))
+            brrmsem_ipt=np.sqrt(np.nanmean(np.square(bias_ipt-biasm_ipt)))
         else:
             rmsem_ipt=np.absolute(bias_ipt)
             brrmsem_ipt=0

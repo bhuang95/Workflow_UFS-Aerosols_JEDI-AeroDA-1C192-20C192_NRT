@@ -73,6 +73,7 @@ if __name__ == '__main__':
         obsgrp = ncdata.groups[gobs]
         hfxgrp = ncdata.groups[ghfx]
         eqcgrp = ncdata.groups[geqc]
+
         lontmp = metagrp[vlon][:]
         lattmp = metagrp[vlat][:]
         obstmp = obsgrp[vobs][:,chanind]

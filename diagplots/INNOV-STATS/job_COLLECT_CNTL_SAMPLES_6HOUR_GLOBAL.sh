@@ -12,25 +12,28 @@ module use -a /contrib/anaconda/modulefiles
 module load anaconda/latest
 
 curdir=`pwd`
-aod=NOAA-VIIRS
+aod=NOAA_VIIRS_npp
 cycst=2017100600
-cyced=2017102318
-topexpdir=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols
-topplotdir=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/AeroDA-1C192-20C192-201710/diagplots/INNOV-STATS/
-nodaexp=FreeRun-1C192-0C192-201710
-daexp=AeroDA-1C192-20C192-201710
-spinupcnts=20 # number of cycles
-rundir=${topplotdir}/${aod}-${cycst}-${cyced}/
+cyced=2017102718
+spinupcyc=2017101000 # number of cycles
+topexpdir=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc
+nodaexp=FreeRun-201710
+daexp=ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710
+topplotdir=${topexpdir}/${daexp}/diagplots/INNOV-STATS/
+rundir=${topplotdir}/${aod}-6hour-global-${cycst}-${cyced}/
 #/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/AeroDA-1C192-20C192-201710/diagplots/HOFX-STATS/
 expnames="
     ${nodaexp}
     ${daexp}
 "
 
+pyclecsamp=COLLECT_CNTL_SAMPLES_6HOUR_GLOBAL.py
+pypltstats=PLOT_AOD_STATS_6HOUR_GLOBAL.py
+
 aeroda="True"
 emeandiag="True"
 for expname in ${expnames}; do
-    if [[ "${expname}" == *"FreeRun"* ]]; then
+    if [ ${expname} = ${nodaexp} ]; then
         aeroda="False"
         emeandiag="False"
     else
@@ -39,17 +42,16 @@ for expname in ${expnames}; do
     fi
 
     expdir=${rundir}/${expname} 
-    [[ ! -d ${expdir} ]] && mkdir -p ${expdir}
+    [[  -d ${expdir} ]] && rm -rf ${expdir}
+    mkdir -p ${expdir}
 
     echo ${expdir}
     cd ${expdir}
-    cp -r ${curdir}/COLLECT_CNTL_SAMPLES_6H.py ./COLLECT_CNTL_SAMPLES_6H.py
+    cp -r ${curdir}/${pyclecsamp} ./
 
-    python COLLECT_CNTL_SAMPLES_6H.py -i ${cycst} -j ${cyced} -a ${aeroda} -m ${emeandiag} -e ${expname} -d ${topexpdir}
+    python ${curdir}/${pyclecsamp} -i ${cycst} -j ${cyced} -a ${aeroda} -m ${emeandiag} -e ${expname} -d ${topexpdir} -t ${aod}
     
-    [[ $? -ne 0 ]] && exit 100
-
-#cat << EOF > job_${expname}.sh
+#cat << EOF > job_${expname}.s
 ##!/bin/bash
 ##SBATCH -J nemsio2nc_run 
 ##SBATCH -A wrf-chem
@@ -73,8 +75,10 @@ for expname in ${expnames}; do
 #sbatch job_${expname}.sh
 done
 
-cp ${curdir}/plt_AOD_STATS.py ${rundir}/
 cd ${rundir}
-python plt_AOD_STATS.py -i ${cycst} -j ${cyced} -e ${nodaexp} -f ${daexp} -s ${spinupcnts}
+cp ${curdir}/${pypltstats} ./
+python ${pypltstats} -i ${cycst} -j ${cyced} -e ${nodaexp} -f ${daexp} -s ${spinupcyc}
+[[ $? -ne 0 ]] && exit 100
+
 exit 0
 

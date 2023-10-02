@@ -13,6 +13,17 @@ from datetime import datetime
 from datetime import timedelta
 import os, argparse
 
+
+def get_spinupcyc_num(infile, ind, spinupcyc):
+    infile = f"{infile}"
+    data1d = []
+    with open(infile, 'r') as fin:
+        for line in fin.readlines():
+            data = float(line.split()[ind])
+            data1d.append(data)
+    return data1d.index(float(spinupcyc))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description=(
@@ -42,7 +53,7 @@ if __name__ == '__main__':
         type=str, required=True)
 
     required.add_argument(
-        '-s', '--spinupcnts',
+        '-s', '--spinupcyc',
         help="Cycle numners for spinup and not accounted in the mean calculation",
         type=int, required=True)
 
@@ -51,50 +62,40 @@ if __name__ == '__main__':
     cyced = args.edcycle
     nodaexp = args.nodaexp
     daexp = args.daexp
-    spinupcnts = args.spinupcnts
+    cycsp = args.spinupcyc
 
     nodadir = nodaexp
     dadir = daexp
 
     field = 'cntlBkg'
-    outfile = f'{nodadir}/{nodaexp}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
+    outfile = f'{nodadir}/{nodaexp}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
     datatmp = np.loadtxt(outfile)
-    obs = datatmp[:,2]
-    noda_hfx = datatmp[:,3]
-    noda_bias = datatmp[:,4]
-    noda_mse = datatmp[:,5]
+    obs, noda_hfx, noda_bias, noda_mse = datatmp[:,2], datatmp[:,3], datatmp[:,4], datatmp[:,5]
     noda_rmse = np.sqrt(noda_mse)
 
     field = 'cntlBkg'
-    outfile = f'{dadir}/{daexp}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
+    outfile = f'{dadir}/{daexp}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
     datatmp = np.loadtxt(outfile)
-    cntlbkg_hfx = datatmp[:,3]
-    cntlbkg_bias = datatmp[:,4]
-    cntlbkg_mse = datatmp[:,5]
+    cntlbkg_hfx, cntlbkg_bias, cntlbkg_mse = datatmp[:,3], datatmp[:,4], datatmp[:,5]
     cntlbkg_rmse = np.sqrt(cntlbkg_mse)
+    spnum = get_spinupcyc_num(outfile, 0, cycsp)
 
     field = 'cntlAnl'
-    outfile = f'{dadir}/{daexp}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
+    outfile = f'{dadir}/{daexp}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
     datatmp = np.loadtxt(outfile)
-    cntlanl_hfx = datatmp[:,3]
-    cntlanl_bias = datatmp[:,4]
-    cntlanl_mse = datatmp[:,5]
+    cntlanl_hfx, cntlanl_bias, cntlanl_mse = datatmp[:,3], datatmp[:,4], datatmp[:,5]
     cntlanl_rmse = np.sqrt(cntlanl_mse)
 
     field = 'emeanBkg'
-    outfile = f'{dadir}/{daexp}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
+    outfile = f'{dadir}/{daexp}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
     datatmp = np.loadtxt(outfile)
-    emeanbkg_hfx = datatmp[:,3]
-    emeanbkg_bias = datatmp[:,4]
-    emeanbkg_mse = datatmp[:,5]
+    emeanbkg_hfx, emeanbkg_bias, emeanbkg_mse = datatmp[:,3], datatmp[:,4], datatmp[:,5]
     emeanbkg_rmse = np.sqrt(emeanbkg_mse)
 
     field = 'emeanAnl'
-    outfile = f'{dadir}/{daexp}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
+    outfile = f'{dadir}/{daexp}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt'
     datatmp = np.loadtxt(outfile)
-    emeananl_hfx = datatmp[:,3]
-    emeananl_bias = datatmp[:,4]
-    emeananl_mse = datatmp[:,5]
+    emeananl_hfx, emeananl_bias, emeananl_mse = datatmp[:,3], datatmp[:,4], datatmp[:,5]
     emeananl_rmse = np.sqrt(emeananl_mse)
 
     aod=np.stack((obs, noda_hfx, cntlbkg_hfx, cntlanl_hfx, emeanbkg_hfx, emeananl_hfx), axis=1)
@@ -102,9 +103,9 @@ if __name__ == '__main__':
     rmse=np.stack((noda_rmse, cntlbkg_rmse, cntlanl_rmse, emeanbkg_rmse, emeananl_rmse), axis=1)
     mse=np.stack((noda_mse, cntlbkg_mse, cntlanl_mse, emeanbkg_mse, emeananl_mse), axis=1)
 
-    maod=np.nanmean(aod[spinupcnts:,:], axis=0)
-    mbias=np.nanmean(bias[spinupcnts:,:], axis=0)
-    mrmse=np.nanmean(mse[spinupcnts:,:], axis=0)
+    maod=np.nanmean(aod[spnum:,:], axis=0)
+    mbias=np.nanmean(bias[spnum:,:], axis=0)
+    mrmse=np.nanmean(mse[spnum:,:], axis=0)
     mrmse=np.sqrt(mrmse)
    
     leglist1=['VIIRS', 'FreeRun',  'DA-cntlBkg', 'DA-cntlAnl', 'DA-emBkg', 'DA-emAnl']
@@ -192,6 +193,11 @@ if __name__ == '__main__':
             else:
                 print(leglist)
                 print(data)
+                meanfile=f'mean_{ylab}_{cycst}_{cyced}.txt'
+                with open(meanfile, 'w') as fp:
+                    fp.write('\t'.join(leglist))
+                    fp.write('\n')
+                    fp.write('\t'.join(str(item) for item in data))
                 ax.bar(leglist, data, color=pltcolor)
                 ax.set_title(title, loc='center',fontsize=14)
                 plt.xticks(rotation=270)

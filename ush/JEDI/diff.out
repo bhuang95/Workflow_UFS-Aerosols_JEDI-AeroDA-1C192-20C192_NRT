@@ -1,0 +1,125 @@
+5,7c5,7
+< JEDIDIR=${HOMEjedi:-"$HOMEgfs/sorc/jedi.fd/"}
+< DATA=${DATA:-"$pwd/analysis.$$"}
+< ROTDIR=${ROTDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/"}
+---
+> JEDIDIR=${HOMEjedi:-$HOMEgfs/sorc/jedi.fd/}
+> DATA=${DATA:-$pwd/analysis.$$}
+> ROTDIR=${ROTDIR:-/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/}
+91,92c91
+< #if [ "${AODTYPE}" == *"AERONET"* ]; then
+< if ( echo ${AODTYPE} | grep -q "AERONET" ); then
+---
+> if [ ${AODTYPE} = "AERONET_AOD15" -o  ${AODTYPE} = "AERONET_AOD20" ]; then
+98,99c97
+< #if [ "${AODTYPE}" == "NOAA_VIIRS" ]; then
+< if ( echo ${AODTYPE} | grep -q "NOAA_VIIRS" ); then
+---
+> if [ ${AODTYPE} = "NOAA_VIIRS" ]; then
+110,112c108,111
+< #elif [ "${AODTYPE}" == *"AERONET"* ]; then
+< elif ( echo ${AODTYPE} | grep -q "AERONET" ); then
+<     OBSIN=${OBSDIR_NRT}/${OBSTIME}/${AODTYPE}_AOD.${OBSTIME}.iodav3.nc
+---
+> 
+> elif [ ${AODTYPE} = "AERONET_AOD15" -o  ${AODTYPE} = "AERONET_AOD20" ]; then
+>     #OBSIN=${OBSDIR_NRT}/${OBSTIME}/aeronet_aod.${OBSTIME}.nc
+>     OBSIN=${OBSDIR_NRT}/aeronet_aod.${OBSTIME}.nc
+161a161,167
+> # Link yaml and output file
+> [[ -f ${HOFXDIR}/${HOFXOUT} ]] && rm -rf ${HOFXDIR}/${HOFXOUT}
+> [[ -f ${HOFXDIR}/hofx_nomodel_aero_${AODTYPE}.yaml ]] && rm -rf ${HOFXDIR}/hofx_nomodel_aero_${AODTYPE}.yaml
+> 
+> ${NLN} ${HOFXDIR}/${HOFXOUT} ${DIAGDIR}/${HOFXOUT}
+> ${NLN} ${HOFXDIR}/hofx_nomodel_aero_${AODTYPE}.yaml ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml
+> 
+179,180c185
+< #if [ "${AODTYPE}" == "NOAA_VIIRS" ]; then
+< if ( echo ${AODTYPE} | grep -q "NOAA_VIIRS" ); then
+---
+> if [ $AODTYPE = "NOAA_VIIRS" ]; then
+205,225d209
+<   - obs space:
+<       name: Aod
+<       obsdatain:
+<         engine:
+<           type: H5File
+<           obsfile: ./INPUT/${OBSOUT1}
+<       obsdataout:
+<         engine:
+<           type: H5File
+<           obsfile: ./DIAG/${HOFXOUT1}
+<       simulated variables: [aerosolOpticalDepth]
+<       channels: 4
+<     obs operator:
+<       name: AodLUTs
+<       obs options:
+<         Sensor_ID: ${SENSORID}
+<         EndianType: little_endian
+<         CoefficientPath: ./CRTM/
+<         AerosolOption: aerosols_gocart_2
+<         RCFile: geosaod.rc
+<         model units coeff: 1.e-9
+227,228c211
+< #elif [ "${AODTYPE}" == *"AERONET"* ]; then
+< elif ( echo ${AODTYPE} | grep -q "AERONET" ); then
+---
+> elif [ ${AODTYPE} = "AERONET_AOD15" -o  ${AODTYPE} = "AERONET_AOD20" ]; then
+254c237
+<       min_spacing: PT06H
+---
+>       min_spacing: PT01H
+259c242
+<     echo "AODTYPE must be VIIRS or AERONET; exit this program now!"
+---
+>     echo "AODTYBE must be VIIRS or AERONET; exit this program now!"
+273c256
+<   io_layout: [${IO_LAYOUT}]
+---
+>   io_layout: [${IOLAYOUT}]
+285,291d267
+< 
+< source ${HOMEjedi}/jedi_module_base.hera.sh
+< export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+< export OMP_NUM_THREADS=1
+< ulimit -s unlimited
+< 
+< srun --export=all -n ${NCORES} ./fv3jedi_hofx_nomodel.x "./hofx_nomodel_aero_${AODTYPE}.yaml" "./hofx_nomodel_aero.log"
+293,296d268
+< if [ ${ERR} -ne 0 ]; then
+<    echo "JEDI hofx failed and exit the program!!!"
+<    exit ${ERR}
+< fi
+298,308c270,289
+< ${NMV} ${DIAGDIR}/${HOFXOUT} ${HOFXDIR}/${HOFXOUT}
+< if ( echo ${AODTYPE} | grep -q "NOAA_VIIRS" ); then
+<     ${NMV} ${DIAGDIR}/${HOFXOUT1} ${HOFXDIR}/${HOFXOUT1}
+< fi
+< ${NCP} ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml ${HOFXDIR}/
+< 
+< ERR=$?
+< if [ ${ERR} -ne 0 ]; then
+<    echo "Moving hofx failed and exit the program!!!"
+<    exit ${ERR}
+< fi
+---
+> #source /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/codeDev/JEDI/jedi-bundle/20230113/build/jedi_module_base.hera.sh
+> #export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+> #export OMP_NUM_THREADS=1
+> #ulimit -s unlimited
+> #
+> #srun --export=all -n ${NCORES} ./fv3jedi_hofx_nomodel.x "./hofx_nomodel_aero_${AODTYPE}.yaml" "./hofx_nomodel_aero.log"
+> #ERR=$?
+> #if [ ${ERR} -ne 0 ]; then
+> #   echo "JEDI hofx failed and exit the program!!!"
+> #   exit ${ERR}
+> #fi
+> #
+> ##${NMV} ${DIAGDIR}/${HOFXOUT} ${HOFXDIR}/${HOFXOUT}
+> ##${NCP} ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml ${HOFXDIR}/
+> #
+> #ERR=$?
+> #if [ ${ERR} -ne 0 ]; then
+> #   echo "Moving hofx failed and exit the program!!!"
+> #   exit ${ERR}
+> #fi

@@ -375,7 +375,7 @@ if __name__ == '__main__':
         while cyc < cyced:
             cymd=str(cyc)[:8]
             ch=str(cyc)[8:]
-            ncfile = f"{datadir}/{enkfpre}gdas.{cymd}/{ch}/diag/{meanpre}/{ncpre}_{cyc}.nc4"
+            ncfile = f"{datadir}/{enkfpre}gdas.{cymd}/{ch}/diag/aod_obs/{meanpre}/{ncpre}_{cyc}.nc4"
             print(ncfile)
             with nc.Dataset(ncfile, 'r') as ncdata:
                 metagrp = ncdata.groups[gmeta]

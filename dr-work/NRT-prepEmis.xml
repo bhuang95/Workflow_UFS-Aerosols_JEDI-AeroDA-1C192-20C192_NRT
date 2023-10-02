@@ -42,7 +42,7 @@
 
 	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/GBBEPx/">
 	<!ENTITY GBBDIR_HERA     "/scratch2/BMC/public/data/grids/nesdis/GBBEPx/0p1deg/">
-	<!ENTITY GBBFIXFV_CREC "YES">
+	<!ENTITY GBBFIXFV_CREC "NO">
 
         <!ENTITY CEDSVER "2019">
         <!ENTITY CEDSYEAR "2019">

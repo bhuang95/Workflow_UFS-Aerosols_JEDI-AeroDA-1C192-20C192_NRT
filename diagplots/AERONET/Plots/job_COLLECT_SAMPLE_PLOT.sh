@@ -21,25 +21,30 @@ SDATE=2017101000
 EDATE=2017102718
 MISS_AERONET=${CURDIR}/Record_AeronetHfxMissing.info
 CINC=6
-AODTYPE='AERONET_AOD15'
+AODTYPE='AERONET_SOLAR_AOD15'
 PMONTH=False
-TOPEXPDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/
-TOPDIAGDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/AeroDA-1C192-20C192-201710/diagplots/AERONET/${AODTYPE}
+TOPEXPDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
+NODAEXP=FreeRun-201710
+DAEXP=ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 #ENKF_AEROSEMIS-OFF-201710
+EXPS="${NODAEXP} ${DAEXP}"
+TOPDIAGDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/${DAEXP}/diagplots/AERONET/${AODTYPE}
 SAMPDIR=${TOPDIAGDIR}/SAMPLES
 PLOTTMPDIR=${TOPDIAGDIR}/PLOTS-${SDATE}-${EDATE}
-DAEXP=AeroDA-1C192-20C192-201710 
-NODAEXP=FreeRun-1C192-0C192-201710
-DASAMPDIR=${SAMPDIR}/${DAEXP}/
 NODASAMPDIR=${SAMPDIR}/${NODAEXP}/
-EXPS="${NODAEXP} ${DAEXP}"
+DASAMPDIR=${SAMPDIR}/${DAEXP}/
+
+PYCLECSAMP=COLLECT_AERONET_AOD500nm_6H.py
+PYCLECSAMP_STATION=COLLECT_AERONET_AOD_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm.py
+PYPLTPDF=plt_AERONET_AOD_OBS_HFX_MPL_PDF_500nm.py
+PYPLTMAP=plt_AERONET_AOD_COUNT_BIAS_RMSE_MAE_BRRMSE_500nm_relativeError.py 
 
 [[ ! -d ${PLOTTMPDIR} ]] && mkdir -p ${PLOTTMPDIR}
 
 cd ${PLOTTMPDIR}
-cp ${CURDIR}/COLLECT_AERONET_AOD500nm_6H.py ./COLLECT_AERONET_AOD500nm_6H.py
-cp ${CURDIR}/COLLECT_AERONET_AOD_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm.py ./COLLECT_AERONET_AOD_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm.py
-cp ${CURDIR}/plt_AERONET_AOD_OBS_HFX_MPL_PDF_500nm.py ./plt_AERONET_AOD_OBS_HFX_MPL_PDF_500nm.py
-cp ${CURDIR}/plt_AERONET_AOD_COUNT_BIAS_RMSE_MAE_BRRMSE_500nm_relativeError.py ./plt_AERONET_AOD_COUNT_BIAS_RMSE_MAE_BRRMSE_500nm_relativeError.py
+cp ${CURDIR}/${PYCLECSAMP} ./${PYCLECSAMP}
+cp ${CURDIR}/${PYCLECSAMP_STATION} ./${PYCLECSAMP_STATION}
+cp ${CURDIR}/${PYPLTPDF} ./${PYPLTPDF}
+cp ${CURDIR}/${PYPLTMAP} ./${PYPLTMAP}
 
 NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 
@@ -63,7 +68,7 @@ for EXP in ${EXPS}; do
             CM=${CDATE:4:2}
             CD=${CDATE:6:2}
             CH=${CDATE:8:2}
-            INDIR=${TOPEXPDIR}/${EXP}/dr-data-backup/gdas.${CY}${CM}${CD}/${CH}/diag/
+            INDIR=${TOPEXPDIR}/${EXP}/dr-data-backup/gdas.${CY}${CM}${CD}/${CH}/diag/aod_obs
             OUTDIR=${SAMPDIR}/${EXP}/${FIELD}/${CY}/${CY}${CM}/${CY}${CM}${CD}/
 	    [[ ! -d ${OUTDIR} ]] && mkdir -p ${OUTDIR}
 
@@ -75,8 +80,8 @@ for EXP in ${EXPS}; do
 		    echo "AERONET missing at ${CDATE} and touch ${OUTFILE}"
                     touch ${OUTFILE}
 		else
-		    echo "Run COLLECT_AERONET_AOD500nm_6H.py at ${CDATE}"
-                    python COLLECT_AERONET_AOD500nm_6H.py -c ${CDATE} -a ${AODTYPE} -f ${FIELD} -i ${INDIR} -o ${OUTFILE}
+		    echo "Run ${PYCLECSAMP} at ${CDATE}"
+                    python ${PYCLECSAMP} -c ${CDATE} -a ${AODTYPE} -f ${FIELD} -i ${INDIR} -o ${OUTFILE}
 		    ERR=$?
 		    [[ ${ERR} -ne 0 ]] && exit 1
 		fi
@@ -108,7 +113,7 @@ for EXP in ${EXPS}; do
     for FIELD in ${FIELDS}; do
         SAMPFILE=${EXP}_${FIELD}_${AODTYPE}_${SDATE}_${EDATE}.out
         OUTFILE=${EXP}_${FIELD}_${AODTYPE}_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm_${SDATE}_${EDATE}.out
-        python COLLECT_AERONET_AOD_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm.py -i ${SAMPFILE} -o ${OUTFILE}
+        python ${PYCLECSAMP_STATION} -i ${SAMPFILE} -o ${OUTFILE}
         ERR=$?
         [[ ${ERR} -ne 0 ]] && exit 1
     done
@@ -122,7 +127,7 @@ FREERUN=${NODAEXP}_cntlBkg_${AODTYPE}_${SDATE}_${EDATE}.out
 DABKG=${DAEXP}_cntlBkg_${AODTYPE}_${SDATE}_${EDATE}.out
 DAANL=${DAEXP}_cntlAnl_${AODTYPE}_${SDATE}_${EDATE}.out
 
-python plt_AERONET_AOD_OBS_HFX_MPL_PDF_500nm.py -c ${CYCLE} -p ${AODTYPE} -m ${PMONTH} -x ${FREERUN} -y ${DABKG} -z ${DAANL}
+python ${PYPLTPDF} -c ${CYCLE} -p ${AODTYPE} -m ${PMONTH} -x ${FREERUN} -y ${DABKG} -z ${DAANL}
 ERR=$?
 [[ ${ERR} -ne 0 ]] && exit 1
 
@@ -134,7 +139,7 @@ FREERUN=${NODAEXP}_cntlBkg_${AODTYPE}_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm_$
 DABKG=${DAEXP}_cntlBkg_${AODTYPE}_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm_${SDATE}_${EDATE}.out
 DAANL=${DAEXP}_cntlAnl_${AODTYPE}_COUNT_OBS_HFX_BIAS_RMSE_MAE_BRRMSE_500nm_${SDATE}_${EDATE}.out
 
-python plt_AERONET_AOD_COUNT_BIAS_RMSE_MAE_BRRMSE_500nm_relativeError.py -c ${CYCLE} -p ${AODTYPE} -x ${FREERUN} -y ${DABKG} -z ${DAANL}
+python ${PYPLTMAP} -c ${CYCLE} -p ${AODTYPE} -x ${FREERUN} -y ${DABKG} -z ${DAANL}
 ERR=$?
 [[ ${ERR} -ne 0 ]] && exit 1
 

@@ -46,6 +46,11 @@ if __name__ == '__main__':
         help="Upper-level directory of expname",
         type=str, required=True)
 
+    required.add_argument(
+        '-t', '--aodtype',
+        help="AOD type",
+        type=str, required=True)
+
     args = parser.parse_args()
     cycst = args.stcycle
     cyced = args.edcycle
@@ -53,16 +58,19 @@ if __name__ == '__main__':
     emean = (args.emean == "True" or args.emean == "true" or args.emean == "TRUE")
     expname = args.expname
     datadir = args.topdatadir
+    aod = args.aodtype
+
+    inc_h = 6
 
     nancycs = [""]
     gmeta = "MetaData"
     gobs = "ObsValue"
     ghfx = "hofx"
+    geqc = "EffectiveQC"
 
     vlon = "longitude"
     vlat = "latitude"
     vobs = "aerosolOpticalDepth"
-    vhfx = "aerosolOpticalDepth"
 
     print(f"HBO-{aeroda}-{emean}")
  
@@ -76,13 +84,6 @@ if __name__ == '__main__':
 
     if emean and aeroda:
         fields.append('emeanAnl')
-
-    #if emean:
-    #    enkfpre =  "enkf"
-    #    meanpre =  "ensmean"
-    #else:
-    #    enkfpre =  ""
-    #    meanpre =  ""
 
     print(fields)
     for field in fields:
@@ -99,15 +100,13 @@ if __name__ == '__main__':
             enkfpre =  "enkf"
             meanpre =  "ensmean"
 
-        ncpre = f"NOAA_VIIRS_npp_obs_hofx_3dvar_LUTs_{trcr}"
-        outfile = f"{expname}_{field}_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt"
+        ncpre = f"{aod}_obs_hofx_3dvar_LUTs_{trcr}"
+        outfile = f"{expname}_{field}_cyc_nloc_mobs_mhfx_mbias_mmse_{cycst}_{cyced}.txt"
         
         print(outfile)
 
         cyc = cycst
-        print(cyc)
         print(f'{expname}-{field}-{enkfpre}-{meanpre}')
-        print(cyced)
         while cyc <= cyced:
             if cyc not in nancycs:
                 cymd=str(cyc)[:8]
@@ -118,12 +117,17 @@ if __name__ == '__main__':
                     #metagrp = ncdata.groups[gmeta]
                     obsgrp = ncdata.groups[gobs]
                     hfxgrp = ncdata.groups[ghfx]
+                    eqcgrp = ncdata.groups[geqc]
                     #lontmp = metagrp[vlon][:]
                     #lattmp = metagrp[vlat][:]
-                    obs = obsgrp[vobs][:,0]
-                    hfx = hfxgrp[vhfx][:,0]
+                    obs1 = obsgrp[vobs][:,0]
+                    hfx1 = hfxgrp[vobs][:,0]
+                    eqc = eqcgrp[vobs][:,0]
+                    eqcind = np.where(eqc == 0)
+                    obs = obs1[eqcind]
+                    hfx = hfx1[eqcind]
                     
-                    nloc = len(obs)
+                    nloc = obs.size
                     bias = hfx - obs
                     bias2 = np.square(bias)
                     mobs = np.nanmean(obs) 
@@ -131,7 +135,7 @@ if __name__ == '__main__':
                     mbias = np.nanmean(bias) 
                     mmse = np.nanmean(bias2) 
             else:          
-                nloc = len(obs)
+                nloc = np.nan
                 mobs = np.nan
                 mhfx = np.nan
                 mbias = np.nan 
@@ -146,4 +150,4 @@ if __name__ == '__main__':
             else:
                 with open(outfile, 'a+') as f:
                     f.write(f'{outdata_str}\n')
-            cyc = ndate(cyc, 6)
+            cyc = ndate(cyc, inc_h)

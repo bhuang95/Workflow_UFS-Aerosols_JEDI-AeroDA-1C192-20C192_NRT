@@ -17,4 +17,4 @@
 (4) 09/07/2023: GBBEPX FILLVALUE_CREC=YES turned starting from GBBEPx_all01GRID.emissions_v004_20230906.nc
     WARNING!!!!            SU2G_instance_SU.rc: volcano source: /dev/null was recovered for RET run and need to change for NRT
 
-(5) 09/13/2023: ush/forecast_postdet.sh Line 127 $increment_file to increment_file
+(5) 09/13/2023: GBBEPX FillValue bug fixed starting from 08/29/2023.

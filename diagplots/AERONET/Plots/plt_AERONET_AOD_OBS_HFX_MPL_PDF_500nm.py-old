@@ -123,7 +123,6 @@ def plot_scatter_density(obs, nodabckg, dabckg, daanal, xmax, bmax, cycs, cyce, 
         correlation_xy = correlation_matrix[0,1]
         r_squared = correlation_xy**2
         bias=np.mean(hfx)-np.mean(obs)
-        num=obs.size
 
         ax=fig.add_subplot(1,3,ipt+1)
         sc=plt.scatter(obs, hfx, c=z, s=1., cmap='jet', marker='o', vmin=0, vmax=bmax, )
@@ -134,8 +133,7 @@ def plot_scatter_density(obs, nodabckg, dabckg, daanal, xmax, bmax, cycs, cyce, 
 
         R2str='R\u00b2 = %s' % (str("%.4f" % r_squared))
         biasstr='bias = %s' % str("%.4f" % bias)
-        numstr='num = %s' % str(num)
-        ttname= '%s (%s) \n(%s, %s)' % (tstr, numstr, R2str, biasstr)
+        ttname= '%s \n(%s, %s)' % (tstr, R2str, biasstr)
         ax.set_title(ttname, fontsize=10, fontweight="bold")
 
         ax.set_xscale('log')
@@ -259,7 +257,6 @@ def plot_mpl_scatter_density(obs, nodabckg, dabckg, daanal, nbins, xmin, xmax, b
         correlation_xy = correlation_matrix[0,1]
         r_squared = correlation_xy**2
         bias=np.mean(hfx)-np.mean(obs)
-        num=obs.size
 
         ax=fig.add_subplot(1,3,ipt+1, projection='scatter_density')
         cn=ax.contourf(axis[:-1],axis[:-1],hist2d.swapaxes(0,1),vmin=0.,vmax=vmax,levels=256,cmap=cmap)#,norm=norm)
@@ -271,8 +268,7 @@ def plot_mpl_scatter_density(obs, nodabckg, dabckg, daanal, nbins, xmin, xmax, b
 
         R2str='R\u00b2 = %s' % (str("%.4f" % r_squared))
         biasstr='bias = %s' % str("%.4f" % bias)
-        numstr='num = %s' % str(num)
-        ttname= '%s (%s) \n(%s, %s)' % (tstr, numstr, R2str, biasstr)
+        ttname= '%s \n(%s, %s)' % (tstr, R2str, biasstr)
         ax.set_title(ttname, fontsize=10, fontweight="bold")
 
         ax.set_xscale('log')

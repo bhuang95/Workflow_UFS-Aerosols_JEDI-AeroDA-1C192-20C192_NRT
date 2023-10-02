@@ -539,7 +539,7 @@
 			<and>
 				<or>
 					<and>
-						<taskdep task="gdasmetinccntl"/>
+						<metataskdep metatask="gdasmetincenkf"/>
 						<taskdep task="gdasaeroanlvar"/>
 						<metataskdep metatask="gdasaerodiag"/>
 					</and>

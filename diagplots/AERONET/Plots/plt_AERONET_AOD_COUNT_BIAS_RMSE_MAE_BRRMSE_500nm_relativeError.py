@@ -135,7 +135,7 @@ def plot_map_aeronet_aod_relative_bias_rmse(lons, lats, obss, counts, \
             #mstr='mean RMSE = %s, %s' % (str("%.4f" % mdata), str("%.4f" % noda_bckg_r_ave))
             #tstr='(b) NRT-NODA 6hr fcst RMSE wrt %s \n (%s)' % (aodt, mstr)
             mstr='Mean relative RMSE = %s' % str("{:.1%}".format(mdata))
-            tstr='(b) Relative RMSE of FreeRub=n 6hr fcst \n [%s]' % (mstr)
+            tstr='(b) Relative RMSE of FreeRun 6hr fcst \n [%s]' % (mstr)
         if ipt==200:
             data=da_bckg_b
             mdata=np.mean(data)
