@@ -51,7 +51,6 @@ def plot_err_var_vartot(mask, data, cols, clegs, plttit):
     fig.tight_layout()
     plt.savefig('%s-TimeSeries-err_var_vartot.png' % (plttit), format='png')
     
-    outdata = np.mean() 
     return
 
 def setup_cmap(name,selidx):
@@ -356,7 +355,7 @@ if __name__ == '__main__':
         data = np.array([emeanarr[im, :], evartotarr[im, :], evararr[im, :], eerrarr[im, :]])
         plttit = f'{expname}-{mask}'
         plot_err_var_vartot(mask, data, clos, clegs, plttit)
-	mdata = np.nanmean(data[:,spnum:], axis=1)
+        mdata = np.nanmean(data[:,spnum:], axis=1)
         outfile=f'mean-mse-vartot-var-err2-{dayst}-{dayed}-${mask}.txt'
         with open(outfile, 'w') as fp:
             fp.write('\t'.join(clegs))

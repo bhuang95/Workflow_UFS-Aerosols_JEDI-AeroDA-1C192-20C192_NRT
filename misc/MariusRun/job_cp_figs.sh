@@ -1,0 +1,40 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -t 00:30:00
+#SBATCH -q debug
+#SBATCH -A chem-var
+#SBATCH -J calc_aeronet_hfx
+#SBATCH -D ./
+#SBATCH -o /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/tmprun/aeronet_hofx.log
+#SBATCH -e /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/tmprun/aeronet_hofx.log
+
+
+ROTDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
+
+EXPNAMES="
+        FreeRun-201710
+	ENKF_AEROSEMIS-OFF-201710
+        ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
+	ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710
+	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
+	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_bc_1.5
+	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_nobias_correction
+	  "
+	  #ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_bc_1.5
+	  #ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_nobias_correction
+PLOTPRE="" #"INNOV-STATS"
+PLOTNAME="VIIRS_AOD_HOFX_DIFF_IODAV3" #"NOAA_VIIRS_npp-daily-masks-2017100600-2017101618"
+PLOTSUF=""
+
+TARDIR=${ROTDIR}/cpFigures/${PLOTNAME}
+
+for EXPNAME in ${EXPNAMES}; do
+    FIG_SRC=${ROTDIR}/${EXPNAME}/diagplots/${PLOTPRE}/${PLOTNAME}/${PLOTSUF}
+    FIG_TGT=${TARDIR}/${EXPNAME}/
+    [[ ! -d ${FIG_TGT} ]] && mkdir -p ${FIG_TGT}
+    cp -r ${FIG_SRC}/* ${FIG_TGT}
+done
+
+cd ${ROTDIR}/cpFigures
+tar -cvf ${PLOTNAME}.tar ${PLOTNAME}
+exit $?

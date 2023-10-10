@@ -19,24 +19,30 @@ codedir=$(pwd)
 topexpdir=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
 ndate=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 
-cycst=2017100600
-cyced=2017102700
+cycst=2017100600 # Starting cycle
+cyced=2017100700 # Ending cycle
+	# All four cycles at 00/06/12/18Z has to be available at a certain day. Otherwise, it will crash/ 
+	
 # (if cycinc=24, set cycst and cyced as YYYYMMDD00)
 cycinc=24 
 # (6 or 24 hours)
 
 freerunexp="FreeRun-1C192-0C192-201710"
-aerodaexp="ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710"
-
+	# Not necessary
+aerodaexp="
+	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_bc_1.5
+	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_nobias_correction
+	"
+        # DA experiments
 exps="${aerodaexp}"
 
 for exp in ${exps}; do
     topplotdir=${topexpdir}/${exp}/diagplots/VIIRS_AOD_HOFX_DIFF_IODAV3
-    if [ ${exp} = ${aerodaexp} ]; then
+    if ( echo ${aerodaexp} | grep ${exp} ); then
         aeroda=True
         emean=False
         prefix=AeroDA_EmisPert1
-    elif [ ${exp} = ${freerunexp} ]; then
+    elif ( echo ${freerunexp} | grep ${exp} ); then
         aeroda=False
         emean=False
         prefix=FreeRun

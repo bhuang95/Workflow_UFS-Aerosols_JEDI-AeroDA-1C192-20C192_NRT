@@ -17,15 +17,30 @@ module load anaconda/latest
 
 CURDIR=$(pwd)
 
-SDATE=2017101000
-EDATE=2017102718
+# Plot scattering plot and relative bias and RMSE against AERONET for noda and da expariment
+# Both freerun and da experiments are needed. 
+SDATE=2017101000 # Starting cycle. Here not using cycels before 2017101000 for spinup purpose
+EDATE=2017101618 # Ending cycle
 MISS_AERONET=${CURDIR}/Record_AeronetHfxMissing.info
 CINC=6
 AODTYPE='AERONET_SOLAR_AOD15'
 PMONTH=False
 TOPEXPDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
+	# run dir
 NODAEXP=FreeRun-201710
-DAEXP=ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 #ENKF_AEROSEMIS-OFF-201710
+	# Freerun expname
+	# If using mine, link /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/FreeRun-201710/dr-data-backup to your ${TOPEXPDIR}
+#DAEXP=ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 #ENKF_AEROSEMIS-OFF-201710
+DAEXPS="
+       ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
+       ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710
+       ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
+       ENKF_AEROSEMIS-OFF-201710
+       "
+       # DA expnames
+       # If using mine DA exp, link dr-data-backup in /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc// ENKF_AEROSEMIS-OFF-201710 and ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710 to your ${TOPEXPDIR}
+
+for DAEXP in ${DAEXPS}; do
 EXPS="${NODAEXP} ${DAEXP}"
 TOPDIAGDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/${DAEXP}/diagplots/AERONET/${AODTYPE}
 SAMPDIR=${TOPDIAGDIR}/SAMPLES
@@ -143,4 +158,6 @@ python ${PYPLTMAP} -c ${CYCLE} -p ${AODTYPE} -x ${FREERUN} -y ${DABKG} -z ${DAAN
 ERR=$?
 [[ ${ERR} -ne 0 ]] && exit 1
 
+done # for DAEXPS
 exit ${ERR}
+
