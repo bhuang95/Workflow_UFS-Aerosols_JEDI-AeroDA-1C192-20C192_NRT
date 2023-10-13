@@ -61,8 +61,6 @@ export DATA=${DATA:-${DATAROOT}/${jobid}}
 mkdir -p $DATA
 
 GDATE=`$NDATE -$assim_freq ${CDATE}`
-GDASDIR=${METDIR_NRT}/${CASE_CNTL}/
-
 NTHREADS_CALCINC=${NTHREADS_CALCINC:-1}
 ncmd=${ncmd:-1}
 imp_physics=${imp_physics:-99}
@@ -91,7 +89,7 @@ export OMP_NUM_THREADS=$NTHREADS_CALCINC
 mkdir -p $ROTDIR/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/
 BKGFILE=${ROTDIR}/${CDUMP}.${GYMD}/${GH}/${COMPONENT}/${CDUMP}.t${GH}z.atmf${FHR}.nc 
 INCFILE=${ROTDIR}/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${CDUMP}.t${CH}z.atminc.nc
-ANLFILE=${GDASDIR}/${CDUMP}.${CYMD}/${CH}/${CDUMP}.t${CH}z.atmanl.nc
+ANLFILE=${ROTDIR}/${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${CDUMP}.t${CH}z.atmanl.nc
 
 ${NLN} ${BKGFILE} atmges_mem001
 ${NLN} ${ANLFILE} atmanl_mem001

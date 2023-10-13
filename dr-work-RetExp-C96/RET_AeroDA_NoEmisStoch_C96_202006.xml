@@ -9,10 +9,10 @@
 		This workflow was automatically generated at 2023-01-27 18:29:13.198072
 	-->
 	<!-- Experiment directory setup -->
-	<!ENTITY PSLOT "ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710">
+	<!ENTITY PSLOT "RET_AeroDA_NoEmisStoch_C96_202006">
 	<!ENTITY HOMEgfs   "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"> 
-	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-RetExp/">
+	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-RetExp-C96/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
 	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_aeroDA.rc">
 
@@ -24,15 +24,15 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "201710060000">
-	<!ENTITY EDATE "201710301200">
+	<!ENTITY SDATE "202006010000">
+	<!ENTITY EDATE "202006010000">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
 	<!ENTITY RUN "gdas">
 	<!ENTITY RUN_ENVIR "emc">
 	<!ENTITY NMEM_ENKF     "20">
-	<!ENTITY NMEM_EFCSGRP_FCST     "2">
+	<!ENTITY NMEM_EFCSGRP_FCST     "5">
 	<!ENTITY NMEM_EFCSGRP_OTHER     "5">
 	<!ENTITY AERODA "YES">
 	<!ENTITY RECENTER_ENKF_AERO "YES">
@@ -40,14 +40,15 @@
 	<!ENTITY ENSDIAG "YES">
 
 	<!-- GDAS met setup-->
+	<!ENTITY GFSVERSION "v15">
 	<!ENTITY METDIR_NRT  "&ROTDIR;/RetrieveGDAS/">
-	<!ENTITY CASE     "C192">
-	<!ENTITY CASE_CNTL     "C192">
-	<!ENTITY CASE_ENKF     "C192">
+	<!ENTITY CASE     "C96">
+	<!ENTITY CASE_CNTL     "C96">
+	<!ENTITY CASE_ENKF     "C96">
 	<!ENTITY NMEMSGRPS "01-40">
-	<!ENTITY CHGRESHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/GDASCHGRES-V14/">
+	<!ENTITY CHGRESHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/chgres-&GFSVERSION;/">
 	<!ENTITY METRETDIR "&ROTDIR;/RetrieveGDAS/">
-	<!ENTITY GFSVERSION "V14">
+	 <!ENTITY METRECORD "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/&GFSVERSION;/record.chgres_hpss_htar_success_&GFSVERSION;">
 
 	<!-- Obs setup-->
 	<!ENTITY AODTYPE     "NOAA_VIIRS">
@@ -63,8 +64,11 @@
 	<!ENTITY AEROEMIS_EXTSUF_CNTL "">
 	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".F.">
 	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".F.">
-	<!ENTITY AEROEMIS_STOCH_ENKF "YES">
+	<!ENTITY AEROEMIS_STOCH_ENKF "NO">
+	<!ENTITY AEROEMIS_EXTSUF_ENKF "">
+	<!--
 	<!ENTITY AEROEMIS_EXTSUF_ENKF "_stochAeroEmis">
+	-->
 	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".F.">
 	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".F.">
 	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM DUSTSRC">
@@ -116,13 +120,13 @@
 
 	<!ENTITY QUEUE_ANAL_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_ANAL_GDAS "12:ppn=12:tpp=1">
+	<!ENTITY RESOURCES_ANAL_GDAS "6:ppn=24:tpp=1">
 	<!ENTITY MEMORIES_ANAL_GDAS "80000M">
 	<!ENTITY NATIVE_ANAL_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_ANAL_ENKF_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_ENKF_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "9:ppn=16:tpp=1">
+	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "6:ppn=24:tpp=1">
 	<!ENTITY MEMORIES_ANAL_ENKF_GDAS "80000M">
 	<!ENTITY NATIVE_ANAL_ENKF_GDAS    "--export=NONE">
 
@@ -134,12 +138,12 @@
 
 	<!ENTITY QUEUE_FCST_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_FCST_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_FCST_GDAS "9:ppn=40:tpp=1">
+	<!ENTITY RESOURCES_FCST_GDAS "5:ppn=40:tpp=1">
 	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_EFCS_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_EFCS_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_EFCS_GDAS "9:ppn=40:tpp=1">
+	<!ENTITY RESOURCES_EFCS_GDAS "5:ppn=40:tpp=1">
 	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE">
 
 	<!ENTITY QUEUE_EMEAN_GDAS     "&QUEUE;">
@@ -159,9 +163,9 @@
 
 <task name="gdasretrievemet" cycledefs="gdas" maxtries="&MAXTRIES;">
 
-	<command>&JOBS_DIR;/retrieve_gdaschgres_v14.sh</command>
+	<command>&JOBS_DIR;/retrieve_gdaschgres_&GFSVERSION;.sh</command>
 
-	<jobname><cyclestr>&PSLOT;_retrievemet_v14_@H</cyclestr></jobname>
+	<jobname><cyclestr>&PSLOT;_retrievemet_&GFSVERSION;_@H</cyclestr></jobname>
 	<account>&ACCOUNT_HPSS;</account>
 	<queue>&QUEUE_HPSS;</queue>
 	<partition>&PARTITION_HPSS;</partition>
@@ -172,7 +176,7 @@
 	-->
 	<native>&NATIVE_HPSS;</native>
 
-	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/retrievemet_v14.log</cyclestr></join>
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/retrievemet_&GFSVERSION;.log</cyclestr></join>
 
 	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
 	<envar><name>METRETDIR</name><value>&METRETDIR;</value></envar>
@@ -187,12 +191,16 @@
 	<envar><name>AERODA</name><value>&AERODA;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 
 	<dependency>
-		<or>
-			<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
-			<not><cycleexistdep cycle_offset="-06:00:00"/></not>
-		</or>
+		<and>
+			<or>
+				<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+			</or>
+			<sh shell="/bin/bash"><cyclestr>grep @Y@m@d@H &METRECORD;</cyclestr></sh>
+		</and>
 	</dependency>
 
 </task>
@@ -536,7 +544,7 @@
 
 <metatask name="gdasefmn">
 
-	<var name="grp">01 02 03 04 05 06 07 08 09 10</var>
+	<var name="grp">01 02 03 04</var>
 
 	<task name="gdasefcs#grp#" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
 

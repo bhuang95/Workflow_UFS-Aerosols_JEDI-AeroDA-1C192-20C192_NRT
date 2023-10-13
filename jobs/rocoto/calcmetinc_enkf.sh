@@ -77,7 +77,6 @@ if [ ${ENSED} -gt ${NMEM_ENKF} ]; then
 fi
 
 GDATE=`$NDATE -$assim_freq ${CDATE}`
-GDASDIR=${METDIR_NRT}/${CASE_ENKF}/
 
 NTHREADS_CALCINC=${NTHREADS_CALCINC:-1}
 ncmd=${ncmd:-1}
@@ -112,7 +111,7 @@ while [ ${IMEM} -le ${ENSED} ]; do
     mkdir -p ${ROTDIR}/enkf${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${MEMSTR}/
     BKGFILE=${ROTDIR}/enkf${CDUMP}.${GYMD}/${GH}/${COMPONENT}/${MEMSTR}/${CDUMP}.t${GH}z.atmf${FHR}.nc 
     INCFILE=${ROTDIR}/enkf${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${MEMSTR}/${CDUMP}.t${CH}z.ratminc.nc
-    ANLFILE=${GDASDIR}/enkf${CDUMP}.${CYMD}/${CH}/${MEMSTR}/${CDUMP}.t${CH}z.ratmanl.nc
+    ANLFILE=${ROTDIR}/enkf${CDUMP}.${CYMD}/${CH}/${COMPONENT}/${MEMSTR}/${CDUMP}.t${CH}z.ratmanl.nc
 
     ${NLN} ${BKGFILE} ./atmges_mem001
     ${NLN} ${ANLFILE} ./atmanl_mem001

@@ -14,7 +14,7 @@
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"> 
 	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-RetExp-C96/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
-	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_aeroDA.rc">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_spinUp.rc">
 
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
@@ -25,7 +25,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "202005260600">
-	<!ENTITY EDATE "202005260600">
+	<!ENTITY EDATE "202005311800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
@@ -59,8 +59,10 @@
 	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_J01">
 
 	<!-- Aerosol Emission directory -->
-	<!--ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/"-->
+	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/">
+	<!--
 	<!ENTITY EMISDIR_NRT "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions/">
+	-->
 	<!ENTITY AEROEMIS_STOCH_CNTL "NO">
 	<!ENTITY AEROEMIS_EXTSUF_CNTL "">
 	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".F.">
@@ -75,7 +77,7 @@
 	<!ENTITY AEROEMIS_SPPT_TAU "6" >
 	<!ENTITY AEROEMIS_SPPT_LSCALE "500000">
 
-	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx/">
+	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx-linked/">
 	<!ENTITY GBBVER "gbbepx_v003">
 
         <!ENTITY CEDSVER "2019">
@@ -190,6 +192,7 @@
 	<envar><name>AERODA</name><value>&AERODA;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 
 	<dependency>
 		<and>

@@ -75,16 +75,14 @@ FV3_GFS_postdet(){
       done
 
       # Link sfcanl_data restart files from $memdir
-      #for file in $(ls $sfcanldir/RESTART/${sPDY}.${scyc}0000.*.nc); do
-      for file in $(ls $sfcfiles); do
+      for file in $(ls ${memdir}/RESTART/${sPDY}.${scyc}0000.sfcanl_data.*.nc); do
+      #for file in $(ls $sfcfiles); do
         file2=$(echo $(basename $file))
         file2=$(echo $file2 | cut -d. -f3-) # remove the date from file
         fsufanl=$(echo $file2 | cut -d. -f1)
-        if [ $fsufanl = ${sfcfield} ]; then
-          file2=$(echo $file2 | sed -e "s/${sfcfield}/sfc_data/g")
-          echo "Link ${file} to INPUT directory"
-          $NLN $file $DATA/INPUT/$file2
-        fi
+        file2=$(echo $file2 | sed -e "s/sfcanl_data/sfc_data/g")
+        echo "Link ${file} to INPUT directory"
+        $NLN $file $DATA/INPUT/$file2
       done
 
       # Need a coupler.res when doing IAU

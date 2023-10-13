@@ -246,8 +246,6 @@ FV3_GFS_predet(){
     prefix=$CDUMP
     rprefix=$rCDUMP
     memchar=""
-    sfcfield=sfcanl_data
-    sfcfiles=${METDIR_NRT}/${CASE}/${rprefix}.$PDY/$cyc/$memchar/RESTART/${PDY}.${cyc}0000.*.nc
     if [ ${AERODA} = "YES" ]; then
         trcrfield="fv_tracer_aeroanl"
     else
@@ -257,8 +255,6 @@ FV3_GFS_predet(){
     prefix=enkf$CDUMP
     rprefix=enkf$rCDUMP
     memchar=mem$(printf %03i $MEMBER)
-    sfcfield=sfcf006_data
-    sfcfiles=${METDIR_NRT}/${CASE}/${rprefix}.$gPDY/$gcyc/$memchar/RESTART/${gPDY}.${gcyc}0000.*.nc
     if [ ${AERODA} = "YES" ]; then
         if [ ${RECENTER_ENKF_AERO} = "YES" ]; then
             trcrfield="fv_tracer_raeroanl"
