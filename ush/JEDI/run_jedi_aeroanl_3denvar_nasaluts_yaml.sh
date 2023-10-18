@@ -21,6 +21,7 @@ NPY=$((CASEC+1))
 NPZ=$((LEVS-1))
 LAYOUT=${layout_envar:-"1,1"}
 IO_LAYOUT=${io_layout_envar:-"1,1"}
+VAR_BUMP_LOC=${VAR_BUMP_LOC:-"fixed_2500km_1.5"}
 BUMPLAYOUT=`echo ${LAYOUT} | sed 's/,/_/g'`
 BUMPDIR=${BUMPDIR:-${JEDIDIR}/fv3-jedi/test/Data/bump/${CASE}/layout-${BUMPLAYOUT}-${CASE}-logp-atmos/}
 FIELDMETADIR=${JEDIDIR}/fv3-jedi/test/Data/fieldmetadata/
@@ -278,7 +279,7 @@ BKGERRBLK="
                 files prefix: BUMP/fv3jedi_bumpparameters_nicas_3D_gfs
                 alias:
                 - in code: common
-                  in file: fixed_2500km_1.5
+                  in file: ${VAR_BUMP_LOC}
               drivers:
                 multivariate strategy: duplicated
                 read local nicas: true

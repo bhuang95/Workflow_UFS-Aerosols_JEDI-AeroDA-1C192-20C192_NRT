@@ -9,12 +9,12 @@
 		This workflow was automatically generated at 2023-01-27 18:29:13.198072
 	-->
 	<!-- Experiment directory setup -->
-	<!ENTITY PSLOT "RET_AeroDA_NoEmisStoch_C96_202006">
+	<!ENTITY PSLOT "RET_AeroDA_YesEmisStoch-CNTL-ENKF_C96_202006">
 	<!ENTITY HOMEgfs   "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"> 
 	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-RetExp-C96/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
-	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_aeroDA_noEmisStoch.rc">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_aeroDA_yesEmisStoch_cntl_enkf.rc">
 
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
@@ -24,8 +24,8 @@
 	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "202006010000">
-	<!ENTITY EDATE "202006151800">
+	<!ENTITY SDATE "202006010600">
+	<!ENTITY EDATE "202006010600">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP "gdas">
@@ -61,17 +61,14 @@
 
 	<!-- Aerosol Emission directory -->
 	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/">
-	<!ENTITY AEROEMIS_STOCH_CNTL "NO">
-	<!ENTITY AEROEMIS_EXTSUF_CNTL "">
-	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".F.">
-	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".F.">
-	<!ENTITY AEROEMIS_STOCH_ENKF "NO">
-	<!ENTITY AEROEMIS_EXTSUF_ENKF "">
-	<!--
+	<!ENTITY AEROEMIS_STOCH_CNTL "YES">
+	<!ENTITY AEROEMIS_EXTSUF_CNTL "_stochAeroEmis">
+	<!ENTITY AEROEMIS_STOCH_INIT_CNTL ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_CNTL ".T.">
+	<!ENTITY AEROEMIS_STOCH_ENKF "YES">
 	<!ENTITY AEROEMIS_EXTSUF_ENKF "_stochAeroEmis">
-	-->
-	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".F.">
-	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".F.">
+	<!ENTITY AEROEMIS_STOCH_INIT_ENKF ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z_ENKF ".T.">
 	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM DUSTSRC">
 	<!ENTITY AEROEMIS_SPPT "1.0">
 	<!ENTITY AEROEMIS_SPPT_TAU "6" >
@@ -95,7 +92,7 @@
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION    "hera">
-	<!ENTITY ACCOUNT    "gsd-fv3-dev">
+	<!ENTITY ACCOUNT    "wrf-chem">
 	<!ENTITY QUEUE      "batch">
 	<!ENTITY SCHEDULER  "slurm">
 

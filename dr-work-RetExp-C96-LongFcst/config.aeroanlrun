@@ -22,12 +22,6 @@ export ncore_hofx=48         # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
 export STATICB_WEG="0.00"
 export ENSB_WEG="1.00"
 
-export VAR_BUMP_LOC="fixed_2500km_1.5"
-export LETKF_LOC="2500e3"
-export LETKF_INF_MULT="1.2"
-export LETKF_INF_RTPP="0.0"
-export LETKF_INF_RTPS="0.85"
-
 export AODOPE="AodLUTs"
 
 #export COMIN_OBS=${OBSDIR_NRT}

@@ -25,12 +25,17 @@ export assim_freq=${assim_freq:-"6"}
 export AERODA=${AERODA:-"YES"}
 export NMEM_ENKF=${NMEM_ENKF:-"20"}
 export ENSRUN=${ENSRUN:-"YES"}
+export MISSGDASRECORD=${MISSGDASRECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/v15/record.chgres_hpss_htar_allmissing_v15"}
 
 source "${HOMEgfs}/ush/preamble.sh"
 . $HOMEgfs/ush/load_fv3gfs_modules.sh
 status=$?
 [[ $status -ne 0 ]] && exit $status
 
+if ( grep ${CDATE} ${MISSGDASRECORD} ); then 
+    echo "GDAS Met data not avaibale on HPSS and continue"
+    exit 0
+fi
 CYMD=${CDATE:0:8}
 CY=${CDATE:0:4}
 CM=${CDATE:4:2}

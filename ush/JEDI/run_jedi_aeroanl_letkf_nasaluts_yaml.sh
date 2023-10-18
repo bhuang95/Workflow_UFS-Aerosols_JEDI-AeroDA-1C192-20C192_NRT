@@ -20,6 +20,11 @@ NPY=$((CASEC+1))
 NPZ=$((LEVS-1))
 LAYOUT=${layout_letkf:-"1,1"}
 IO_LAYOUT=${io_layout_letkf:-"1,1"}
+LETKF_LOC=${LETKF_LOC-"2500e"}
+LETKF_INF_MULT=${LETKF_INF_MULT:-"1.2"}
+LETKF_INF_RTPP=${LETKF_INF_RTPP:-"0.0"}
+LETKF_INF_RTPS=${LETKF_INF_RTPS:-"0.85"}
+
 FIELDMETADIR=${JEDIDIR}/fv3-jedi/test/Data/fieldmetadata/
 FV3DIR=${JEDIDIR}/fv3-jedi/test/Data/fv3files/
 CRTMFIX=${HOMEgfs}/fix/jedi_crtm_fix_20200413/CRTM_fix/Little_Endian/
@@ -240,7 +245,7 @@ observations:
       covariance model: diagonal
     obs localizations:
     - localization method: Horizontal Gaspari-Cohn
-      lengthscale: 2500e3
+      lengthscale: ${LETKF_LOC}
 #      max nobs: 1000
 "
 
@@ -273,9 +278,9 @@ driver:
 local ensemble DA:
   solver: LETKF
   inflation:
-    rtps: 0.85
-    rtpp: 0.0
-    mult: 1.2
+    mult: ${LETKF_INF_MULT}
+    rtpp: ${LETKF_INF_RTPP}
+    rtps: ${LETKF_INF_RTPS}
 
 output:
   filetype: fms restart

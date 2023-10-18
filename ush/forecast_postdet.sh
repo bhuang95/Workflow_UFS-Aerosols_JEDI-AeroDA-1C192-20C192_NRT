@@ -74,8 +74,13 @@ FV3_GFS_postdet(){
           fi
       done
 
+      if [ ${MISSINGGDAS} = "YES" ]; then
+          sfcrst=$(ls ${gmemdir}/RESTART/${sPDY}.${scyc}0000.sfc_data.*.nc)
+      else
+	  sfcrst=$(ls ${memdir}/RESTART/${sPDY}.${scyc}0000.sfcanl_data.*.nc)
+      fi
       # Link sfcanl_data restart files from $memdir
-      for file in $(ls ${memdir}/RESTART/${sPDY}.${scyc}0000.sfcanl_data.*.nc); do
+      for file in ${sfcrst}; do
       #for file in $(ls $sfcfiles); do
         file2=$(echo $(basename $file))
         file2=$(echo $file2 | cut -d. -f3-) # remove the date from file
@@ -84,7 +89,6 @@ FV3_GFS_postdet(){
         echo "Link ${file} to INPUT directory"
         $NLN $file $DATA/INPUT/$file2
       done
-
       # Need a coupler.res when doing IAU
       if [ $DOIAU = "YES" ]; then
         rm -f $DATA/INPUT/coupler.res
@@ -122,9 +126,14 @@ EOF
           res_latlon_dynamics="fv3_increment.nc"
 	#HBO+
         else
-          echo "warm_start=True, but missing increment ${increment_file}"
-	  echo "Exit...."
-	  exit 1
+            if [ ${MISSINGGDAS} = "YES" ]; then
+                read_increment=".false."
+                res_latlon_dynamics=""
+	    else
+                echo "warm_start=True, but missing increment ${increment_file}"
+	        echo "Exit...."
+	        exit 1
+	    fi
         fi
       fi
 

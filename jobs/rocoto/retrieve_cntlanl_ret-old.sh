@@ -16,7 +16,10 @@ PSLOT=${PSLOT:-"ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710"}
 ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710/dr-data-longfcst"}
 CDATE=${CDATE:-"2017100600"}
 CYCINTHR=${CYCINTHR:-"06"}
+METRETDIR=${METRETDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/cycExp_ATMA_warm/dr-data/RetrieveGDAS"}
 ARCHHPSSDIR=${ARCHHPSSDIR:-"/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_RETcyc/"}
+CHGRESHPSSDIR=${CHGRESHPSSDIR:-"/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/GDASCHGRES-V14/"}
+CASE_CNTL=${CASE_CNTL:-"C192"}
 TMPDIR=${ROTDIR}/
 
 NDATE="/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"
@@ -63,23 +66,24 @@ while [ ${IDATE} -le ${CDATE} ]; do
 	[[ -d ${TGTDIR_ROT} ]] && mkdir -p ${TGTDIR_ROT}
 	mv ${TGTDIR}/atmos/gdas.t${IH}z.atminc.nc  ${TGTDIR_ROT}/
         [[ ${ERR} -ne 0 ]] && exit ${ERR}
-        
-	i=1
-	while [ ${i} -le 6 ]; do
-            htar -xvf ${SRCFILE} atmos/RESTART/${IYMD}.${IH}0000.sfcanl_data.tile${i}.nc
-            ERR=$?
-            [[ ${ERR} -ne 0 ]] && exit ${ERR}
-	    i=$((i+1))
-	done
-        TGTDIR_ROT=${ROTDIR}/gdas.${IYMD}/${IH}/atmos/RESTART/
-	[[ -d ${TGTDIR_ROT} ]] && mkdir -p ${TGTDIR_ROT}
-	mv ${TGTDIR}/atmos/RESTART/${IYMD}.${IH}0000.sfcanl_data*.nc  ${TGTDIR_ROT}/
-        [[ ${ERR} -ne 0 ]] && exit ${ERR}
     else
         echo "IDATE not properly defined and exit now"
 	exit 100
     fi
 
+    if [ ${IDATE} = ${CDATE} ]; then
+        SRCDIR=${CHGRESHPSSDIR}/GDAS_CHGRES_NC_${CASE_CNTL}/${IY}/${IY}${IM}
+        SRCFILE=${SRCDIR}/gdas.${CDATE}.${CASE_CNTL}.NC.tar
+	TGTDIR=${METRETDIR}/${CASE_CNTL}/gdas.${IYMD}/${IH}/
+	TGTDIR_ROT=${ROTDIR}/gdas.${IYMD}/${IH}/atmos/RESTART/IC
+	[[ ! -d ${TGTDIR} ]] && mkdir -p ${TGTDIR}
+	[[ ! -d ${TGTDIR_ROT} ]] && mkdir -p ${TGTDIR_ROT}
+	cd ${TGTDIR}
+        htar -xvf ${SRCFILE} RESTART
+        ERR=$?
+        [[ ${ERR} -ne 0 ]] && exit ${ERR}
+	${NCP} RESTART/${IYMD}.${IH}0000.sfcanl_data.tile?.nc ${TGTDIR_ROT}
+    fi
     IDATE=$(${NDATE} ${CYCINTHR} ${IDATE})
 done
 

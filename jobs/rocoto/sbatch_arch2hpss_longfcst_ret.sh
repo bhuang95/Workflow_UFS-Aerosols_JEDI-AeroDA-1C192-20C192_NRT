@@ -88,14 +88,14 @@ if [ -s ${CNTLDIR_ATMOS_RT_CDATE} ]; then
             else
                 SRCTRCR="fv_tracer"
             fi
-	    ICBAKDIR=${CNTLDIR_ATMOS_RT_CDATE}/IC
-	    [[ ! -d ${ICBAKDIR} ]] && mkdir -p ${ICBAKDIR}
-	    ${NCP} ${SRCDIR}/${CPREFIX}* ${ICBAKDIR}/
-            ERR=$?
-            if [ ${ERR} -ne 0 ]; then
-                echo "Copy cntl data failed at ${CDATE}" >> ${HPSSRECORD}
-                exit ${ERR}
-            fi
+	    #ICBAKDIR=${CNTLDIR_ATMOS_RT_CDATE}/IC
+	    #[[ ! -d ${ICBAKDIR} ]] && mkdir -p ${ICBAKDIR}
+	    #${NCP} ${SRCDIR}/${CPREFIX}* ${ICBAKDIR}/
+            #ERR=$?
+            #if [ ${ERR} -ne 0 ]; then
+            #    echo "Copy cntl data failed at ${CDATE}" >> ${HPSSRECORD}
+            #    exit ${ERR}
+            #fi
 	else
             SRCDIR=${CNTLDIR_ATMOS_RT_CDATE}
             SRCTRCR="fv_tracer"
@@ -144,50 +144,64 @@ if [ -s ${CNTLDIR_ATMOS_RT_CDATE} ]; then
 	fi
     done
     
-    cd ${CNTLDIR_ATMOS_RT_CDATE}
-    for FHR in ${restart_interval}; do
-        IDATE=$(${NDATE} ${FHR} ${CDATE})
-	IYMD=${IDATE:0:8}
-	IH=${IDATE:8:2}
-        CPREFIX=${IYMD}.${IH}0000
-	echo $(ls ${CPREFIX}*) > list.${FHR}
-    done
-
-    for FHR in ${restart_interval}; do
-        TARFILE=${DATAHPSSDIR}/gdas.longfcst.${CDATE}.RESTART.f${FHR}.tar
-        htar -P -cvf ${TARFILE} $(cat list.${FHR})
+    if [ ${TARALLRST} = "YES" ]; then
+        cd ${CNTLDIR_CDATE}
+        TARFILE=${DATAHPSSDIR}/gdas.longfcst.${CDATE}.tar
+        htar -P -cvf ${TARFILE} *
         ERR=$?
         if [ ${ERR} -ne 0 ]; then
             echo "HTAR cntl restart data failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
             exit ${ERR}
+        else
+    	    echo "HTAR is complete and remove data"
+            ${NRM} ${CNTLDIR_CDATE}
+            ${NRM} ${CNTLDIR_GDATE}
 	fi
-    done
-
-    if [ ${ERR} -eq 0 ]; then
+    else
+        cd ${CNTLDIR_ATMOS_RT_CDATE}
         for FHR in ${restart_interval}; do
-            cat list.${FHR}
-            ${NRM} $(cat list.${FHR})
+            IDATE=$(${NDATE} ${FHR} ${CDATE})
+            IYMD=${IDATE:0:8}
+    	    IH=${IDATE:8:2}
+            CPREFIX=${IYMD}.${IH}0000
+	    echo $(ls ${CPREFIX}*) > list.${FHR}
+        done
+
+        for FHR in ${restart_interval}; do
+            TARFILE=${DATAHPSSDIR}/gdas.longfcst.${CDATE}.RESTART.f${FHR}.tar
+            htar -P -cvf ${TARFILE} $(cat list.${FHR})
             ERR=$?
             if [ ${ERR} -ne 0 ]; then
-                echo "RM HTAR cntl failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
+                echo "HTAR cntl restart data failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
                 exit ${ERR}
-	    fi
-	done
-    fi
+    	    fi
+        done
 
-    cd ${CNTLDIR_CDATE}
-    TARFILE=${DATAHPSSDIR}/gdas.longfcst.${CDATE}.NORESTART.tar
-    htar -P -cvf ${TARFILE} *
-    ERR=$?
-    if [ ${ERR} -ne 0 ]; then
-        echo "HTAR cntl restart data failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
-        exit ${ERR}
-    else
-	echo "HTAR is complete and remove data"
-        ${NRM} ${CNTLDIR_CDATE}
-        ${NRM} ${CNTLDIR_GDATE}
-    fi
-    
+        if [ ${ERR} -eq 0 ]; then
+            for FHR in ${restart_interval}; do
+                cat list.${FHR}
+                ${NRM} $(cat list.${FHR})
+                ERR=$?
+                if [ ${ERR} -ne 0 ]; then
+                    echo "RM HTAR cntl failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
+                    exit ${ERR}
+	        fi
+    	    done
+        fi
+
+        cd ${CNTLDIR_CDATE}
+        TARFILE=${DATAHPSSDIR}/gdas.longfcst.${CDATE}.NO_RESTART.tar
+        htar -P -cvf ${TARFILE} *
+        ERR=$?
+        if [ ${ERR} -ne 0 ]; then
+            echo "HTAR cntl restart data failed at ${CDATE} and ${FHR}" >> ${HPSSRECORD}
+            exit ${ERR}
+        else
+    	    echo "HTAR is complete and remove data"
+            ${NRM} ${CNTLDIR_CDATE}
+            ${NRM} ${CNTLDIR_GDATE}
+        fi
+    fi    
 fi # Done with loop through cntl
 
 exit ${ERR}

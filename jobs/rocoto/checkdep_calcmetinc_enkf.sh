@@ -22,7 +22,7 @@ GDD=$(echo "${GDATE}" | cut -c7-8)
 GHH=$(echo "${GDATE}" | cut -c9-10)
 
 ecode=0
-nfiles=$(ls ${METDIR_NRT}/${CASE_ENKF}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/mem???/gdas.t${CHH}z.ratmanl.nc | wc -l)
+nfiles=$(ls ${ROTDIR}/enkfgdas.${CYY}${CMM}${CDD}/${CHH}/atmos/mem???/gdas.t${CHH}z.ratmanl.nc | wc -l)
 if [ ${nfiles} != ${NMEM_ENKF} ]; then
     ecode=$((ecode+1))
 fi
