@@ -13,6 +13,8 @@ EXPS="
 for EXP in ${EXPS}; do
     echo "${RORUNCMD} -w ${XMLDIR}/${EXP}_LongFcst.xml -d ${DBDIR}/${EXP}/dr-work-longfcst/${EXP}_LongFcst.db"
     ${RORUNCMD} -w ${XMLDIR}/${EXP}_LongFcst.xml -d ${DBDIR}/${EXP}/dr-work-longfcst/${EXP}_LongFcst.db
+    echo "${RORUNCMD} -w ${XMLDIR}/${EXP}_LongFcst_Diag.xml -d ${DBDIR}/${EXP}/dr-work-longfcst/${EXP}_LongFcst_Diag.db"
+    ${RORUNCMD} -w ${XMLDIR}/${EXP}_LongFcst_Diag.xml -d ${DBDIR}/${EXP}/dr-work-longfcst/${EXP}_LongFcst_Diag.db
 done
 
 #TASKS="

@@ -27,7 +27,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "202006010000">
-	<!ENTITY EDATE "202006100000">
+	<!ENTITY EDATE "202006300000">
 	<!ENTITY CYCINTHR "06">
 	<!-- LF_PARM: Forecast length and output frequence for NC files in Gaussian grid.
 	     FHMAX = FHMIN = FHOUT to only output at the end of forecasting time,

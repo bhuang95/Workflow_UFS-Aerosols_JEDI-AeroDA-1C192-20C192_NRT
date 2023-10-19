@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH -N 1
-#SBATCH -t 00:30:00
-##SBATCH -p hera
-#SBATCH -q debug
-#SBATCH -A chem-var
-#SBATCH -J fgat
-#SBATCH -D ./
-#SBATCH -o latlon_aod.out
-#SBATCH -e latlon_aod.out
+##SBATCH -N 1
+##SBATCH -t 00:30:00
+###SBATCH -p hera
+##SBATCH -q debug
+##SBATCH -A chem-var
+##SBATCH -J fgat
+##SBATCH -D ./
+##SBATCH -o latlon_aod.out
+##SBATCH -e latlon_aod.out
 
 set -x
 
@@ -17,9 +17,7 @@ HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-
 ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup"}
 TASKRC=${TASKRC:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work-RetExp-C96-LongFcst/TaskRecords/cmplCycle_freeRun_noEmisstoch_longfcst_diag.rc"}
 IDATE=${CDATE:-"2020060100"}
-CASE_CNTL=${CASE_CNTL:-"C96"}
-CASE_ENKF=${CASE_ENKF:-"C96"}
-CYCINTHR=${CYCINTHR:-"6"}
+CASE=${CASE:-"C96"}
 DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Aerosols/TestScripts/grid-aod/tests/"}
 RSTFHRS=${RSTFHRS:-"06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 120"}
 RSTFHRS="00 ${RSTFHRS}"
@@ -27,7 +25,7 @@ RSTFHRS="00 ${RSTFHRS}"
 NDATE="/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"
 FV3AODEXEC=${HOMEgfs}/exec/gocart_aod_fv3_mpi_LUTs.x
 LLAODEXEC=${HOMEgfs}/exec/fv3aod2ll.x
-NCORES=40
+NCORES=80
 
 #Load modules
 source ${HOMEjedi}/jedi_module_base.hera.sh
@@ -49,10 +47,9 @@ NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
 
 ### Determine what to field to perform
-        ENKFOPT=""
-	CASE=${CASE_CNTL}
-        MEMOPT=""
-	TRCR="fv_tracer"
+ENKFOPT=""
+MEMOPT=""
+TRCR="fv_tracer"
 for RSTFHR in ${RSTFHRS}; do
         RSTDIR=${ROTDIR}/${ENKFOPT}gdas.${IYMD}/${IH}/atmos/${MEMOPT}${MEMSTR}/RESTART/
         FV3AODDIR=${ROTDIR}/${ENKFOPT}gdas.${IYMD}/${IH}/diag/aod_grid/${MEMOPT}${MEMSTR}
@@ -62,6 +59,8 @@ for RSTFHR in ${RSTFHRS}; do
 
 	AODSRC=${FV3AODDIR}/fv3_aod_LUTs_${TRCR}_${CDATE}_ll.nc
 	AODTGT=${FV3AODDIR}/fv3_aod_LUTs_${TRCR}_${IDATE}_fhr${RSTFHRSTR}_ll.nc
+	FV3AODSRC=${DATA}/FV3AOD
+	FV3AODTGT=${FV3AODDIR}/AOD_NATIVEGRID_${TRCR}_${IDATE}_fhr${RSTFHRSTR}
 	echo ${AODSRC}
 	echo ${AODTGT}
         export HOMEgfs HOMEjedi RSTDIR FV3AODDIR CDATE CASE  TRCR NCORES FV3AODEXEC LLAODEXEC
@@ -76,6 +75,7 @@ for RSTFHR in ${RSTFHRS}; do
 	else
 	    echo "run_latlon_aod_LUTs completed for ${RSTFHR} and move on"
 	    ${NMV} ${AODSRC} ${AODTGT}
+	    ${NMV} ${FV3AODSRC} ${FV3AODTGT}
 	    ${NRM} ${DATA}
         fi
 done

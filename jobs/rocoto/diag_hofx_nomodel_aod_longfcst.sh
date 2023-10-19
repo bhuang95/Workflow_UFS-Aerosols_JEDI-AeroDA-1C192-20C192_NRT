@@ -1,36 +1,31 @@
-#!/bin/bash
-#SBATCH -N 2
-#SBATCH -t 00:30:00
-##SBATCH -p hera
-#SBATCH -q debug
-#SBATCH -A chem-var
-#SBATCH -J fgat
-#SBATCH -D ./
-#SBATCH -o hfx_aod.out
-#SBATCH -e hfx_aod.out
+##!/bin/bash
+##SBATCH -N 2
+##SBATCH -t 00:30:00
+###SBATCH -p hera
+##SBATCH -q debug
+##SBATCH -A chem-var
+##SBATCH -J fgat
+##SBATCH -D ./
+##SBATCH -o hfx_aod.out
+##SBATCH -e hfx_aod.out
 
 set -x
 
 export HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
 export EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work-RetExp-C96-LongFcst/"}
 export DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Aerosols/TestScripts/grid-aod/tests/"}
-
-
 export ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup"}
 export HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/"}
 export TASKRC=${TASKRC:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work-RetExp-C96-LongFcst/TaskRecords/cmplCycle_freeRun_noEmisstoch_longfcst_hfx_diag.rc"}
 export OBSDIR_NRT=${OBSDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/AERONET_SOLAR_AOD15/"}
 export IDATE=${CDATE:-"2020060100"}
 export CDUMP=${CDUMP:-"gdas"}
-export CASE_CNTL=${CASE_CNTL:-"C96"}
-export CASE_ENKF=${CASE_ENKF:-"C96"}
+export CASE=${CASE:-"C96"}
 export AODTYPE=${AODTYPE:-"AERONET_SOLAR_AOD15"}
-export COMPONENT=${COMPONENT:-"atmos"}
 export NCORES=${ncore_hofx:-"48"}
 export LAYOUT=${layout_hofx:-"2,4"}
 export LEVS=${LEVS:-"128"}
 export IO_LAYOUT=${io_layout_hofx:-"1,1"}
-export assim_freq=${assim_freq:-"6"}
 export NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
 RSTFHRS=${RSTFHRS:-"06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 120"}
 export RSTFHRS="00 ${RSTFHRS}"
@@ -69,7 +64,6 @@ cd ${DATA1}
 
 
 ENKFOPT=""
-CASE=${CASE_CNTL}
 MEMOPT=""
 TRCR="fv_tracer"
 MEMSTR=''
