@@ -1,0 +1,153 @@
+BEGIN: config.base
+END: config.base
+BEGIN: config.aeroanlrun
+BEGIN: config.resources
+END: config.resources
+END: config.aeroanlrun
+Running run_hofx_nomodel_AOD_LUTs for 00
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr000.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 06
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060106.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr006.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 12
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060112.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr012.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 18
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060118.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr018.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 24
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060200.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr024.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 30
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060206.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr030.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 36
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060212.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr036.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 42
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060218.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr042.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 48
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060300.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr048.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 54
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060306.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr054.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 60
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060312.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr060.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 66
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060318.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr066.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 72
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060400.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr072.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 78
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060406.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr078.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 84
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060412.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr084.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 90
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060418.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr090.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 96
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060500.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr096.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 102
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060506.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr102.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 108
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060512.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr108.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 114
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060518.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr114.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15
+Running run_hofx_nomodel_AOD_LUTs for 120
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/atmos//RESTART/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs/
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060600.nc4
+/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup/gdas.20200601/00/diag/aod_obs//AERONET_SOLAR_AOD15_obs_hofx_3dvar_LUTs_fv_tracer_2020060100_fhr120.nc4
+run_hofx_nomodel_AOD_LUTs completed for -fv_tracer and move on
+AERONET_SOLAR_AOD15

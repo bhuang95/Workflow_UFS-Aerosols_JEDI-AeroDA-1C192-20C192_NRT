@@ -2,9 +2,9 @@
 set -x
 
 NDATE=${NDATE:-"/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"}
-JEDIDIR=${HOMEjedi:-$HOMEgfs/sorc/jedi.fd/}
-DATA=${DATA:-$pwd/analysis.$$}
-ROTDIR=${ROTDIR:-/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/}
+JEDIDIR=${HOMEjedi:-"$HOMEgfs/sorc/jedi.fd/"}
+DATA=${DATA:-"$pwd/analysis.$$"}
+ROTDIR=${ROTDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/aero_c96_jedi3densvar/dr-data/"}
 OBSDIR_NRT=${OBSDIR_NRT:-$OBSDIR_NRT}
 COMIN_GES=${COMIN_GES:-$COMIN_GES}
 COMIN_GES_ENS=${COMIN_GES_ENS:-$COMIN_GES_ENS}
@@ -23,7 +23,7 @@ LAYOUT=${layout_envar:-"1,1"}
 IO_LAYOUT=${io_layout_envar:-"1,1"}
 VAR_BUMP_LOC=${VAR_BUMP_LOC:-"fixed_2500km_1.5"}
 BUMPLAYOUT=`echo ${LAYOUT} | sed 's/,/_/g'`
-BUMPDIR=${BUMPDIR:-${JEDIDIR}/fv3-jedi/test/Data/bump/${CASE}/layout-${BUMPLAYOUT}-${CASE}-logp-atmos/}
+BUMPDIR=${BUMPDIR:-${JEDIDIR}/fv3-jedi/test/Data/bump/${CASE}/layout-${BUMPLAYOUT}-${CASE}-logp-atmos-${VAR_BUMP_LOC}/}
 FIELDMETADIR=${JEDIDIR}/fv3-jedi/test/Data/fieldmetadata/
 FV3DIR=${JEDIDIR}/fv3-jedi/test/Data/fv3files/
 ### Hard coded this directory

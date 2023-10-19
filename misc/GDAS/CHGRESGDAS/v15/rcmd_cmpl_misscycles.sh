@@ -13,7 +13,7 @@ TASKS="
 echo ${CYCLE} >> ${MISSRECORD}
 RORUNCMD="/apps/rocoto/1.3.3/bin/rocotocomplete"
 ${RORUNCMD} -w ${XMLDIR}/chgres_${GFSVER}.xml -d ${DBDIR}/chgres_${GFSVER}.db -c ${CYCLE}00 -t hpss2hera
-${RORUNCMD} -w ${XMLDIR}/chgres_${GFSVER}.xml -d ${DBDIR}/chgres_${GFSVER}.db -c ${CYCLE}00 -m echgres_${GFSVER}
+${RORUNCMD} -w ${XMLDIR}/chgres_${GFSVER}.xml -d ${DBDIR}/chgres_${GFSVER}.db -c ${CYCLE}00 -m echgres
 ${RORUNCMD} -w ${XMLDIR}/chgres_${GFSVER}.xml -d ${DBDIR}/chgres_${GFSVER}.db -c ${CYCLE}00 -t hera2hpss
 
 #for TASK in ${TASKS}; do
