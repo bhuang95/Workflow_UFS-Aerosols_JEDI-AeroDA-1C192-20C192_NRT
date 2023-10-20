@@ -25,8 +25,8 @@ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 
 CURDIR=`pwd`
 DRIVER=${CURDIR}/driver.hera_hpssDownload_v14.sh
-DATES=2018091818 #2017100100
-DATEE=2018091818 #2019061118
+DATES=2018100818 #2017100100
+DATEE=2019061118
 gfs_ver=v14
 PROJECT_CODE=wrf-chem
 QUEUE=batch
@@ -188,7 +188,8 @@ else  # do not extract data.
 fi  # extract data?
 
 ### Backup to HPSS
-cat > ${CURDIR}/job_hpss_${gfs_ver}.sh << EOF
+#cat > ${CURDIR}/job_hpss_${gfs_ver}.sh << EOF
+cat > ${CURDIR}/job_hpss_${gfs_ver}_${cdate}.sh << EOF
 #!/bin/bash
 ##!/bin/bash --login
 ##SBATCH -J hpss-${cdate}
@@ -254,7 +255,7 @@ fi
 EOF
 
 sbatch --parsable --partition=service --ntasks=1  -t $WALLT -A $PROJECT_CODE -q $QUEUE -J ${gfs_ver}_${cdate} \
-         -o ${EXTRACT_DIR}/../log.hpss.${cdate} -e ${EXTRACT_DIR}/../log.hpss.${cdate}  ${DEPEND} ${CURDIR}/job_hpss_${gfs_ver}.sh
+         -o ${EXTRACT_DIR}/../log.hpss.${cdate} -e ${EXTRACT_DIR}/../log.hpss.${cdate}  ${DEPEND} ${CURDIR}/job_hpss_${gfs_ver}_${cdate}.sh
 err=$?
 if [ ${err} != '0' ]; then
     echo "HPSS job submission failed at \${cdate} and exit."

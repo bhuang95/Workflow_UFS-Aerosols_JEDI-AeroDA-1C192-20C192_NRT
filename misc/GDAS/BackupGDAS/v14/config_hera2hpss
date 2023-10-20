@@ -1,0 +1,4 @@
+HERADIR=/enkfgdas.20181007/00
+TARFILE=/NCEPPROD/hpssprod/runhistory//rh2018/201810/20181006/gpfs_hps_nco_ops_com_gfs_prod_enkf.20181006_18.fcs.tar
+FLDS="atmf006 sfcf006"
+NMEM=80
