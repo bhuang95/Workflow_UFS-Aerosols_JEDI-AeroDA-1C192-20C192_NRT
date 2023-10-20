@@ -189,7 +189,7 @@ fi  # extract data?
 
 ### Backup to HPSS
 #cat > ${CURDIR}/job_hpss_${gfs_ver}.sh << EOF
-cat > ${CURDIR}/job_hpss_${gfs_ver}_${cdate}.sh << EOF
+cat > ${CURDIR}/job_hpss_${gfs_ver}.sh << EOF
 #!/bin/bash
 ##!/bin/bash --login
 ##SBATCH -J hpss-${cdate}
@@ -255,7 +255,7 @@ fi
 EOF
 
 sbatch --parsable --partition=service --ntasks=1  -t $WALLT -A $PROJECT_CODE -q $QUEUE -J ${gfs_ver}_${cdate} \
-         -o ${EXTRACT_DIR}/../log.hpss.${cdate} -e ${EXTRACT_DIR}/../log.hpss.${cdate}  ${DEPEND} ${CURDIR}/job_hpss_${gfs_ver}_${cdate}.sh
+         -o ${EXTRACT_DIR}/../log.hpss.${cdate} -e ${EXTRACT_DIR}/../log.hpss.${cdate}  ${DEPEND} ${CURDIR}/job_hpss_${gfs_ver}.sh
 err=$?
 if [ ${err} != '0' ]; then
     echo "HPSS job submission failed at \${cdate} and exit."
