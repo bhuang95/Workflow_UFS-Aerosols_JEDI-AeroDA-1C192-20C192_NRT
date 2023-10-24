@@ -31,6 +31,10 @@ FV3AODDIR=./FV3AOD
 [[ ! -d ${OUTDATADIR} ]] && mkdir -p ${OUTDATADIR}
 [[ ! -d ${FV3AODDIR} ]] && mkdir -p ${FV3AODDIR}
 
+#source /home/Mariusz.Pagowski/.jedi
+#ERR=$?
+#[[ ${ERR} -ne 0 ]] && exit 1
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/libs/fortran-datetime/lib"
 FAKBK=${CDATEPRE}.fv_core.res.nc
 for ITILE in $(seq 1 6); do
     FCORE=${CDATEPRE}.fv_core.res.tile${ITILE}.nc
@@ -60,7 +64,8 @@ cat << EOF > ./gocart_aod_fv3_mpi.nl
 /
 &record_conf_luts
  AerosolOption = "aerosols_gocart_2"
- WavelengthsOutput = 380.,500.,550.,870
+ WavelengthsOutput = 550.
+ !WavelengthsOutput = 380.,500.,550.,870
  RCFile = "all_wavelengths.rc"
 /
 EOF
@@ -76,6 +81,11 @@ done
 FV3AOD=${CDATEPRE}.fv_aod_LUTs.${TRCR}.res.tile?.nc
 GRIDAOD=fv3_aod_LUTs_${TRCR}_${CDATE}_ll.nc
 
+
+#source ${HOMEjedi}/jedi_module_base.hera.sh
+#ERR=$?
+#[[ ${ERR} -ne 0 ]] && exit 1
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/libs/fortran-datetime/lib"
 [[ -f fv3aod2ll.nl ]] && rm -rf fv3aod2ll.nl
 cat > fv3aod2ll.nl <<EOF
 &record_input

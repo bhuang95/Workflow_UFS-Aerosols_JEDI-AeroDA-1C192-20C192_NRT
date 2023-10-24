@@ -37,10 +37,6 @@ export DATA1=${DATA:-${DATAROOT}/${jobid}}
 source ${EXPDIR}/config.base
 source ${EXPDIR}/config.aeroanlrun
 
-#source ${HOMEjedi}/jedi_module_base.hera.sh
-#status=$?
-#[[ $status -ne 0 ]] && exit $status
-
 if ( echo ${AODTYPE} | grep -q "NASA" ); then
     echo "NASA VIIRS AOD retrievals not avaiable and skip"
     exit 0
