@@ -283,10 +283,10 @@ EOF
 
 cat ${DATA}/hofx_nomodel_aero_${AODTYPE}.yaml
 
-source ${HOMEjedi}/jedi_module_base.hera.sh
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
-export OMP_NUM_THREADS=1
-ulimit -s unlimited
+#source ${HOMEjedi}/jedi_module_base.hera.sh
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+#export OMP_NUM_THREADS=1
+#ulimit -s unlimited
 
 srun --export=all -n ${NCORES} ./fv3jedi_hofx_nomodel.x "./hofx_nomodel_aero_${AODTYPE}.yaml" "./hofx_nomodel_aero.log"
 ERR=$?

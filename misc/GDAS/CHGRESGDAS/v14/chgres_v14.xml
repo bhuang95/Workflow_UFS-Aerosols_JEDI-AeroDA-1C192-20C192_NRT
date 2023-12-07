@@ -48,10 +48,10 @@
 	<!ENTITY WALLTIME_HPSS  "01:59:00">
 	<!ENTITY RESOURCES_HPSS "1:ppn=1:tpp=1">
 	<!ENTITY NATIVE_HPSS    "--export=NONE">
-	<!ENTITY MEMORIES_HPSS "2048M">
+	<!ENTITY MEMORIES_HPSS "40G">
 
 	<!ENTITY PARTITION_CHGRES    "hera">
-	<!ENTITY ACCOUNT_CHGRES    "gsd-fv3-dev">
+	<!ENTITY ACCOUNT_CHGRES    "chem-var">
 	<!ENTITY QUEUE_CHGRES      "batch">
 	<!ENTITY WALLTIME_CHGRES  "00:29:00">
 	<!ENTITY RESOURCES_CHGRES "1:ppn=40:tpp=1">
@@ -79,9 +79,7 @@
 	<partition>&PARTITION_HPSS;</partition>
 	<walltime>&WALLTIME_HPSS;</walltime>
 	<nodes>&RESOURCES_HPSS;</nodes>
-	<!--
 	<memory>&MEMORIES_HPSS;</memory>
-	-->
 	<native>&NATIVE_HPSS;</native>
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/hpss2hera_&GFSVER;.log</cyclestr></join>
@@ -151,9 +149,7 @@
 	<partition>&PARTITION_HPSS;</partition>
 	<walltime>&WALLTIME_HPSS;</walltime>
 	<nodes>&RESOURCES_HPSS;</nodes>
-	<!--
 	<memory>&MEMORIES_HPSS;</memory>
-	-->
 	<native>&NATIVE_HPSS;</native>
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/hera2hpss_&GFSVER;.log</cyclestr></join>

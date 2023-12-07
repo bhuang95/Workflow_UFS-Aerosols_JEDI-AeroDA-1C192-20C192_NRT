@@ -1,4 +1,4 @@
-##!/bin/bash
+#!/bin/bash
 ##SBATCH -N 2
 ##SBATCH -t 00:30:00
 ###SBATCH -p hera
@@ -13,6 +13,7 @@ set -x
 
 export HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/"}
 export EXPDIR=${EXPDIR:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/dr-work-RetExp-C96-LongFcst/"}
+source ${EXPDIR}/config.aeroanlrun
 export DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Aerosols/TestScripts/grid-aod/tests/"}
 export ROTDIR=${ROTDIR:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/RET_FreeRun_NoEmisStoch_C96_202006/dr-data-longfcst-backup"}
 export HOMEjedi=${HOMEjedi:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/"}
@@ -34,8 +35,13 @@ export job="diag_hofx"
 export jobid="${job}.$$"
 export DATA1=${DATA:-${DATAROOT}/${jobid}}
 
-source ${EXPDIR}/config.base
-source ${EXPDIR}/config.aeroanlrun
+
+source ${HOMEjedi}/jedi_module_base.hera.sh
+status=$?
+[[ $status -ne 0 ]] && exit $status
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+export OMP_NUM_THREADS=1
+ulimit -s unlimited
 
 if ( echo ${AODTYPE} | grep -q "NASA" ); then
     echo "NASA VIIRS AOD retrievals not avaiable and skip"
@@ -104,7 +110,7 @@ mkdata="YES"
 [[ $mkdata = "YES" ]] && rm -rf ${DATA1}
 echo ${CDATE} > ${TASKRC}
 #set +x
-if [ $VERBOSE = "YES" ]; then
-   echo $(date) EXITING $0 with return code $ERR >&2
-fi
+#if [ $VERBOSE = "YES" ]; then
+#   echo $(date) EXITING $0 with return code $ERR >&2
+#fi
 exit ${ERR}

@@ -130,7 +130,7 @@ EOF
                 read_increment=".false."
                 res_latlon_dynamics=""
 	    else
-                echo "warm_start=True, but missing increment ${increment_file}"
+                echo "Double check increment files and define read_increment properly ${increment_file}"
 	        echo "Exit...."
 	        exit 1
 	    fi
@@ -177,12 +177,12 @@ EOF
 
   fi
 
-  if [ ${warm_start} = ".true." -a ${read_increment} = ".false." ]; then
-      echo "warm_start=True, but read_increment=False. Exit now...."
-      echo "If GDAS files are not avaibale in this cycle, 
-            go to WORKFLOWDIR/ush/forecast_postdet.sh and comment out Line 184 and recover later for next cycle... "
-      exit 100
-  fi
+#  if [ ${warm_start} = ".true." -a ${read_increment} = ".false." ]; then
+#      echo "warm_start=True, but read_increment=False. Exit now...."
+#      echo "If GDAS files are not avaibale in this cycle, 
+#            go to WORKFLOWDIR/ush/forecast_postdet.sh and comment out Line 184 and recover later for next cycle... "
+#      exit 100
+#  fi
 
   if [ $machine = 'sandbox' ]; then
     echo SUB ${FUNCNAME[0]}: Checking initial condition, overriden in sandbox mode!

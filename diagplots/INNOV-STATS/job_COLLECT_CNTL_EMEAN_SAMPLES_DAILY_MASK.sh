@@ -13,23 +13,34 @@ module load anaconda/latest
 
 curdir=`pwd`
 aod=NOAA_VIIRS_npp
-cycst=2017100600 # Starting cycle
-cyced=2017101618 # Ending cycle
-spcyc=2017101000 # Starting cycle to perform averaging in the stats 
+#cycst=2017100600 # Starting cycle
+#cyced=2017102700 # Ending cycle
+#spcyc=2017101000 # Starting cycle to perform averaging in the stats 
+cycst=2020060100 # Starting cycle
+cyced=2020062300 # Ending cycle
+spcyc=2020060800 # Starting cycle to perform averaging in the stats 
 topexpdir=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
         # Define run directory
 
 # It plots time-series and bars for AOD, bias and RMSE, scattering plot of RMSE vs spread over different regions. 
 # In this diagnostics, ${nodaexp} and ${daexp} are both needed. All four cycles at 00/06/12/18Z at a certain day
 # 	has to be available. Otherwise, it will crash. 
-nodaexp=FreeRun-201710 
+#nodaexp=FreeRun-201710 
+nodaexp=RET_FreeRun_NoEmisStoch_C96_202006
 	# Define free experiment. 
         # If using my free run, link /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/FreeRun-201710/dr-data-backup/ to your ${topexpdir}
-daexps="ENKF_AEROSEMIS-OFF-201710 
-        ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
-        ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 
-	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
+#daexps="
+#	ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710_bc_1.5
+#	"
+daexps="
+	RET_AeroDA_NoEmisStoch_C96_202006
+	RET_AeroDA_YesEmisStoch-CNTL-ENKF_C96_202006_bc1.5
 	"
+
+        #ENKF_AEROSEMIS-OFF-201710 
+        #ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
+        #ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 
+	#ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
 	# Define your DA experiments.
 	# If using my ENKF_AEROSEMIS-OFF-201710, ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710, 
 	# link their dr-data-backup under /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/ to your ${topexpdir}. 

@@ -25,8 +25,8 @@ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 
 CURDIR=`pwd`
 DRIVER=${CURDIR}/driver.hera_hpssDownload_v16.sh
-DATES=2021032100
-DATEE=2022123118 
+DATES=2021071406 #2021032100
+DATEE=2022123118 #2022123118 
 gfs_ver=v16
 PROJECT_CODE=wrf-chem
 QUEUE=batch

@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for Global Forecast System
+
+	NOTES:
+		This workflow was automatically generated at 2023-01-27 18:29:13.198072
+	-->
+	<!-- Experiment directory setup -->
+	<!-- LF_PARM: Define PSLOT of cycled assimilation experiment name-->
+	<!ENTITY PSLOT "RET_AeroDA_NoEmisStoch_C96_202006">
+	<!ENTITY HOMEgfs   "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/">
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"> 
+	<!-- LF_PARM: Define EXPDIR and ROTDIR directory for long forecast-->
+	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-RetExp-C96-LongFcst/">
+	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data-longfcst-backup/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_AeroDA_noEmisstoch_longfcst_diag.rc">
+
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DATAROOTTOP "/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/&PSLOT;/">
+	<!ENTITY COMROOT "/scratch1/NCEPDEV/global/glopara/com/">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
+	<!-- Experiment parameter setup -->
+	<!ENTITY SDATE "202006010000">
+	<!ENTITY EDATE "202006300000">
+	<!ENTITY CYCINTHR "06">
+	<!-- LF_PARM: Forecast length and output frequence for NC files in Gaussian grid.
+	     FHMAX = FHMIN = FHOUT to only output at the end of forecasting time,
+	     Otherwise, it taks too much space unnecessarily. -->
+	<!ENTITY INTERVAL "24:00:00">
+	<!-- LF_PARM: Output frequency for restart 6-tile files. It cannot be 0.
+	     for 24-hour output frequency, restart_interval= "24 48 72 96 120",
+	     for 6-hour output frequency,
+	     restart_interval= "06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 120"
+	     Restart files at 00Z wil be copied  from previous cycle directory to the current 
+	     long fcst directory in the gdasarch task. 
+	     TARALLRST = "YES" will htar all forecsat in a single file.
+	     otherwise, will tar by each restart_interval to reduce tar size on HPSS
+	-->
+	<!ENTITY FHMAX "120">
+	<!ENTITY restart_interval "06 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114 120">
+	<!ENTITY TARALLRST "YES">
+	<!ENTITY CDUMP "gdas">
+	<!ENTITY RUN "gdas">
+	<!ENTITY RUN_ENVIR "emc">
+
+	<!-- GDAS met setup-->
+	<!ENTITY CASE_CNTL     "C96">
+	<!ENTITY CASE_ENKF     "C96">
+	<!ENTITY LEVS     "128">
+
+	<!-- Obs setup-->
+	<!ENTITY AODTYPE     "AERONET_SOLAR_AOD15">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/">
+
+	<!-- Archive directory setup -->
+	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_RETcyc/">
+	<!ENTITY ARCHRETHR "12">
+	<!ENTITY NMEM_ENSGRP_ARCH "5">
+
+	<!-- Machine related entities -->
+	<!ENTITY PARTITION    "hera">
+	<!ENTITY ACCOUNT    "gsd-fv3-dev">
+	<!ENTITY QUEUE      "batch">
+	<!ENTITY SCHEDULER  "slurm">
+
+	<!-- ROCOTO task control -->
+	<!ENTITY MAXTRIES "5">
+	<!ENTITY CYCLETHROTTLE "1">
+	<!ENTITY TASKTHROTTLE  "20">
+
+	<!-- ROCOTO parameters that control workflow -->
+	<!ENTITY PARTITION_HPSS    "service">
+	<!ENTITY ACCOUNT_HPSS    "chem-var">
+	<!ENTITY QUEUE_HPSS      "batch">
+	<!ENTITY WALLTIME_HPSS  "07:59:00">
+	<!ENTITY RESOURCES_HPSS "1:ppn=1:tpp=1">
+	<!ENTITY MEMORIES_HPSS "80000M">
+	<!ENTITY NATIVE_HPSS    "--export=NONE">
+
+	<!ENTITY QUEUE_DIAG_GDAS     "&QUEUE;">
+	<!ENTITY WALLTIME_DIAG_GDAS  "00:29:00">
+	<!ENTITY RESOURCES_DIAG_GDAS "2:ppn=40:tpp=1">
+	<!ENTITY NATIVE_DIAG_GDAS    "--export=NONE">
+]>
+
+<workflow realtime="F" scheduler="slurm" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
+
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/@Y@m@d@H.log</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gdas_half">&SDATE; &EDATE; &INTERVAL;</cycledef>
+	<cycledef group="gdas">&SDATE; &EDATE; &INTERVAL;</cycledef>
+
+<task name="aodgrid" cycledefs="gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/diag_latlon_aod_longfcst.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_aodgrid_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_DIAG_GDAS;</queue>
+	<partition>&PARTITION;</partition>
+	<walltime>&WALLTIME_DIAG_GDAS;</walltime>
+	<nodes>&RESOURCES_DIAG_GDAS;</nodes>
+	<native>&NATIVE_DIAG_GDAS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/aodgrid.log</cyclestr></join>
+
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
+	<envar><name>RSTFHRS</name><value>&restart_interval;</value></envar>
+	<envar><name>FHMAX</name><value>&FHMAX;</value></envar>
+
+
+	<dependency>
+		<and>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerolongfcst_diag.sh</cyclestr></sh>
+			<or>
+				<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+			</or>
+		</and>
+	</dependency>
+
+</task>
+
+
+<task name="aodhfx" cycledefs="gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/diag_hofx_nomodel_aod_longfcst.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_aodhfx_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_DIAG_GDAS;</queue>
+	<partition>&PARTITION;</partition>
+	<walltime>&WALLTIME_DIAG_GDAS;</walltime>
+	<nodes>&RESOURCES_DIAG_GDAS;</nodes>
+	<native>&NATIVE_DIAG_GDAS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/aodhfx.log</cyclestr></join>
+
+
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>LEVS</name><value>&LEVS;</value></envar>
+	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>RSTFHRS</name><value>&restart_interval;</value></envar>
+	<envar><name>FHMAX</name><value>&FHMAX;</value></envar>
+
+
+	<dependency>
+		<and>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerolongfcst_diag.sh</cyclestr></sh>
+			<or>
+				<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+			</or>
+		</and>
+	</dependency>
+
+</task>
+
+<task name="gdasarch" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;" final="true">
+
+	<command>&JOBS_DIR;/arch2hpss_aerolongfcst_diag_ret.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_gdasarch_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_HPSS;</queue>
+	<partition>&PARTITION_HPSS;</partition>
+	<walltime>&WALLTIME_HPSS;</walltime>
+	<nodes>&RESOURCES_HPSS;</nodes>
+	<native>&NATIVE_HPSS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasarch.log</cyclestr></join>
+
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+	<envar><name>restart_interval</name><value>&restart_interval;</value></envar>
+	<envar><name>TARALLRST</name><value>&TARALLRST;</value></envar>
+
+	<dependency>
+		<and>
+			<taskdep task="aodgrid"/>
+			<taskdep task="aodhfx"/>
+		</and>
+	</dependency>
+</task>
+</workflow>

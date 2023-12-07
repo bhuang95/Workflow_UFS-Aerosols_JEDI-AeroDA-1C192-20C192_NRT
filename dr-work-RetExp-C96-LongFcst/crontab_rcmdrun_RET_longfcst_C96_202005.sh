@@ -7,8 +7,9 @@ XMLDIR="/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C
 DBDIR="/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/"
 
 EXPS="
-	RET_FreeRun_NoEmisStoch_C96_202006
+	RET_AeroDA_NoEmisStoch_C96_202006
 "
+	#RET_FreeRun_NoEmisStoch_C96_202006
 
 for EXP in ${EXPS}; do
     echo "${RORUNCMD} -w ${XMLDIR}/${EXP}_LongFcst.xml -d ${DBDIR}/${EXP}/dr-work-longfcst/${EXP}_LongFcst.db"

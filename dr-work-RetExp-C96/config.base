@@ -22,7 +22,7 @@ export PARTITION_SERVICE=${PARTITION_SERVICE:-"service"}
 HPSS_PROJECT=${HPSS_PROJECT:-"wrf-chem"}
 
 # Directories relative to installation areas:
-export HOMEgfs=${HOMEgfs:- /scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20230123-Jedi3Dvar-Cory/global-workflow""}
+export HOMEgfs=${HOMEgfs:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20230123-Jedi3Dvar-Cory/global-workflow"}
 export PARMgfs=$HOMEgfs/parm
 export FIXgfs=$HOMEgfs/fix
 export USHgfs=$HOMEgfs/ush

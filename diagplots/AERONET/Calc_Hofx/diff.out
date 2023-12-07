@@ -1,0 +1,26 @@
+8,9c8,9
+< #SBATCH -o /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/tmprun3/aeronet_hofx.log
+< #SBATCH -e /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/tmprun3/aeronet_hofx.log
+---
+> #SBATCH -o /scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/qslogs/%x.o%j
+> #SBATCH -e /scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/qslogs/%x.e%j
+12c12
+< EDATE=2020061518 # Ending cycle
+---
+> EDATE=2020062406 # Ending cycle
+14c14
+< TOPEXPDIR='/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/'
+---
+> TOPEXPDIR='/scratch2/BMC/gsd-fv3-dev/MAPP_2018/pagowski/expRuns/'
+16c16
+< EXPNAMES='RET_AeroDA_NoEmisStoch_C96_202006'
+---
+> EXPNAMES='RET_AeroDA_YesEmisStoch-CNTL-ENKF_C96_202006_bc1.5'
+20c20
+< CURDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/tmprun3
+---
+> CURDIR=/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Mariusz.Pagowski/diagplots
+25c25
+< export HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
+---
+> export HOMEgfs=${HOMEgfs:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/from_bo/UFS-Aerosols_JEDI-AeroDA-20memC96"}

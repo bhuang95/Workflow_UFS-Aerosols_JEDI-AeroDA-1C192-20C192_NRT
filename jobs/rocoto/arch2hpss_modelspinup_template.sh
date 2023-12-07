@@ -101,7 +101,7 @@ if [ ${ENSRUN} = "YES" ] then
     ${NCP} ${ENKFDIR_DIAG}/* ${ENKFBAK_DIAG}/
     ${NCP} ${ENKFDIR_ATMOS}/ensmean/RESTART/${CPREFIX}.coupler* ${ENKFBAK_ATMOS_MEAN}/
     ${NCP} ${ENKFDIR_ATMOS}/ensmean/RESTART/${CPREFIX}.fv_core* ${ENKFBAK_ATMOS_MEAN}/
-    ${NCP} ${ENKFDIR_ATMOS}/enseman/RESTART/${CPREFIX}.fv_tracer* ${ENKFBAK_ATMOS_MEAN}/
+    ${NCP} ${ENKFDIR_ATMOS}/ensmman/RESTART/${CPREFIX}.fv_tracer* ${ENKFBAK_ATMOS_MEAN}/
 
     ERR=$?
     if [ ${ERR} -ne 0 ]; then

@@ -19,24 +19,31 @@ CURDIR=$(pwd)
 
 # Plot scattering plot and relative bias and RMSE against AERONET for noda and da expariment
 # Both freerun and da experiments are needed. 
-SDATE=2017101000 # Starting cycle. Here not using cycels before 2017101000 for spinup purpose
-EDATE=2017101618 # Ending cycle
+#SDATE=2017101000 # Starting cycle. Here not using cycels before 2017101000 for spinup purpose
+#EDATE=2017102718 # Ending cycle
+SDATE=2020060800 # Starting cycle. Here not using cycels before 2017101000 for spinup purpose
+EDATE=2020062318 # Ending cycle
 MISS_AERONET=${CURDIR}/Record_AeronetHfxMissing.info
 CINC=6
 AODTYPE='AERONET_SOLAR_AOD15'
 PMONTH=False
 TOPEXPDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/
 	# run dir
-NODAEXP=FreeRun-201710
+NODAEXP=RET_FreeRun_NoEmisStoch_C96_202006
+#NODAEXP=RET_FreeRun_NoEmisStoch_C96_202006
 	# Freerun expname
 	# If using mine, link /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc/FreeRun-201710/dr-data-backup to your ${TOPEXPDIR}
 #DAEXP=ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710 #ENKF_AEROSEMIS-OFF-201710
 DAEXPS="
-       ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
-       ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710
-       ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
-       ENKF_AEROSEMIS-OFF-201710
+	RET_AeroDA_YesEmisStoch-CNTL-ENKF_C96_202006_bc1.5
        "
+	#RET_AeroDA_NoEmisStoch_C96_202006
+#DAEXPS="
+#       "
+       #ENKF_AEROSEMIS-ON_STOCH_MODIFIED_INIT-ON-201710
+       #ENKF_AEROSEMIS-ON_STOCHINIT-ON-201710
+       #ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710
+       #ENKF_AEROSEMIS-OFF-201710
        # DA expnames
        # If using mine DA exp, link dr-data-backup in /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc// ENKF_AEROSEMIS-OFF-201710 and ENKF_AEROSEMIS-ON_STOCHINIT-OFF-201710 to your ${TOPEXPDIR}
 
