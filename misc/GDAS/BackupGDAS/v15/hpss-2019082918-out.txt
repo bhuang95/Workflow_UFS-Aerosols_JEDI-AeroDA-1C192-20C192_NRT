@@ -1,0 +1,27 @@
++ echo 2019082918
++ heracntldir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/gdas.20190829/18
++ heraenkfdir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/enkfgdas.20190829/18
++ hpssdir=/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/201908
++ hsi 'mkdir -p /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/201908'
+[connecting to hpsscore1.fairmont.rdhpcs.noaa.gov/1217]
+******************************************************************
+*   Welcome to the NESCC High Performance Storage System         *
+*                                                                *
+*   Current HPSS version: 9.3.10                                 * 
+*                                                                * 
+*       Please Submit Helpdesk Request to                        *
+*        rdhpcs.hpss.help@noaa.gov                               *
+*                                                                *
+******************************************************************
+Username: Bo.Huang  UID: 10872  Acct: 10872(10872) Copies: 1 COS: 0 Firewall: off [hsi.9.3.0.p0 Tue Oct 4 14:08:46 UTC 2022] 
+mkdir: /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/201908
++ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/gdas.20190829/18/gdas.t18z.atmanl.nemsio ']'
++ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/gdas.20190829/18/gdas.t18z.sfcanl.nemsio ']'
++ echo '/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/gdas.20190829/18/gdas.t18z.atmanl.nemsio does not exist and exit'
+/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2019082918/gdas.20190829/18/gdas.t18z.atmanl.nemsio does not exist and exit
++ exit 1
+_______________________________________________________________
+Start Epilog on node hfe03 for job 56809280 :: Fri Mar  8 01:13:04 UTC 2024
+Job 56809280 finished for user Bo.Huang in partition service with exit code 1:0
+_______________________________________________________________
+End Epilogue Fri Mar  8 01:13:04 UTC 2024

@@ -12,7 +12,7 @@
 	<!ENTITY GFSVER "v14">
 	<!ENTITY HOMEgfs "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT">
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc">
-	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/">
+	<!--ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/exp_UFS-Aerosols/"-->
 
 	<!-- Experiment and Rotation directory -->
 	<!ENTITY EXPDIR "&HOMEgfs;/misc/GDAS/CHGRESGDAS/&GFSVER;/">
@@ -29,7 +29,8 @@
 
 	<!-- Model configuration -->
 	<!ENTITY SDATE "201710010000">
-	<!ENTITY EDATE "201906111800">
+	<!--ENTITY EDATE "201906111800"-->
+	<!ENTITY EDATE "201902281800">
 	<!ENTITY CASE_CNTL     "C96">
 	<!ENTITY CASE_ENKF     "C96">
 	<!ENTITY CASE_CNTL_OPE     "C384">
@@ -43,19 +44,19 @@
 
 	<!-- Machine related entities -->
 	<!ENTITY PARTITION_HPSS    "service">
-	<!ENTITY ACCOUNT_HPSS    "chem-var">
+	<!ENTITY ACCOUNT_HPSS    "gsd-fv3-dev">
 	<!ENTITY QUEUE_HPSS      "batch">
 	<!ENTITY WALLTIME_HPSS  "01:59:00">
 	<!ENTITY RESOURCES_HPSS "1:ppn=1:tpp=1">
 	<!ENTITY NATIVE_HPSS    "--export=NONE">
-	<!ENTITY MEMORIES_HPSS "40G">
+	<!ENTITY MEMORIES_HPSS "5G">
 
 	<!ENTITY PARTITION_CHGRES    "hera">
 	<!ENTITY ACCOUNT_CHGRES    "chem-var">
 	<!ENTITY QUEUE_CHGRES      "batch">
 	<!ENTITY WALLTIME_CHGRES  "00:29:00">
 	<!ENTITY RESOURCES_CHGRES "1:ppn=40:tpp=1">
-	<!ENTITY MEMORIES_CHGRES "80000M">
+	<!ENTITY MEMORIES_CHGRES "40G">
 	<!ENTITY NATIVE_CHGRES    "--export=NONE">
 
 	<!ENTITY SCHEDULER  "slurm">

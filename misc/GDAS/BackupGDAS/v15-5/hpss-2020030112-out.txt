@@ -1,8 +1,8 @@
-+ echo 2021010706
-+ heracntldir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/gdas.20210107/06
-+ heraenkfdir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06
-+ hpssdir=/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101
-+ hsi 'mkdir -p /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101'
++ echo 2020030112
++ heracntldir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/gdas.20200301/12
++ heraenkfdir=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12
++ hpssdir=/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003
++ hsi 'mkdir -p /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003'
 [connecting to hpsscore1.fairmont.rdhpcs.noaa.gov/1217]
 ******************************************************************
 *   Welcome to the NESCC High Performance Storage System         *
@@ -14,767 +14,767 @@
 *                                                                *
 ******************************************************************
 Username: Bo.Huang  UID: 10872  Acct: 10872(10872) Copies: 1 COS: 0 Firewall: off [hsi.9.3.0.p0 Tue Oct 4 14:08:46 UTC 2022] 
-mkdir: /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101
-+ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/gdas.20210107/06/gdas.t06z.atmanl.nemsio ']'
-+ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/gdas.20210107/06/gdas.t06z.sfcanl.nemsio ']'
-+ cd /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/gdas.20210107/06
-+ htar -cv -f /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101/gdas.2021010706.tar gdas.t06z.atmanl.nemsio gdas.t06z.sfcanl.nemsio
+mkdir: /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003
++ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/gdas.20200301/12/gdas.t12z.atmanl.nemsio ']'
++ '[' -f /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/gdas.20200301/12/gdas.t12z.sfcanl.nemsio ']'
++ cd /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/gdas.20200301/12
++ htar -cv -f /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003/gdas.2020030112.tar gdas.t12z.atmanl.nemsio gdas.t12z.sfcanl.nemsio
 [connecting to hpsscore1.fairmont.rdhpcs.noaa.gov/1217]
-HTAR: a   gdas.t06z.atmanl.nemsio
-HTAR: a   gdas.t06z.sfcanl.nemsio
-HTAR: a   /tmp/HTAR_CF_CHK_120940_1701216944
-HTAR Create complete for /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101/gdas.2021010706.tar. 16949235200 bytes written for 2 member files, max threads: 3 Transfer time: 18.647 seconds (908.950 MB/s) wallclock/user/sys: 18.726 4.051 18.038 seconds
+HTAR: a   gdas.t12z.atmanl.nemsio
+HTAR: a   gdas.t12z.sfcanl.nemsio
+HTAR: a   /tmp/HTAR_CF_CHK_206244_1709944735
+HTAR Create complete for /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003/gdas.2020030112.tar. 16949235200 bytes written for 2 member files, max threads: 3 Transfer time: 21.266 seconds (797.010 MB/s) wallclock/user/sys: 21.367 4.456 21.128 seconds
 HTAR: HTAR SUCCESSFUL
 + err=0
 + '[' 0 '!=' 0 ']'
-+ echo 'HTAR cntl succeeded at 2021010706.'
-HTAR cntl succeeded at 2021010706.
++ echo 'HTAR cntl succeeded at 2020030112.'
+HTAR cntl succeeded at 2020030112.
 ++ wc -l
-++ ls /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem001/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem002/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem003/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem004/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem005/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem006/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem007/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem008/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem009/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem010/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem011/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem012/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem013/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem014/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem015/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem016/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem017/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem018/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem019/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem020/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem021/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem022/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem023/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem024/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem025/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem026/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem027/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem028/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem029/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem030/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem031/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem032/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem033/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem034/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem035/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem036/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem037/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem038/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem039/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem040/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem041/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem042/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem043/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem044/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem045/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem046/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem047/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem048/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem049/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem050/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem051/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem052/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem053/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem054/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem055/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem056/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem057/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem058/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem059/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem060/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem061/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem062/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem063/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem064/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem065/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem066/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem067/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem068/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem069/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem070/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem071/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem072/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem073/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem074/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem075/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem076/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem077/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem078/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem079/gdas.t06z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem080/gdas.t06z.ratmanl.nemsio
+++ ls /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem001/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem002/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem003/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem004/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem005/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem006/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem007/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem008/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem009/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem010/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem011/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem012/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem013/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem014/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem015/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem016/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem017/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem018/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem019/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem020/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem021/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem022/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem023/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem024/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem025/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem026/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem027/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem028/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem029/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem030/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem031/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem032/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem033/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem034/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem035/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem036/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem037/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem038/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem039/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem040/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem041/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem042/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem043/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem044/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem045/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem046/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem047/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem048/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem049/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem050/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem051/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem052/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem053/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem054/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem055/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem056/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem057/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem058/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem059/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem060/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem061/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem062/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem063/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem064/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem065/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem066/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem067/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem068/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem069/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem070/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem071/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem072/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem073/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem074/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem075/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem076/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem077/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem078/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem079/gdas.t12z.ratmanl.nemsio /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem080/gdas.t12z.ratmanl.nemsio
 + nens1=80
 ++ wc -l
-++ ls /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem001/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem002/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem003/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem004/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem005/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem006/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem007/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem008/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem009/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem010/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem011/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem012/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem013/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem014/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem015/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem016/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem017/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem018/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem019/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem020/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem021/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem022/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem023/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem024/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem025/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem026/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem027/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem028/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem029/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem030/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem031/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem032/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem033/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem034/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem035/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem036/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem037/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem038/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem039/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem040/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem041/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem042/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem043/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem044/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem045/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem046/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem047/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem048/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem049/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem050/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem051/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem052/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem053/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem054/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem055/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem056/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem057/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem058/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem059/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem060/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem061/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem062/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem063/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem064/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem065/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem066/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem067/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem068/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem069/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem070/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem071/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem072/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem073/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem074/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem075/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem076/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem077/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem078/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem079/RESTART/20210107.060000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06/mem080/RESTART/20210107.060000.sfcanl_data.tile6.nc
+++ ls /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem001/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem002/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem003/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem004/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem005/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem006/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem007/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem008/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem009/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem010/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem011/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem012/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem013/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem014/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem015/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem016/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem017/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem018/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem019/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem020/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem021/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem022/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem023/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem024/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem025/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem026/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem027/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem028/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem029/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem030/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem031/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem032/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem033/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem034/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem035/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem036/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem037/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem038/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem039/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem040/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem041/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem042/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem043/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem044/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem045/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem046/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem047/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem048/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem049/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem050/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem051/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem052/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem053/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem054/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem055/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem056/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem057/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem058/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem059/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem060/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem061/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem062/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem063/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem064/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem065/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem066/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem067/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem068/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem069/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem070/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem071/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem072/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem073/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem074/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem075/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem076/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem077/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem078/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem079/RESTART/20200301.120000.sfcanl_data.tile6.nc /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12/mem080/RESTART/20200301.120000.sfcanl_data.tile6.nc
 + nens2=80
 + '[' 80 -eq 80 ']'
 + '[' 80 -eq 80 ']'
-+ cd /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06
-+ htar -cv -f /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101/enkfgdas.2021010706.tar mem001 mem002 mem003 mem004 mem005 mem006 mem007 mem008 mem009 mem010 mem011 mem012 mem013 mem014 mem015 mem016 mem017 mem018 mem019 mem020 mem021 mem022 mem023 mem024 mem025 mem026 mem027 mem028 mem029 mem030 mem031 mem032 mem033 mem034 mem035 mem036 mem037 mem038 mem039 mem040 mem041 mem042 mem043 mem044 mem045 mem046 mem047 mem048 mem049 mem050 mem051 mem052 mem053 mem054 mem055 mem056 mem057 mem058 mem059 mem060 mem061 mem062 mem063 mem064 mem065 mem066 mem067 mem068 mem069 mem070 mem071 mem072 mem073 mem074 mem075 mem076 mem077 mem078 mem079 mem080
++ cd /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12
++ htar -cv -f /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003/enkfgdas.2020030112.tar mem001 mem002 mem003 mem004 mem005 mem006 mem007 mem008 mem009 mem010 mem011 mem012 mem013 mem014 mem015 mem016 mem017 mem018 mem019 mem020 mem021 mem022 mem023 mem024 mem025 mem026 mem027 mem028 mem029 mem030 mem031 mem032 mem033 mem034 mem035 mem036 mem037 mem038 mem039 mem040 mem041 mem042 mem043 mem044 mem045 mem046 mem047 mem048 mem049 mem050 mem051 mem052 mem053 mem054 mem055 mem056 mem057 mem058 mem059 mem060 mem061 mem062 mem063 mem064 mem065 mem066 mem067 mem068 mem069 mem070 mem071 mem072 mem073 mem074 mem075 mem076 mem077 mem078 mem079 mem080
 [connecting to hpsscore1.fairmont.rdhpcs.noaa.gov/1217]
 HTAR: a   mem001/
 HTAR: a   mem001/RESTART/
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem001/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem001/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem001/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem001/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem002/
 HTAR: a   mem002/RESTART/
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem002/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem002/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem002/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem002/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem003/
 HTAR: a   mem003/RESTART/
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem003/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem003/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem003/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem003/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem004/
 HTAR: a   mem004/RESTART/
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem004/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem004/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem004/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem004/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem005/
 HTAR: a   mem005/RESTART/
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem005/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem005/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem005/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem005/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem006/
 HTAR: a   mem006/RESTART/
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem006/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem006/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem006/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem006/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem007/
 HTAR: a   mem007/RESTART/
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem007/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem007/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem007/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem007/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem008/
 HTAR: a   mem008/RESTART/
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem008/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem008/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem008/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem008/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem009/
 HTAR: a   mem009/RESTART/
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem009/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem009/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem009/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem009/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem010/
 HTAR: a   mem010/RESTART/
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem010/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem010/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem010/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem010/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem011/
 HTAR: a   mem011/RESTART/
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem011/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem011/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem011/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem011/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem012/
 HTAR: a   mem012/RESTART/
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem012/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem012/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem012/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem012/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem013/
 HTAR: a   mem013/RESTART/
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem013/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem013/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem013/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem013/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem014/
 HTAR: a   mem014/RESTART/
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem014/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem014/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem014/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem014/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem015/
 HTAR: a   mem015/RESTART/
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem015/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem015/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem015/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem015/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem016/
 HTAR: a   mem016/RESTART/
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem016/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem016/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem016/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem016/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem017/
 HTAR: a   mem017/RESTART/
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem017/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem017/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem017/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem017/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem018/
 HTAR: a   mem018/RESTART/
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem018/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem018/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem018/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem018/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem019/
 HTAR: a   mem019/RESTART/
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem019/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem019/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem019/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem019/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem020/
 HTAR: a   mem020/RESTART/
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem020/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem020/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem020/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem020/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem021/
 HTAR: a   mem021/RESTART/
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem021/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem021/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem021/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem021/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem022/
 HTAR: a   mem022/RESTART/
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem022/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem022/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem022/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem022/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem023/
 HTAR: a   mem023/RESTART/
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem023/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem023/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem023/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem023/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem024/
 HTAR: a   mem024/RESTART/
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem024/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem024/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem024/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem024/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem025/
 HTAR: a   mem025/RESTART/
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem025/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem025/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem025/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem025/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem026/
 HTAR: a   mem026/RESTART/
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem026/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem026/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem026/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem026/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem027/
 HTAR: a   mem027/RESTART/
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem027/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem027/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem027/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem027/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem028/
 HTAR: a   mem028/RESTART/
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem028/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem028/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem028/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem028/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem029/
 HTAR: a   mem029/RESTART/
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem029/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem029/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem029/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem029/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem030/
 HTAR: a   mem030/RESTART/
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem030/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem030/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem030/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem030/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem031/
 HTAR: a   mem031/RESTART/
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem031/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem031/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem031/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem031/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem032/
 HTAR: a   mem032/RESTART/
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem032/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem032/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem032/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem032/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem033/
 HTAR: a   mem033/RESTART/
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem033/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem033/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem033/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem033/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem034/
 HTAR: a   mem034/RESTART/
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem034/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem034/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem034/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem034/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem035/
 HTAR: a   mem035/RESTART/
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem035/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem035/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem035/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem035/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem036/
 HTAR: a   mem036/RESTART/
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem036/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem036/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem036/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem036/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem037/
 HTAR: a   mem037/RESTART/
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem037/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem037/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem037/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem037/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem038/
 HTAR: a   mem038/RESTART/
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem038/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem038/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem038/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem038/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem039/
 HTAR: a   mem039/RESTART/
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem039/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem039/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem039/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem039/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem040/
 HTAR: a   mem040/RESTART/
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem040/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem040/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem040/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem040/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem041/
 HTAR: a   mem041/RESTART/
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem041/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem041/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem041/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem041/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem042/
 HTAR: a   mem042/RESTART/
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem042/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem042/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem042/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem042/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem043/
 HTAR: a   mem043/RESTART/
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem043/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem043/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem043/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem043/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem044/
 HTAR: a   mem044/RESTART/
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem044/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem044/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem044/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem044/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem045/
 HTAR: a   mem045/RESTART/
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem045/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem045/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem045/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem045/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem046/
 HTAR: a   mem046/RESTART/
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem046/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem046/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem046/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem046/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem047/
 HTAR: a   mem047/RESTART/
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem047/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem047/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem047/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem047/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem048/
 HTAR: a   mem048/RESTART/
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem048/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem048/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem048/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem048/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem049/
 HTAR: a   mem049/RESTART/
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem049/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem049/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem049/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem049/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem050/
 HTAR: a   mem050/RESTART/
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem050/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem050/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem050/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem050/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem051/
 HTAR: a   mem051/RESTART/
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem051/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem051/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem051/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem051/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem052/
 HTAR: a   mem052/RESTART/
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem052/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem052/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem052/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem052/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem053/
 HTAR: a   mem053/RESTART/
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem053/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem053/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem053/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem053/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem054/
 HTAR: a   mem054/RESTART/
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem054/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem054/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem054/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem054/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem055/
 HTAR: a   mem055/RESTART/
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem055/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem055/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem055/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem055/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem056/
 HTAR: a   mem056/RESTART/
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem056/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem056/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem056/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem056/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem057/
 HTAR: a   mem057/RESTART/
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem057/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem057/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem057/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem057/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem058/
 HTAR: a   mem058/RESTART/
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem058/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem058/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem058/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem058/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem059/
 HTAR: a   mem059/RESTART/
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem059/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem059/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem059/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem059/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem060/
 HTAR: a   mem060/RESTART/
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem060/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem060/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem060/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem060/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem061/
 HTAR: a   mem061/RESTART/
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem061/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem061/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem061/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem061/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem062/
 HTAR: a   mem062/RESTART/
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem062/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem062/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem062/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem062/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem063/
 HTAR: a   mem063/RESTART/
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem063/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem063/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem063/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem063/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem064/
 HTAR: a   mem064/RESTART/
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem064/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem064/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem064/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem064/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem065/
 HTAR: a   mem065/RESTART/
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem065/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem065/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem065/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem065/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem066/
 HTAR: a   mem066/RESTART/
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem066/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem066/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem066/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem066/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem067/
 HTAR: a   mem067/RESTART/
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem067/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem067/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem067/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem067/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem068/
 HTAR: a   mem068/RESTART/
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem068/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem068/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem068/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem068/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem069/
 HTAR: a   mem069/RESTART/
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem069/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem069/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem069/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem069/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem070/
 HTAR: a   mem070/RESTART/
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem070/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem070/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem070/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem070/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem071/
 HTAR: a   mem071/RESTART/
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem071/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem071/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem071/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem071/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem072/
 HTAR: a   mem072/RESTART/
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem072/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem072/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem072/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem072/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem073/
 HTAR: a   mem073/RESTART/
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem073/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem073/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem073/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem073/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem074/
 HTAR: a   mem074/RESTART/
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem074/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem074/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem074/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem074/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem075/
 HTAR: a   mem075/RESTART/
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem075/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem075/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem075/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem075/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem076/
 HTAR: a   mem076/RESTART/
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem076/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem076/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem076/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem076/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem077/
 HTAR: a   mem077/RESTART/
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem077/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem077/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem077/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem077/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem078/
 HTAR: a   mem078/RESTART/
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem078/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem078/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem078/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem078/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem079/
 HTAR: a   mem079/RESTART/
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem079/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem079/gdas.t06z.ratmanl.nemsio
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem079/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem079/gdas.t12z.ratmanl.nemsio
 HTAR: a   mem080/
 HTAR: a   mem080/RESTART/
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile1.nc
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile2.nc
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile3.nc
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile4.nc
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile5.nc
-HTAR: a   mem080/RESTART/20210107.060000.sfcanl_data.tile6.nc
-HTAR: a   mem080/gdas.t06z.ratmanl.nemsio
-HTAR: a   /tmp/HTAR_CF_CHK_126061_1701216976
-HTAR Create complete for /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202101/enkfgdas.2021010706.tar. 350712342016 bytes written for 560 member files, max threads: 4 Transfer time: 409.718 seconds (855.984 MB/s) wallclock/user/sys: 416.216 84.140 426.041 seconds
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile1.nc
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile2.nc
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile3.nc
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile4.nc
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile5.nc
+HTAR: a   mem080/RESTART/20200301.120000.sfcanl_data.tile6.nc
+HTAR: a   mem080/gdas.t12z.ratmanl.nemsio
+HTAR: a   /tmp/HTAR_CF_CHK_210677_1709944767
+HTAR Create complete for /BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/v15/202003/enkfgdas.2020030112.tar. 350712342016 bytes written for 560 member files, max threads: 4 Transfer time: 615.792 seconds (569.530 MB/s) wallclock/user/sys: 618.521 152.775 530.378 seconds
 HTAR: HTAR SUCCESSFUL
 + err=0
 + '[' 0 '!=' 0 ']'
-+ echo 'HTAR enkf succeeded at 2021010706.'
-HTAR enkf succeeded at 2021010706.
-+ echo 2021010706
-++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate 6 2021010706
-+ cdatep6=2021010712
-+ echo 2021010712
-+ rm -rf /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/gdas.20210107/06
-+ rm -rf /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010706/enkfgdas.20210107/06
-+ cd /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15
-+ /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/driver.hera_hpssDownload_v15.sh
++ echo 'HTAR enkf succeeded at 2020030112.'
+HTAR enkf succeeded at 2020030112.
++ echo 2020030112
+++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate 6 2020030112
++ cdatep6=2020030118
++ echo 2020030118
++ rm -rf /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/gdas.20200301/12
++ rm -rf /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030112/enkfgdas.20200301/12
++ cd /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5
++ /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/driver.hera_hpssDownload_v15.sh
 + compiler=intel
 + target=hera
 + ufsutil_dir=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/GSDChem_cycling/global-workflow-CCPP2-Chem/gsd-ccpp-chem/sorc/UFS_UTILS_20221207/UFS_UTILS
@@ -1427,10 +1427,10 @@ Currently Loaded Modules:
 + eval
 + NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
 ++ pwd
-+ CURDIR=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15
-+ DRIVER=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/driver.hera_hpssDownload_v15.sh
-+ DATES=2020052506
-+ DATEE=2021032018
++ CURDIR=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5
++ DRIVER=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/driver.hera_hpssDownload_v15.sh
++ DATES=2020030100
++ DATEE=2020033118
 + gfs_ver=v15
 + PROJECT_CODE=wrf-chem
 + QUEUE=batch
@@ -1441,74 +1441,74 @@ Currently Loaded Modules:
 + TMPDIR=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas/
 + HPSSDIR=/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas
 + use_v16retro=no
-+ CYCLE_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/CYCLE.info
-+ HPSS_EXTRACT_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/record.extract_success_v15
-+ HPSS_HTAR_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/record.hpss_htar_success_v15
-++ cat /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/CYCLE.info
-+ cdate=2021010712
-++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -6 2021010712
-+ cdatem6=2021010706
-++ echo 2021010712
++ CYCLE_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/CYCLE.info
++ HPSS_EXTRACT_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/record.extract_success_v15
++ HPSS_HTAR_LOG=/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/record.hpss_htar_success_v15
+++ cat /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/CYCLE.info
++ cdate=2020030118
+++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -6 2020030118
++ cdatem6=2020030112
+++ echo 2020030118
 ++ cut -c 1-4
-+ export yy=2021
-+ yy=2021
-++ echo 2021010712
++ export yy=2020
++ yy=2020
+++ echo 2020030118
 ++ cut -c 5-6
-+ export mm=01
-+ mm=01
-++ echo 2021010712
++ export mm=03
++ mm=03
+++ echo 2020030118
 ++ cut -c 7-8
-+ export dd=07
-+ dd=07
-++ echo 2021010712
++ export dd=01
++ dd=01
+++ echo 2020030118
 ++ cut -c 9-10
-+ export hh=12
-+ hh=12
-+ '[' 2021010712 -lt 2020052506 ']'
-+ '[' 2021010712 -gt 2021032018 ']'
-+ '[' 2021010712 -eq 2020052506 ']'
-+ '[' -f /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/record.hpss_htar_success_v15 ']'
-++ tail -n 1 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/record.hpss_htar_success_v15
-+ lastcyc=2021010706
-+ '[' 2021010706 -eq 2021010706 ']'
-+ echo 'HPSS_EXTRACT at 2021010712'
-HPSS_EXTRACT at 2021010712
-+ EXTRACT_DIR=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712
++ export hh=18
++ hh=18
++ '[' 2020030118 -lt 2020030100 ']'
++ '[' 2020030118 -gt 2020033118 ']'
++ '[' 2020030118 -eq 2020030100 ']'
++ '[' -f /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/record.hpss_htar_success_v15 ']'
+++ tail -n 1 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/record.hpss_htar_success_v15
++ lastcyc=2020030112
++ '[' 2020030112 -eq 2020030112 ']'
++ echo 'HPSS_EXTRACT at 2020030118'
+HPSS_EXTRACT at 2020030118
++ EXTRACT_DIR=/scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118
 + export EXTRACT_DIR gfs_ver yy mm dd hh
 + MEM=6000M
-+ WALLT=4:00:00
++ WALLT=04:00:00
 + '[' yes == yes ']'
-+ rm -fr /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712
-+ mkdir -p /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712
++ rm -fr /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118
++ mkdir -p /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118
 + case $gfs_ver in
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_gdas -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.gdas -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.gdas /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh gdas
-+ DATAH=52401635
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp1 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp1 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp1 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp1
-+ DATA1=52401636
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp2 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp2 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp2 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp2
-+ DATA2=52401637
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp3 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp3 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp3 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp3
-+ DATA3=52401638
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp4 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp4 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp4 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp4
-+ DATA4=52401639
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp5 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp5 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp5 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp5
-+ DATA5=52401640
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp6 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp6 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp6 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp6
-+ DATA6=52401641
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp7 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp7 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp7 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp7
-+ DATA7=52401642
-++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 4:00:00 -A wrf-chem -q batch -J get_grp8 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp8 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/log.data.2021010712.grp8 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/get_v15.gdas.sh grp8
-+ DATA8=52401643
-+ DEPEND='-d afterok:52401635:52401636:52401637:52401638:52401639:52401640:52401641:52401642:52401643'
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_gdas -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.gdas -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.gdas /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh gdas
++ DATAH=56927932
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp1 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp1 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp1 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp1
++ DATA1=56927933
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp2 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp2 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp2 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp2
++ DATA2=56927934
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp3 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp3 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp3 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp3
++ DATA3=56927935
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp4 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp4 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp4 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp4
++ DATA4=56927936
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp5 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp5 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp5 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp5
++ DATA5=56927937
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp6 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp6 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp6 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp6
++ DATA6=56927938
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp7 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp7 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp7 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp7
++ DATA7=56927939
+++ sbatch --parsable --partition=service --ntasks=1 --mem=6000M -t 04:00:00 -A wrf-chem -q batch -J get_grp8 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp8 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/log.data.2020030118.grp8 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/get_v15.gdas.sh grp8
++ DATA8=56927940
++ DEPEND='-d afterok:56927932:56927933:56927934:56927935:56927936:56927937:56927938:56927939:56927940'
 + cat
-+ sbatch --parsable --partition=service --ntasks=1 -t 4:00:00 -A wrf-chem -q batch -J v15_2021010712 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/../log.hpss.2021010712 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15/2021010712/../log.hpss.2021010712 -d afterok:52401635:52401636:52401637:52401638:52401639:52401640:52401641:52401642:52401643 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15/job_hpss_v15.sh
-52401644
++ sbatch --parsable --partition=service --ntasks=1 -t 04:00:00 -A wrf-chem -q batch -J v15-5_2020030118 -o /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/../log.hpss.2020030118 -e /scratch1/BMC/chem-var/MAPP_2018/bhuang/BackupGdas//v15-5/2020030118/../log.hpss.2020030118 -d afterok:56927932:56927933:56927934:56927935:56927936:56927937:56927938:56927939:56927940 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/BackupGDAS/v15-5/job_hpss_v15.sh
+56927941
 + err=0
 + '[' 0 '!=' 0 ']'
 + exit 0
 + exit 0
 _______________________________________________________________
-Start Epilog on node hfe02 for job 52401307 :: Wed Nov 29 00:23:16 UTC 2023
-Job 52401307 finished for user Bo.Huang in partition service with exit code 0:0
+Start Epilog on node hfe02 for job 56927546 :: Sat Mar  9 00:49:50 UTC 2024
+Job 56927546 finished for user Bo.Huang in partition service with exit code 0:0
 _______________________________________________________________
-End Epilogue Wed Nov 29 00:23:16 UTC 2023
+End Epilogue Sat Mar  9 00:49:50 UTC 2024

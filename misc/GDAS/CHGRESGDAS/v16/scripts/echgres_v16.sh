@@ -59,7 +59,7 @@ NMV="/bin/mv -f"
 NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
 
-DATA=${ROTDIR}/tmp/echgres_grp${ENSGRP}
+DATA=${ROTDIR}/tmp/${CDATE}_echgres_grp${ENSGRP}
 [[ -d ${DATA} ]] && ${NRM}  ${DATA}
 mkdir -p ${DATA} 
 
