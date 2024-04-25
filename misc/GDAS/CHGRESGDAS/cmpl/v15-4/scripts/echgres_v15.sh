@@ -1,0 +1,300 @@
+#! /usr/bin/env bash
+##SBATCH -N 1
+##SBATCH -t 00:30:00
+##SBATCH -q debug
+##SBATCH -A chem-var
+##SBATCH --mem=40g
+##SBATCH -J fgat
+##SBATCH -D ./
+##SBATCH -o ./echgres.out
+##SBATCH -e ./echgres.out
+
+set -x
+
+#export HOMEgfs=${HOMEgfs:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/misc/testRockey8/chgresGDAS/v15/src/nemsio2nc/"}
+export HOMEgfs=${HOMEgfs:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT"}
+export ROTDIR=${ROTDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/misc/testRockey8/chgresGDAS/v15/dr-data"}
+
+export CDATE=${CDATE:-"2020060100"}
+export LEVS=${LEVS:-"128"}
+export ENSGRP=${ENSGRP:-"01"}
+export NMEM_EFCSGRP=${NMEM_EFCSGRP:-"5"}
+export NMEMSPROED=${NMEMSPROED:-"40"}
+export CASE_CNTL=${CASE_CNTL:-"C96"}
+export CASE_ENKF=${CASE_ENKF:-"C96"}
+export CASE_CNTL_OPE=${CASE_CNTL_OPE:-"C384"}
+export CASE_ENKF_OPE=${CASE_ENKF_OPE:-"C384"}
+
+ENSED=$((${NMEM_EFCSGRP} * 10#${ENSGRP}))
+
+if [ ${ENSED} -gt ${NMEMSPROED} ]; then
+    echo "Exceed maximum ensemble size and exit."
+    exit 100
+fi
+
+if [ ${ENSGRP} = "01" ]; then
+    ENSST=0
+else
+    ENSST=$((ENSED - NMEM_EFCSGRP + 1))
+fi
+CYMD=${CDATE:0:8}
+CY=${CDATE:0:4}
+CM=${CDATE:4:2}
+CD=${CDATE:6:2}
+CH=${CDATE:8:2}
+
+NCP="/bin/cp -r"
+NMV="/bin/mv -f"
+NRM="/bin/rm -rf"
+NLN="/bin/ln -sf"
+
+DATA=${ROTDIR}/tmp/${CDATE}_echgres_grp${ENSGRP}
+[[ -d ${DATA} ]] && ${NRM}  ${DATA}
+mkdir -p ${DATA} 
+
+GDASDIR=${ROTDIR}
+GDASCNTLIN=${GDASDIR}/gdas.${CDATE}/INPUT
+GDASCNTLOUT1=${GDASDIR}/gdas.${CDATE}/OUTPUT_NC
+GDASCNTLOUT2=${GDASDIR}/gdas.${CDATE}/OUTPUT_NC_CHGRES
+
+GDASENKFIN=${GDASDIR}/enkfgdas.${CDATE}/INPUT
+GDASENKFOUT1=${GDASDIR}/enkfgdas.${CDATE}/OUTPUT_NC
+GDASENKFOUT2=${GDASDIR}/enkfgdas.${CDATE}/OUTPUT_NC_CHGRES
+
+[[ ! -d ${GDASDIR} ]] && mkdir -p ${GDASDIR}
+[[ ! -d ${GDASCNTLIN} ]] && mkdir -p ${GDASCNTLIN}
+[[ ! -d ${GDASCNTLOUT1} ]] && mkdir -p ${GDASCNTLOUT1}
+[[ ! -d ${GDASCNTLOUT2} ]] && mkdir -p ${GDASCNTLOUT2}
+
+[[ ! -d ${GDASENKFIN} ]] && mkdir -p ${GDASENKFIN}
+[[ ! -d ${GDASENKFOUT1} ]] && mkdir -p ${GDASENKFOUT1}
+[[ ! -d ${GDASENKFOUT2} ]] && mkdir -p ${GDASENKFOUT2}
+
+#Run NEMSIO2NC
+echo "STEP-1: Run NEMSIO2NC"
+NEMSIO2NCDIR=${DATA}/NEMSIO2NC
+mkdir -p ${NEMSIO2NCDIR}
+cd ${NEMSIO2NCDIR}
+
+# Variable for nemsio2nc
+NEMSIO2NCEXEC=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/Rocky8/chgresGDAS/v15/src/nemsio2nc/build/bin/nemsioatm2nc
+module use /scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/Rocky8/chgresGDAS/v15/src/nemsio2nc/modulefiles
+module load hera.gnu
+ERR=$?
+[[ ${ERR} -ne 0 ]] && exit ${ERR}
+
+${NLN} ${NEMSIO2NCEXEC} ./nemsioatm2nc 
+
+IMEM=${ENSST}
+while [ ${IMEM} -le ${ENSED} ]; do
+    ${NRM} ${NEMSIO2NCDIR}/input.nemsio
+    ${NRM} ${NEMSIO2NCDIR}/output.nc
+
+    MEMSTR="mem"`printf %03d ${IMEM}`
+
+    if [ ${IMEM} -eq 0 ]; then
+        INFILE=${GDASCNTLIN}/gdas.t${CH}z.atmanl.nemsio
+        OUTFILE=${GDASCNTLOUT1}/gdas.t${CH}z.atmanl.nc
+    else
+        INFILE=${GDASENKFIN}/${MEMSTR}/gdas.t${CH}z.ratmanl.nemsio
+        OUTFILE=${GDASENKFOUT1}/${MEMSTR}/gdas.t${CH}z.ratmanl.${MEMSTR}.nc
+	[[ ! -d ${GDASENKFOUT1}/${MEMSTR} ]] && mkdir -p ${GDASENKFOUT1}/${MEMSTR}
+    fi
+    ${NLN} ${INFILE} ${NEMSIO2NCDIR}/input.nemsio
+    ${NLN} ${OUTFILE} ${NEMSIO2NCDIR}/output.nc
+
+    srun --export=all -n 1 nemsioatm2nc input.nemsio output.nc
+
+    ERR=$?
+    [[ ${ERR} -ne 0 ]] && exit ${ERR}
+    echo "${MEMSTR} NEMSIO2NC completed."
+    IMEM=$((IMEM+1))
+done
+
+#Run CHGRES for atmanl
+echo "STEP-2: Convert atmanl nc resolution"
+ATMANLDIR=${DATA}/ATMANLDIR
+mkdir -p ${ATMANLDIR}
+cd ${ATMANLDIR}
+
+# Variable for chgres atmanl
+#CHGRESNCEXEC=${HOMEgfs}/exec/enkf_chgres_recenter_nc.x
+CHGRESNCEXEC=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/Rocky8/chgresGDAS/v15/src/gfs_utils.fd/install/bin/enkf_chgres_recenter_nc.x
+
+module purge
+#source "${HOMEgfs}/ush/preamble.sh"
+# Source FV3GFS workflow modules
+#. ${HOMEgfs}/ush/load_fv3gfs_modules.sh
+module use /scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/Rocky8/chgresGDAS/v15/src/gfs_utils.fd/modulefiles
+module load gfsutils_hera.intel.lua
+module list
+
+${NLN} ${CHGRESNCEXEC} ./enkf_chgres_recenter_nc.x
+
+IMEM=${ENSST}
+while [ ${IMEM} -le ${ENSED} ]; do
+    ${NRM} ${ATMANLDIR}/*.nc
+    ${NRM} ${ATMANLDIR}/*.nml
+
+    MEMSTR="mem"`printf %03d ${IMEM}`
+
+    if [ ${IMEM} -eq 0 ]; then
+        RES=${CASE_CNTL:1:4}
+        INFILE=${GDASCNTLOUT1}/gdas.t${CH}z.atmanl.nc
+        OUTFILE=${GDASCNTLOUT2}/gdas.t${CH}z.atmanl.${CASE_CNTL}.nc
+        REFFILE=${HOMEgfs}/fix/echgres/ref.${CASE_CNTL}.nc
+    else
+        RES=${CASE_ENKF:1:4}
+        INFILE=${GDASENKFOUT1}/${MEMSTR}/gdas.t${CH}z.ratmanl.${MEMSTR}.nc
+        OUTFILE=${GDASENKFOUT2}/${MEMSTR}/gdas.t${CH}z.ratmanl.${MEMSTR}.${CASE_ENKF}.nc
+        REFFILE=${HOMEgfs}/fix/echgres/ref.${CASE_ENKF}.nc
+	[[ ! -d ${GDASENKFOUT2}/${MEMSTR} ]] && mkdir -p ${GDASENKFOUT2}/${MEMSTR}
+    fi
+
+    LONB=$((4*RES))
+    LATB=$((2*RES))
+
+    ${NLN} ${REFFILE} ${ATMANLDIR}/ref.nc
+    ${NLN} ${INFILE} ${ATMANLDIR}/input.nc
+    ${NLN} ${OUTFILE} ${ATMANLDIR}/output.nc
+cat > chgres_nc_gauss.nml << EOF
+&chgres_setup
+i_output=$LONB
+j_output=$LATB
+input_file="input.nc"
+output_file="output.nc"
+terrain_file="ref.nc"
+ref_file="ref.nc"
+/
+EOF
+
+    srun --export=all -n 1 enkf_chgres_recenter_nc.x  chgres_nc_gauss.nml
+    ERR=$?
+    [[ ${ERR} -ne 0 ]] && exit ${ERR}
+    echo "${MEMSTR} ATMANL_CHGRES completed."
+    IMEM=$((IMEM+1))
+done
+
+#Run chgres_cube for sfcanl file
+SFCANLDIR=${DATA}/SFCANL
+mkdir -p ${SFCANLDIR}
+cd ${SFCANLDIR}
+
+
+# Variable for chgres sfcanl
+#CHGRESCUBE=${HOMEgfs}/exec/chgres_cube
+CHGRESCUBE=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/Rocky8/chgresGDAS/v15/src/ufs_utils.fd/exec/chgres_cube
+FIX_FV3=${HOMEgfs}/fix
+FIX_ORO=${FIX_FV3}/orog
+FIX_AM=${FIX_FV3}/am
+
+${NLN} ${CHGRESCUBE} ./chgres_cube
+
+IMEM=${ENSST}
+while [ ${IMEM} -le ${ENSED} ]; do
+    ${NRM} ${SFCANLDIR}/*.nemsio
+    ${NRM} ${SFCANLDIR}/fort.41
+
+    MEMSTR="mem"`printf %03d ${IMEM}`
+
+    if [ ${IMEM} -eq 0 ]; then
+        CTAR=${CASE_CNTL}
+        ATMFILE=${GDASCNTLIN}/gdas.t${CH}z.atmanl.nemsio
+        SFCFILE=${GDASCNTLIN}/gdas.t${CH}z.sfcanl.nemsio
+	OUTDIR=${GDASCNTLOUT2}/RESTART/
+        [[ ! -d ${OUTDIR} ]] && mkdir -p ${OUTDIR}
+        ${NLN} ${ATMFILE} ${SFCANLDIR}/atm.nemsio
+        ${NLN} ${SFCFILE} ${SFCANLDIR}/sfc.nemsio
+    else
+        CTAR=${CASE_ENKF}
+        ATMFILE=${GDASENKFIN}/${MEMSTR}/gdas.t${CH}z.ratmanl.${MEMSTR}.nemsio
+	OUTDIR=${GDASENKFOUT2}/${MEMSTR}/RESTART/
+        [[ ! -d ${OUTDIR} ]] && mkdir -p ${OUTDIR}
+        ${NLN} ${ATMFILE} ${SFCANLDIR}/atm.nemsio
+	itile=1
+	while [ ${itile} -le 6 ]; do
+            SFCFILE_SRC=${GDASENKFIN}/${MEMSTR}/RESTART/${CY}${CM}${CD}.${CH}0000.sfcanl_data.tile${itile}.nc   
+            SFCFILE_TGT=${SFCANLDIR}/sfc.tile${itile}.nc
+            ${NLN} ${SFCFILE_SRC} ${SFCFILE_TGT} 
+	    itile=$((itile+1))
+	done
+    fi
+
+
+if [ ${IMEM} -eq 0 ]; then
+cat << EOF > fort.41
+&config
+ fix_dir_target_grid="${FIX_ORO}/${CTAR}/fix_sfc"
+ mosaic_file_target_grid="${FIX_ORO}/${CTAR}/${CTAR}_mosaic.nc"
+ orog_dir_target_grid="${FIX_ORO}/${CTAR}"
+ orog_files_target_grid="${CTAR}_oro_data.tile1.nc","${CTAR}_oro_data.tile2.nc","${CTAR}_oro_data.tile3.nc","${CTAR}_oro_data.tile4.nc","${CTAR}_oro_data.tile5.nc","${CTAR}_oro_data.tile6.nc"
+ data_dir_input_grid="${SFCANLDIR}"
+ atm_files_input_grid="atm.nemsio"
+ sfc_files_input_grid="sfc.nemsio"
+ vcoord_file_target_grid="${FIX_AM}/global_hyblev.l${LEVS}.txt"
+ cycle_mon=${CM}
+ cycle_day=${CD}
+ cycle_hour=${CH}
+ convert_atm=.false.
+ convert_sfc=.true.
+ convert_nst=.true.
+ input_type="gaussian_nemsio"
+ tracers="sphum","liq_wat","o3mr","ice_wat","rainwat","snowwat","graupel"
+ tracers_input="spfh","clwmr","o3mr","icmr","rwmr","snmr","grle"
+ regional=0
+ halo_bndy=0
+ halo_blend=0
+/
+EOF
+ #tracers="sphum","liq_wat","o3mr","ice_wat","rainwat","snowwat","graupel"
+ #tracers_input="spfh","clwmr","o3mr","icmr","rwmr","snmr","grle"
+ #tracers="sphum","liq_wat","o3mr"
+ #tracers_input="spfh","clwmr","o3mr"
+
+else
+cat << EOF > fort.41
+&config
+ fix_dir_target_grid="${FIX_ORO}/${CTAR}/fix_sfc"
+ mosaic_file_target_grid="${FIX_ORO}/${CTAR}/${CTAR}_mosaic.nc"
+ orog_dir_target_grid="${FIX_ORO}/${CTAR}"
+ orog_files_target_grid="${CTAR}_oro_data.tile1.nc","${CTAR}_oro_data.tile2.nc","${CTAR}_oro_data.tile3.nc","${CTAR}_oro_data.tile4.nc","${CTAR}_oro_data.tile5.nc","${CTAR}_oro_data.tile6.nc"
+ vcoord_file_target_grid="${FIX_AM}/global_hyblev.l${LEVS}.txt"
+ mosaic_file_input_grid="${FIX_ORO}/${CASE_ENKF_OPE}/${CASE_ENKF_OPE}_mosaic.nc"
+ orog_dir_input_grid="${FIX_ORO}/${CASE_ENKF_OPE}"
+ orog_files_input_grid="${CASE_ENKF_OPE}_oro_data.tile1.nc","${CASE_ENKF_OPE}_oro_data.tile2.nc","${CASE_ENKF_OPE}_oro_data.tile3.nc","${CASE_ENKF_OPE}_oro_data.tile4.nc","${CASE_ENKF_OPE}_oro_data.tile5.nc","${CASE_ENKF_OPE}_oro_data.tile6.nc"
+ data_dir_input_grid="${SFCANLDIR}"
+ atm_core_files_input_grid="fv_core.tile1.nc","fv_core.tile2.nc","fv_core.tile3.nc","fv_core.tile4.nc","fv_core.tile5.nc","fv_core.tile6.nc"
+ atm_tracer_files_input_grid="fv_tracer.tile1.nc","fv_tracer.tile2.nc","fv_tracer.tile3.nc","fv_tracer.tile4.nc","fv_tracer.tile5.nc","fv_tracer.tile6.nc"
+ sfc_files_input_grid="sfc.tile1.nc","sfc.tile2.nc","sfc.tile3.nc","sfc.tile4.nc","sfc.tile5.nc","sfc.tile6.nc"
+ cycle_mon=${CM}
+ cycle_day=${CD}
+ cycle_hour=${CH}
+ convert_atm=.false.
+ convert_sfc=.true.
+ convert_nst=.true.
+ input_type="restart"
+ tracers="sphum","liq_wat","o3mr","ice_wat","rainwat","snowwat","graupel"
+ tracers_input="spfh","clwmr","o3mr","icmr","rwmr","snmr","grle"
+ regional=0
+ halo_bndy=0
+ halo_blend=0
+/
+EOF
+ #tracers="sphum","liq_wat","o3mr"
+ #tracers_input="spfh","clwmr","o3mr"
+fi
+
+srun --export=all -n 36 chgres_cube
+    ERR=$?
+    [[ ${ERR} -ne 0 ]] && exit ${ERR}
+    echo "${MEMSTR} completed."
+    for tile in 'tile1' 'tile2' 'tile3' 'tile4' 'tile5' 'tile6'; do
+        ${NMV} out.sfc.${tile}.nc ${OUTDIR}/${CYMD}.${CH}0000.sfcanl_data.${tile}.nc
+        ERR=$?
+        [[ ${ERR} -ne 0 ]] && exit ${ERR}
+    done
+
+    IMEM=$((IMEM+1))
+done
+
+exit ${ERR}

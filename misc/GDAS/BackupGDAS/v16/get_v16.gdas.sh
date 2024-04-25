@@ -44,6 +44,7 @@ else
   version_enkf="v16.2"
 fi
 
+version_enkf="v16.3"
 
 #----------------------------------------------------------------------
 # Get the atm and sfc 'anl' netcdf files from the gfs or gdas
@@ -106,6 +107,7 @@ else
   fi
 
   directory=/NCEPPROD/hpssprod/runhistory/5year/rh${yy}/${yy}${mm}/${yy}${mm}${dd}
+
   file=com_gfs_${version_enkf}_enkfgdas.${yy}${mm}${dd}_${hh}.enkfgdas_${group}.tar
 
   rm -f ./list*.${group}
