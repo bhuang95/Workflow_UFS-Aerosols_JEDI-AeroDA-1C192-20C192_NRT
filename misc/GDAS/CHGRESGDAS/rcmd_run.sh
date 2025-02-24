@@ -4,8 +4,7 @@ set -x
 RORUNCMD="/apps/rocoto/1.3.6/bin/rocotorun"
 XMLDIR="/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/"
 TASKS="
-    v16-11
-    v16-12
+ v16-2-PACE
 "
 #    v16-6
 #    v16-7

@@ -14,21 +14,23 @@
 	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc">
 
 	<!-- Experiment and Rotation directory -->
-	<!ENTITY EXPDIR "&HOMEgfs;/misc/GDAS/CHGRESGDAS/&GFSVER;/">
-	<!ENTITY JOBS_DIR "&EXPDIR;/scripts/">
+	<!ENTITY EXPDIR "&HOMEgfs;/misc/GDAS/CHGRESGDAS/&GFSVER;-2-PACE/">
+	<!ENTITY JOBS_DIR "&EXPDIR;/scripts-prepPACE-20241130/">
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data">
 	<!ENTITY GDASHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/&GFSVER;/">
 	<!ENTITY CHGRESHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/chgres-&GFSVER;/">
-	<!ENTITY BACKUPREC "&HOMEgfs;/misc/GDAS/BackupGDAS/&GFSVER;/record.hpss_htar_success_&GFSVER;">
+	<!ENTITY BACKUPREC "&HOMEgfs;/misc/GDAS/BackupGDAS/&GFSVER;-2/record.hpss_htar_success_&GFSVER;">
 	<!ENTITY CHGRESREC "&EXPDIR;/record.chgres_hpss_htar_success_&GFSVER;">
 
-	<!ENTITY MAXTRIES "2">
+	<!ENTITY MAXTRIES "10">
 	<!ENTITY CYCLETHROTTLE "1">
-	<!ENTITY TASKTHROTTLE  "20">
+	<!ENTITY TASKTHROTTLE  "4">
 
 	<!-- Model configuration -->
-	<!ENTITY SDATE "202407240000">
-	<!ENTITY EDATE "202407240000">
+	<!ENTITY SDATE "202403150000">
+	<!ENTITY EDATE "202404100000">
+	<!--ENTITY SDATE "202212310600"-->
+	<!--ENTITY EDATE "202212310600"-->
 	<!ENTITY CASE_CNTL     "C96">
 	<!ENTITY CASE_ENKF     "C96">
 	<!ENTITY CASE_CNTL_OPE     "C384">
@@ -51,13 +53,14 @@
 	<!--ENTITY MEMORIES_HPSS "2048M"-->
 	<!ENTITY MEMORIES_HPSS "5G">
 
-	<!ENTITY PARTITION_CHGRES    "hera">
+        <!ENTITY PARTITION_CHGRES    "bigmem">
 	<!ENTITY ACCOUNT_CHGRES    "wrf-chem">
 	<!ENTITY QUEUE_CHGRES      "batch">
-	<!ENTITY WALLTIME_CHGRES  "00:29:00">
-	<!ENTITY RESOURCES_CHGRES "4:ppn=40:tpp=1">
-	<!ENTITY MEMORIES_CHGRES "80000M">
-	<!ENTITY NATIVE_CHGRES    "--export=NONE">
+	<!ENTITY WALLTIME_CHGRES  "00:19:00">
+	<!--ENTITY RESOURCES_CHGRES "16:ppn=8:tpp=1"-->
+	<!ENTITY RESOURCES_CHGRES "1:ppn=7+15:ppn=8">
+	<!ENTITY MEMORIES_CHGRES "96G">
+	<!ENTITY NATIVE_CHGRES    "--export=NONE --exclusive">
 
 	<!ENTITY SCHEDULER  "slurm">
 ]>
@@ -117,10 +120,15 @@
 		<jobname><cyclestr>&PSLOT;_echgres#grp#_@H</cyclestr></jobname>
 		<account>&ACCOUNT_CHGRES;</account>
 		<queue>&QUEUE_CHGRES;</queue>
-		<partition>&PARTITION_CHGRES;</partition>
+		<partition>bigmem</partition>
 		<walltime>&WALLTIME_CHGRES;</walltime>
+		<cores>127</cores>
+		<!--
+		<partition>&PARTITION_CHGRES;</partition>
 		<nodes>&RESOURCES_CHGRES;</nodes>
 		<memory>&MEMORIES_CHGRES;</memory>
+		<memory>384G</memory>
+		-->
 		<native>&NATIVE_CHGRES;</native>
 
 		<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/echgres#grp#.log</cyclestr></join>
